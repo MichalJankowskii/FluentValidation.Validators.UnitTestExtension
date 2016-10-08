@@ -41,7 +41,7 @@ namespace FluentValidation.Validators.UnitTestExtension.Core
         {
             var validators = validator.Select(x => (PropertyRule)x).Where(r => r.Member == expression.GetMember()).SelectMany(x => x.Validators).ToList();
 
-            validators.Should().HaveCount(validatorRuleVerifieres.Length);
+            validators.Should().HaveCount(validatorRuleVerifieres.Length, "(number of rules for property)");
 
             for (var i = 0; i < validatorRuleVerifieres.Length; i++)
             {
@@ -51,7 +51,7 @@ namespace FluentValidation.Validators.UnitTestExtension.Core
 
         public static void ShouldHaveRulesCount<T>(this AbstractValidator<T> validator, int rulesNumber)
         {
-            validator.Count().ShouldBeEquivalentTo(rulesNumber);
+            validator.Count().ShouldBeEquivalentTo(rulesNumber, "(number of rules for object)");
         }
     }
 }
