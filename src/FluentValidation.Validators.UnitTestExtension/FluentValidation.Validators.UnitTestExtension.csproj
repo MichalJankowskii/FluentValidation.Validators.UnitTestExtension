@@ -65,6 +65,7 @@
     <Compile Include="ValidatorVerifiers\TypeValidatorVerifier.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="FluentValidation.Validators.UnitTestExtension.licenseheader" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

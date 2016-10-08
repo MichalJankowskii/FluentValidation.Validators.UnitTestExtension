@@ -78,6 +78,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="FluentValidation.Validators.UnitTestExtension.Tests.licenseheader" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
