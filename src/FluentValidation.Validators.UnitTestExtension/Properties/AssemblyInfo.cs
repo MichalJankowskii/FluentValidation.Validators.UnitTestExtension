@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Fluent.ValidatorRules.UnitTestExtension.Tests")]
+[assembly: AssemblyTitle("FluentValidation.Validators.UnitTestExtension")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Fluent.ValidatorRules.UnitTestExtension.Tests")]
+[assembly: AssemblyProduct("FluentValidation.Validators.UnitTestExtension")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("d1752314-85ee-4b4c-b618-f8ff8f8dcb8e")]
+[assembly: Guid("461c1f79-ba74-493a-bf4a-5101a696ed24")]
 
 // Version information for an assembly consists of the following four values:
 //

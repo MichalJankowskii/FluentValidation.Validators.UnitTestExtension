@@ -7,8 +7,8 @@
     <ProjectGuid>{461C1F79-BA74-493A-BF4A-5101A696ED24}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Fluent.ValidatorRules.UnitTestExtension</RootNamespace>
-    <AssemblyName>Fluent.ValidatorRules.UnitTestExtension</AssemblyName>
+    <RootNamespace>FluentValidation.Validators.UnitTestExtension</RootNamespace>
+    <AssemblyName>FluentValidation.Validators.UnitTestExtension</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,6 +30,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentAssertions, Version=4.14.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.4.14.0\lib\net45\FluentAssertions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentAssertions.Core, Version=4.14.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.4.14.0\lib\net45\FluentAssertions.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,8 +52,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class.cs" />
+    <Compile Include="Composer\BaseVerifiersSetComposer.cs" />
+    <Compile Include="Core\AbstractValidatorExtension.cs" />
+    <Compile Include="Core\IValidatorVerifier.cs" />
+    <Compile Include="Core\ValidationResultExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValidatorVerifiers\ChildCollectionValidatorVerifier.cs" />
+    <Compile Include="ValidatorVerifiers\ChildValidatorVerifier.cs" />
+    <Compile Include="ValidatorVerifiers\ComparisonValidatorVerifier.cs" />
+    <Compile Include="ValidatorVerifiers\CustomVerifier.cs" />
+    <Compile Include="ValidatorVerifiers\LengthValidatorVerifier.cs" />
+    <Compile Include="ValidatorVerifiers\TypeValidatorVerifier.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

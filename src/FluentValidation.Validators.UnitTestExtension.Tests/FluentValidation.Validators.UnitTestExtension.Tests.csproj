@@ -7,8 +7,8 @@
     <ProjectGuid>{D1752314-85EE-4B4C-B618-F8FF8F8DCB8E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Fluent.ValidatorRules.UnitTestExtension.Tests</RootNamespace>
-    <AssemblyName>Fluent.ValidatorRules.UnitTestExtension.Tests</AssemblyName>
+    <RootNamespace>FluentValidation.Validators.UnitTestExtension.Tests</RootNamespace>
+    <AssemblyName>FluentValidation.Validators.UnitTestExtension.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -56,17 +60,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClassTest.cs" />
+    <Compile Include="Helpers\AssertExtension.cs" />
+    <Compile Include="Helpers\FakePropertyValidator.cs" />
+    <Compile Include="Helpers\FakeValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValidatorsVerifiers\ChildCollectionValidatorVerifierTest.cs" />
+    <Compile Include="ValidatorsVerifiers\ChildValidatorVerifierTest.cs" />
+    <Compile Include="ValidatorsVerifiers\CustomVerifierTest.cs" />
+    <Compile Include="ValidatorsVerifiers\ComparisonValidatorVerifierTest.cs" />
+    <Compile Include="ValidatorsVerifiers\LengthValidatorVerifierTest.cs" />
+    <Compile Include="ValidatorsVerifiers\TypeValidatorVerifierTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Fluent.ValidatorRules.UnitTestExtension\Fluent.ValidatorRules.UnitTestExtension.csproj">
+    <ProjectReference Include="..\FluentValidation.Validators.UnitTestExtension\FluentValidation.Validators.UnitTestExtension.csproj">
       <Project>{461c1f79-ba74-493a-bf4a-5101a696ed24}</Project>
       <Name>Fluent.ValidatorRules.UnitTestExtension</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Composer\" />
+    <Folder Include="Core\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

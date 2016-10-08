@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluent.ValidatorRules.UnitTestExtension", "Fluent.ValidatorRules.UnitTestExtension\Fluent.ValidatorRules.UnitTestExtension.csproj", "{461C1F79-BA74-493A-BF4A-5101A696ED24}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentValidation.Validators.UnitTestExtension", "FluentValidation.Validators.UnitTestExtension\FluentValidation.Validators.UnitTestExtension.csproj", "{461C1F79-BA74-493A-BF4A-5101A696ED24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluent.ValidatorRules.UnitTestExtension.Tests", "Fluent.ValidatorRules.UnitTestExtension.Tests\Fluent.ValidatorRules.UnitTestExtension.Tests.csproj", "{D1752314-85EE-4B4C-B618-F8FF8F8DCB8E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentValidation.Validators.UnitTestExtension.Tests", "FluentValidation.Validators.UnitTestExtension.Tests\FluentValidation.Validators.UnitTestExtension.Tests.csproj", "{D1752314-85EE-4B4C-B618-F8FF8F8DCB8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
