@@ -24,36 +24,31 @@
 // The latest version of this file can be found at https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension
 #endregion
 
-using FluentValidation.Validators.UnitTestExtension.Tests.Helpers;
-using FluentValidation.Validators.UnitTestExtension.Tests.Helpers.Fakes;
-using FluentValidation.Validators.UnitTestExtension.ValidatorVerifiers;
-using Xunit;
-using Xunit.Sdk;
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using FluentValidation.Resources;
+using FluentValidation.Results;
 
-namespace FluentValidation.Validators.UnitTestExtension.Tests.ValidatorsVerifiers
+namespace FluentValidation.Validators.UnitTestExtension.Tests.Helpers.Fakes
 {
-    public class TypeValidatorVerifierTest
+    public class FakePropertyValidator : IPropertyValidator
     {
-        [Fact]
-        public void Given_DifferentValidatorType_When_Verifying_Then_ValidationFail()
+        public IEnumerable<ValidationFailure> Validate(PropertyValidatorContext context)
         {
-            // Arrange
-            var otherValidator = new OtherFakePropertyValidator();
-            var verifier = new TypeValidatorVerifier<FakePropertyValidator>();
-
-            // Act & Assert
-            AssertExtension.Throws<XunitException>(() => verifier.Verify(otherValidator), "(wrong type)");
+            throw new NotImplementedException();
         }
 
-        [Fact]
-        public void Given_SameValidatorTypeThanExpected_When_Verifying_Then_ValidationPass()
+        public Task<IEnumerable<ValidationFailure>> ValidateAsync(PropertyValidatorContext context, CancellationToken cancellation)
         {
-            // Arrange
-            var fakePropertyValidator = new FakePropertyValidator();
-            var verifier = new TypeValidatorVerifier<FakePropertyValidator>();
-
-            // Act & Assert
-            AssertExtension.NotThrows(() => verifier.Verify(fakePropertyValidator));
+            throw new NotImplementedException();
         }
+
+        public bool IsAsync { get; }
+        public ICollection<Func<object, object, object>> CustomMessageFormatArguments { get; }
+        public Func<object, object> CustomStateProvider { get; set; }
+        public IStringSource ErrorMessageSource { get; set; }
+        public IStringSource ErrorCodeSource { get; set; }
     }
 }

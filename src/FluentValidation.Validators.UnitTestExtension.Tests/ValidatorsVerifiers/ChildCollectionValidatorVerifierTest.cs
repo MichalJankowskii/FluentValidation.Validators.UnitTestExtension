@@ -25,6 +25,7 @@
 #endregion
 
 using FluentValidation.Validators.UnitTestExtension.Tests.Helpers;
+using FluentValidation.Validators.UnitTestExtension.Tests.Helpers.Fakes;
 using FluentValidation.Validators.UnitTestExtension.ValidatorVerifiers;
 using Xunit;
 using Xunit.Sdk;
@@ -64,10 +65,6 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.ValidatorsVerifier
 
             // Act & Assert
             AssertExtension.NotThrows(() => verifier.Verify(childCollectionValidatorAdaptor));
-        }
-
-        private class OtherFakeValidator : FakeValidator
-        {
         }
     }
 }

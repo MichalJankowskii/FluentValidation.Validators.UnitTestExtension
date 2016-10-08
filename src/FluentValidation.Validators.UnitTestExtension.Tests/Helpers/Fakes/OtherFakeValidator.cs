@@ -24,43 +24,9 @@
 // The latest version of this file can be found at https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension
 #endregion
 
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-using FluentValidation.Results;
-
-namespace FluentValidation.Validators.UnitTestExtension.Tests.Helpers
+namespace FluentValidation.Validators.UnitTestExtension.Tests.Helpers.Fakes
 {
-    public class FakeValidator : IValidator
+    public class OtherFakeValidator : FakeValidator
     {
-        public ValidationResult Validate(object instance)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<ValidationResult> ValidateAsync(object instance, CancellationToken cancellation = new CancellationToken())
-        {
-            throw new NotImplementedException();
-        }
-
-        public ValidationResult Validate(ValidationContext context)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<ValidationResult> ValidateAsync(ValidationContext context, CancellationToken cancellation = new CancellationToken())
-        {
-            throw new NotImplementedException();
-        }
-
-        public IValidatorDescriptor CreateDescriptor()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool CanValidateInstancesOfType(Type type)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

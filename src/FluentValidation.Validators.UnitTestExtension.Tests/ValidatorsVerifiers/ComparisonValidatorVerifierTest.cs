@@ -26,6 +26,7 @@
 
 using System.Reflection;
 using FluentValidation.Validators.UnitTestExtension.Tests.Helpers;
+using FluentValidation.Validators.UnitTestExtension.Tests.Helpers.Fakes;
 using FluentValidation.Validators.UnitTestExtension.ValidatorVerifiers;
 using Xunit;
 using Xunit.Sdk;
@@ -65,13 +66,6 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.ValidatorsVerifier
 
             // Act & Assert
             AssertExtension.NotThrows(() => verifier.Verify(comparisonValidator));
-        }
-
-        private class FakeComparisonValidator : FakePropertyValidator, IComparisonValidator
-        {
-            public Comparison Comparison { get; set; }
-            public MemberInfo MemberToCompare { get; set; }
-            public object ValueToCompare { get; set; }
         }
     }
 }

@@ -25,30 +25,42 @@
 #endregion
 
 using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using FluentValidation.Resources;
 using FluentValidation.Results;
 
-namespace FluentValidation.Validators.UnitTestExtension.Tests.Helpers
+namespace FluentValidation.Validators.UnitTestExtension.Tests.Helpers.Fakes
 {
-    class FakePropertyValidator : IPropertyValidator
+    public class FakeValidator : IValidator
     {
-        public IEnumerable<ValidationFailure> Validate(PropertyValidatorContext context)
+        public ValidationResult Validate(object instance)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<ValidationFailure>> ValidateAsync(PropertyValidatorContext context, CancellationToken cancellation)
+        public Task<ValidationResult> ValidateAsync(object instance, CancellationToken cancellation = new CancellationToken())
         {
             throw new NotImplementedException();
         }
 
-        public bool IsAsync { get; }
-        public ICollection<Func<object, object, object>> CustomMessageFormatArguments { get; }
-        public Func<object, object> CustomStateProvider { get; set; }
-        public IStringSource ErrorMessageSource { get; set; }
-        public IStringSource ErrorCodeSource { get; set; }
+        public ValidationResult Validate(ValidationContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ValidationResult> ValidateAsync(ValidationContext context, CancellationToken cancellation = new CancellationToken())
+        {
+            throw new NotImplementedException();
+        }
+
+        public IValidatorDescriptor CreateDescriptor()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool CanValidateInstancesOfType(Type type)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
