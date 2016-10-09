@@ -1,4 +1,5 @@
-﻿#region License
+﻿using System.Resources;
+#region License
 // MIT License
 // 
 // Copyright(c) 2016 Michał Jankowski (http://www.jankowskimichal.pl)
@@ -40,3 +41,5 @@ using System.Runtime.InteropServices;
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("461c1f79-ba74-493a-bf4a-5101a696ed24")]
+[assembly: NeutralResourcesLanguage("en")]
+
