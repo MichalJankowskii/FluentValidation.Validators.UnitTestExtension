@@ -36,7 +36,7 @@ namespace FluentValidation.Validators.UnitTestExtension.Examples.Test
         PersonValidator validator = new PersonValidator();
 
         [Fact]
-        public void Given_FirstNameIsNull_When_Validating_Then_Error()
+        public void Given_When_PersonValidatorConstructing_Then_RulesAreConfiguredCorrectly()
         {
             // Act
             var personValidator = new PersonValidator();
