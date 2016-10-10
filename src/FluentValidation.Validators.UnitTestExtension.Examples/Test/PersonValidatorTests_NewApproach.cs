@@ -33,8 +33,6 @@ namespace FluentValidation.Validators.UnitTestExtension.Examples.Test
 {
     public class PersonValidatorTests_NewApproach
     {
-        PersonValidator validator = new PersonValidator();
-
         [Fact]
         public void Given_When_PersonValidatorConstructing_Then_RulesAreConfiguredCorrectly()
         {
