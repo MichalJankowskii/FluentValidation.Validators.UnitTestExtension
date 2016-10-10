@@ -24,12 +24,14 @@
 // The latest version of this file can be found at https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension
 #endregion
 
-using System.Reflection;
+namespace FluentValidation.Validators.UnitTestExtension.Examples.Production
+{
+    public class Person
+    {
+        public string FirstName { get; set; }
 
-[assembly: AssemblyCompany("Michał Jankowski (www.jankowskimichal.pl)")]
-[assembly: AssemblyProduct("FluentValidation.Validators.UnitTestExtension")]
-[assembly: AssemblyCopyright("Copyright Michal Jankowski©  2016")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-[assembly: AssemblyVersion("0.1.1.0")]
-[assembly: AssemblyFileVersion("0.1.1.0")]
+        public string LastName { get; set; }
+
+        public int HeightInCentimeters { get; set; }
+    }
+}

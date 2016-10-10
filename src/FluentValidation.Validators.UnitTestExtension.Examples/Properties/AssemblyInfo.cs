@@ -25,11 +25,9 @@
 #endregion
 
 using System.Reflection;
-
-[assembly: AssemblyCompany("Michał Jankowski (www.jankowskimichal.pl)")]
-[assembly: AssemblyProduct("FluentValidation.Validators.UnitTestExtension")]
-[assembly: AssemblyCopyright("Copyright Michal Jankowski©  2016")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-[assembly: AssemblyVersion("0.1.1.0")]
-[assembly: AssemblyFileVersion("0.1.1.0")]
+using System.Runtime.InteropServices;
+[assembly: AssemblyTitle("FluentValidation.Validators.UnitTestExtension.Examples")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: ComVisible(false)]
+[assembly: Guid("bc5f341f-3b28-4e89-8456-f61bd4e37d41")]

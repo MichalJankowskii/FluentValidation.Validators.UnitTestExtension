@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentValidation.Validators
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentValidation.Validators.UnitTestExtension.Tests", "FluentValidation.Validators.UnitTestExtension.Tests\FluentValidation.Validators.UnitTestExtension.Tests.csproj", "{D1752314-85EE-4B4C-B618-F8FF8F8DCB8E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentValidation.Validators.UnitTestExtension.Examples", "FluentValidation.Validators.UnitTestExtension.Examples\FluentValidation.Validators.UnitTestExtension.Examples.csproj", "{BC5F341F-3B28-4E89-8456-F61BD4E37D41}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,11 @@ Global
 		{D1752314-85EE-4B4C-B618-F8FF8F8DCB8E}.Publish|Any CPU.ActiveCfg = Publish|Any CPU
 		{D1752314-85EE-4B4C-B618-F8FF8F8DCB8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1752314-85EE-4B4C-B618-F8FF8F8DCB8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC5F341F-3B28-4E89-8456-F61BD4E37D41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC5F341F-3B28-4E89-8456-F61BD4E37D41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC5F341F-3B28-4E89-8456-F61BD4E37D41}.Publish|Any CPU.ActiveCfg = Release|Any CPU
+		{BC5F341F-3B28-4E89-8456-F61BD4E37D41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC5F341F-3B28-4E89-8456-F61BD4E37D41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
