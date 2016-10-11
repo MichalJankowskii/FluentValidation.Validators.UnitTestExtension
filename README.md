@@ -1,5 +1,6 @@
 # FluentValidation.Validators.UnitTestExtension
 [![Build Status](https://travis-ci.org/MichalJankowskii/FluentValidation.Validators.UnitTestExtension.svg?branch=master)](https://travis-ci.org/MichalJankowskii/FluentValidation.Validators.UnitTestExtension)
+
 [Full documentation](https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension/wiki)
 ##Project description
 Main purpose of this small library is to extend and simplify possibilities of testing code that is using [FluentValidation](https://github.com/JeremySkinner/FluentValidation) package.
