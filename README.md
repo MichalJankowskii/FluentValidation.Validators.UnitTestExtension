@@ -24,24 +24,24 @@ public class PersonValidator : AbstractValidator<Person>
 
 By using this library you can write unit test like this:
 ```csharp
-[Fact]
-public void When_PersonValidatorConstructing_Then_RulesAreConfiguredCorrectly()
+public class PersonValidatorTests
 {
-	// Act
-	var personValidator = new PersonValidator();
+	[Fact]
+	public void When_PersonValidatorConstructing_Then_RulesAreConfiguredCorrectly()
+	{
+		var personValidator = new PersonValidator();
 
-	// Assert
-	personValidator.ShouldHaveRules(x => x.Name,
-		BaseVerifiersSetComposer.Build()
-			.AddPropertyValidatorVerifier<NotNullValidator>()
-			.Create());
+		personValidator.ShouldHaveRules(x => x.Name,
+			BaseVerifiersSetComposer.Build()
+				.AddPropertyValidatorVerifier<NotNullValidator>()
+				.Create());
+	}
 }
 ```
 
 According to [FluentValidation wiki](https://github.com/JeremySkinner/FluentValidation/wiki/g.-Testing) same code should be tested in the following way:
 ```csharp
-[TestFixture]
-public class PersonValidatorTester
+public class PersonValidatorTests
 {
 	private PersonValidator validator;
 
