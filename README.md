@@ -4,13 +4,15 @@
 ##Project description
 Main purpose of this small library is to extend and simplify possibilities of testing code that is using [FluentValidation](https://github.com/JeremySkinner/FluentValidation) package.
 ##Installation - NuGet Packages
-`Install-Package FluentValidation.Validators.UnitTestExtension`
+```
+Install-Package FluentValidation.Validators.UnitTestExtension
+```
 
 ##Overview
 This library allows you to focus on testing your implementation. You will be able to write test that will run faster, will be readable and will test only your implementation.
 
 Please look at the following example of `PersonValidator`:
-```
+```csharp
 public class PersonValidator : AbstractValidator<Person>
 {
 	public PersonValidator()
@@ -21,7 +23,7 @@ public class PersonValidator : AbstractValidator<Person>
 ```
 
 By using this library you can write unit test like this:
-```
+```csharp
 [Fact]
 public void When_PersonValidatorConstructing_Then_RulesAreConfiguredCorrectly()
 {
@@ -37,7 +39,7 @@ public void When_PersonValidatorConstructing_Then_RulesAreConfiguredCorrectly()
 ```
 
 According to [FluentValidation wiki](https://github.com/JeremySkinner/FluentValidation/wiki/g.-Testing) same code should be tested in the following way:
-```
+```csharp
 [TestFixture]
 public class PersonValidatorTester
 {
