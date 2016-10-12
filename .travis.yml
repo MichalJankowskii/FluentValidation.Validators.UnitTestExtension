@@ -1,5 +1,5 @@
 language: csharp
-solution: ./src/FluentValidation.Validators.UnitTestExtension.sln
+solution: ./src/FluentValidation.Validators.UnitTestExtension.NuGet.Tests.sln
 script:
-  - xbuild /p:Configuration=Release ./src/FluentValidation.Validators.UnitTestExtension.sln
-  - mono ./src/packages/xunit.runner.console.*/tools/xunit.console.exe ./src/FluentValidation.Validators.UnitTestExtension.Tests/bin/Release/FluentValidation.Validators.UnitTestExtension.Tests.dll
+  - xbuild /p:Configuration=Release ./src/FluentValidation.Validators.UnitTestExtension.NuGet.Tests.sln
+  - mono ./src/packages/xunit.runner.console.*/tools/xunit.console.exe ./src/FluentValidation.Validators.UnitTestExtension.NuGet.Tests/bin/Release/FluentValidation.Validators.UnitTestExtension.NuGet.Tests.dll
