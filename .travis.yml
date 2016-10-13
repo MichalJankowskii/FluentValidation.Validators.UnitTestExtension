@@ -1,5 +1,9 @@
 language: csharp
-solution: ./src/FluentValidation.Validators.UnitTestExtension.NuGet.Tests.sln
+env:
+  - TESTFOLDER=packages_FA4.14_FV6.2.1.config
 script:
+  - "cp ./src/$TESTFOLDER ./src/FluentValidation.Validators.UnitTestExtension.NuGet.Tests/packages.config"
+  - sudo apt-get install -y gtk-sharp2
+  - nuget restore ./src/FluentValidation.Validators.UnitTestExtension.NuGet.Tests.sln
   - xbuild /p:Configuration=Release ./src/FluentValidation.Validators.UnitTestExtension.NuGet.Tests.sln
   - mono ./src/packages/xunit.runner.console.*/tools/xunit.console.exe ./src/FluentValidation.Validators.UnitTestExtension.NuGet.Tests/bin/Release/FluentValidation.Validators.UnitTestExtension.NuGet.Tests.dll
