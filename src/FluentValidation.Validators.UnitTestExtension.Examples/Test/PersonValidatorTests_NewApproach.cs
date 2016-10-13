@@ -33,17 +33,20 @@ namespace FluentValidation.Validators.UnitTestExtension.Examples.Test
 {
     public class PersonValidatorTests_NewApproach
     {
+        // Act
+        readonly PersonValidator personValidator = new PersonValidator();
+
         [Fact]
-        public void Given_When_PersonValidatorConstructing_Then_RulesAreConfiguredCorrectly()
+        public void Given_When_PersonValidatorConstructing_Then_3PropertiesShouldHaveRules()
         {
-            // Act
-            var personValidator = new PersonValidator();
-
             // Assert
-            // Check how many properties have rules configured
             personValidator.ShouldHaveRulesCount(3);
+        }
 
-            // Check rules for first name
+        [Fact]
+        public void Given_When_PersonValidatorConstructing_Then_RulesForFirstNameAreConfiguredCorrectly()
+        {
+            // Assert
             personValidator.ShouldHaveRules(x => x.FirstName,
                 BaseVerifiersSetComposer.Build()
                     .AddPropertyValidatorVerifier<NotNullValidator>()
@@ -51,22 +54,30 @@ namespace FluentValidation.Validators.UnitTestExtension.Examples.Test
                     .AddPropertyValidatorVerifier<LengthValidator>(0, 20)
                     .Create());
 
-            // Check rules for last name
+
+        }
+
+        [Fact]
+        public void Given_When_PersonValidatorConstructing_Then_RulesForLastNameAreConfiguredCorrectly()
+        {
+            // Assert
             personValidator.ShouldHaveRules(x => x.LastName,
                 BaseVerifiersSetComposer.Build()
                     .AddPropertyValidatorVerifier<NotNullValidator>()
                     .AddPropertyValidatorVerifier<NotEmptyValidator>()
                     .AddPropertyValidatorVerifier<LengthValidator>(0, 20)
                     .Create());
+        }
 
-            // Check rules for height
+        [Fact]
+        public void Given_When_PersonValidatorConstructing_Then_RulesForHeightAreConfiguredCorrectly()
+        {
+            // Assert
             personValidator.ShouldHaveRules(x => x.HeightInCentimeters,
                 BaseVerifiersSetComposer.Build()
                     .AddPropertyValidatorVerifier<GreaterThanValidator>(0)
                     .AddPropertyValidatorVerifier<LessThanOrEqualValidator>(250)
                     .Create());
-
-
         }
     }
 }
