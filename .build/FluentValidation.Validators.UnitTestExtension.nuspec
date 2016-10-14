@@ -14,8 +14,8 @@
     <tags>FluentValidation unit test testing fluent framework assert TDD BDD</tags>
     <copyright>Copyright 2016 - Michał Jankowski</copyright>
     <dependencies>
-      <dependency id="FluentAssertions" version="4.14.0" />
-      <dependency id="FluentValidation" version="6.2.1.0" />
+      <dependency id="FluentAssertions" version="4.0.0" />
+      <dependency id="FluentValidation" version="6.2.0" />
     </dependencies>
   </metadata>
   <files>

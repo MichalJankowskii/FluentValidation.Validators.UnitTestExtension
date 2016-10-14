@@ -24,14 +24,7 @@
 // The latest version of this file can be found at https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension
 #endregion
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FluentAssertions;
-using FluentValidation.Results;
 using FluentValidation.Validators.UnitTestExtension.Core;
 using FluentValidation.Validators.UnitTestExtension.Tests.Helpers;
 using Xunit;
