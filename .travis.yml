@@ -1,8 +1,44 @@
 language: csharp
 env:
-  - TESTFOLDER=packages_FA4.14_FV6.2.1.config
+  - CONF=0.1.2_FA4.15.0_FV6.2.1
+  - CONF=0.1.2_FA4.14.0_FV6.2.1
+  - CONF=0.1.2_FA4.13.0_FV6.2.1
+  - CONF=0.1.2_FA4.12.0_FV6.2.1
+  - CONF=0.1.2_FA4.11.0_FV6.2.1
+  - CONF=0.1.2_FA4.10.0_FV6.2.1
+  - CONF=0.1.2_FA4.9.0_FV6.2.1
+  - CONF=0.1.2_FA4.8.0_FV6.2.1
+  - CONF=0.1.2_FA4.7.0_FV6.2.1
+  - CONF=0.1.2_FA4.6.1_FV6.2.1
+  - CONF=0.1.2_FA4.5.0_FV6.2.1
+  - CONF=0.1.2_FA4.4.0_FV6.2.1
+  - CONF=0.1.2_FA4.3.0_FV6.2.1
+  - CONF=0.1.2_FA4.2.0_FV6.2.1
+  - CONF=0.1.2_FA4.1.0_FV6.2.1
+  - CONF=0.1.2_FA4.0.0_FV6.2.1
+  - CONF=0.1.2_FA4.15.0_FV6.2.1
+  - CONF=0.1.2_FA4.15.0_FV6.2.0
+  - CONF=0.1.1_FA4.15.0_FV6.2.1
+  - CONF=0.1.1_FA4.14.0_FV6.2.1
+  - CONF=0.1.1_FA4.13.0_FV6.2.1
+  - CONF=0.1.1_FA4.12.0_FV6.2.1
+  - CONF=0.1.1_FA4.11.0_FV6.2.1
+  - CONF=0.1.1_FA4.10.0_FV6.2.1
+  - CONF=0.1.1_FA4.9.0_FV6.2.1
+  - CONF=0.1.1_FA4.8.0_FV6.2.1
+  - CONF=0.1.1_FA4.7.0_FV6.2.1
+  - CONF=0.1.1_FA4.6.1_FV6.2.1
+  - CONF=0.1.1_FA4.5.0_FV6.2.1
+  - CONF=0.1.1_FA4.4.0_FV6.2.1
+  - CONF=0.1.1_FA4.3.0_FV6.2.1
+  - CONF=0.1.1_FA4.2.0_FV6.2.1
+  - CONF=0.1.1_FA4.1.0_FV6.2.1
+  - CONF=0.1.1_FA4.0.0_FV6.2.1
+  - CONF=0.1.1_FA4.15.0_FV6.2.1
+  - CONF=0.1.1_FA4.15.0_FV6.2.0
 script:
-  - "cp ./src/$TESTFOLDER ./src/FluentValidation.Validators.UnitTestExtension.NuGet.Tests/packages.config"
+  - "cp ./src/testConfigurations/packages_$CONF.config ./src/FluentValidation.Validators.UnitTestExtension.NuGet.Tests/packages.config"
+  - "cp ./src/testConfigurations/proj_$CONF.csproj ./src/FluentValidation.Validators.UnitTestExtension.NuGet.Tests/FluentValidation.Validators.UnitTestExtension.NuGet.Tests.csproj"
   - sudo apt-get install -y gtk-sharp2
   - nuget restore ./src/FluentValidation.Validators.UnitTestExtension.NuGet.Tests.sln
   - xbuild /p:Configuration=Release ./src/FluentValidation.Validators.UnitTestExtension.NuGet.Tests.sln
