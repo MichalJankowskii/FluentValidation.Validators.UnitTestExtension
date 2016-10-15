@@ -90,8 +90,23 @@
   </Target>
   -->
   <ItemGroup>
+    <Reference Include="FluentAssertions">
+      <HintPath>..\packages\FluentAssertions.4.9.0\lib\net45\FluentAssertions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="FluentAssertions.Core">
+      <HintPath>..\packages\FluentAssertions.4.9.0\lib\net45\FluentAssertions.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="FluentValidation">
+      <HintPath>..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="FluentValidation.Validators.UnitTestExtension">
-      <HintPath>..\packages\FluentValidation.Validators.UnitTestExtension.6.2.1\lib\FluentValidation.Validators.UnitTestExtension.dll</HintPath>
+      <HintPath>..\packages\FluentValidation.Validators.UnitTestExtension.0.1.2\lib\FluentValidation.Validators.UnitTestExtension.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

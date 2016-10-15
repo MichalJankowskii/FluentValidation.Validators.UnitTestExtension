@@ -24,10 +24,13 @@ function SaveNewNuGetConfiguration($initialConf, $fluentValidatorExtVersion, $fl
 
 function SaveNewCsProjConfiguration($initialConf, $fluentValidatorExtVersion, $fluentAssertionVersion, $fluentValidatorVersion)
 {
-  AddReference $soultionFile "..\packages\FluentAssertions.$fluentAssertionVersion\lib\net45\FluentAssertions.dll" "FluentAssertions"
-  AddReference $soultionFile "..\packages\FluentAssertions.$fluentAssertionVersion\lib\net45\FluentAssertions.Core.dll" "FluentAssertions.Core"
-  AddReference $soultionFile "..\packages\FluentValidation.$fluentValidatorVersion.0\lib\Net45\FluentValidation.dll" "FluentValidation"
-  AddReference $soultionFile "..\packages\FluentValidation.Validators.UnitTestExtension.$fluentValidatorVersion\lib\FluentValidation.Validators.UnitTestExtension.dll" "FluentValidation.Validators.UnitTestExtension"
+    $proj = [xml](Get-Content $initialConf)
+    AddReference $proj "..\packages\FluentAssertions.$fluentAssertionVersion\lib\net45\FluentAssertions.dll" "FluentAssertions"
+    AddReference $proj "..\packages\FluentAssertions.$fluentAssertionVersion\lib\net45\FluentAssertions.Core.dll" "FluentAssertions.Core"
+    AddReference $proj "..\packages\FluentValidation.$fluentValidatorVersion.0\lib\Net45\FluentValidation.dll" "FluentValidation"
+    AddReference $proj "..\packages\FluentValidation.Validators.UnitTestExtension.$fluentValidatorExtVersion\lib\FluentValidation.Validators.UnitTestExtension.dll" "FluentValidation.Validators.UnitTestExtension"
+    $key = GenerateConfigurationName $fluentValidatorExtVersion $fluentAssertionVersion $fluentValidatorVersion
+    $proj.Save("$PSScriptRoot/testConfigurations/proj_"+$key+".csproj")
 }
 
 function GenerateConfigurationName($fluentValidatorExtVersion, $fluentAssertionVersion, $fluentValidatorVersion)
@@ -35,9 +38,8 @@ function GenerateConfigurationName($fluentValidatorExtVersion, $fluentAssertionV
   return $fluentValidatorExtVersion+"_FA"+$fluentAssertionVersion+"_FV"+$fluentValidatorVersion
 }
 
-function AddReference([String]$path, [String]$dllRef, [String]$refName) 
+function AddReference($proj, [String]$dllRef, [String]$refName) 
 {
-  $proj = [xml](Get-Content $path)
   [System.Console]::WriteLine("")
   [System.Console]::WriteLine("AddReference {0} on {1}", $refName, $path)
 
@@ -58,8 +60,6 @@ function AddReference([String]$path, [String]$dllRef, [String]$refName)
   $hintPath = $proj.CreateElement("HintPath", $xmlns);
   $hintPath.InnerXml = $dllRef
   $referenceNode.AppendChild($hintPath)
-  $key = GenerateConfigurationName $fluentValidatorExtVersion $fluentAssertionVersion $fluentValidatorVersion
-  $proj.Save("$PSScriptRoot/testConfigurations/proj_"+$key+".csproj")
 }
 
 foreach($fluentValidatorExtConf in $fluentValidatorExtConfigurations)
@@ -67,14 +67,14 @@ foreach($fluentValidatorExtConf in $fluentValidatorExtConfigurations)
   foreach($fluentAssertionConf in $fluentAssertionConfigurations)
   {
     $conf = SaveNewNuGetConfiguration $nugetFile $fluentValidatorExtConf $fluentAssertionConf ($fluentValidatorConfigurations  | Select-Object -first 1)
-    SaveNewCsProjConfiguration $nugetFile $fluentValidatorExtConf $fluentAssertionConf ($fluentValidatorConfigurations  | Select-Object -first 1)
+    SaveNewCsProjConfiguration $soultionFile $fluentValidatorExtConf $fluentAssertionConf ($fluentValidatorConfigurations  | Select-Object -first 1)
     $configurations.Add($conf)  
   }
 
     foreach($fluentValidatorConf in $fluentValidatorConfigurations)
   {
     $conf = SaveNewNuGetConfiguration $nugetFile $fluentValidatorExtConf ($fluentAssertionConfigurations  | Select-Object -first 1) $fluentValidatorConf
-    SaveNewCsProjConfiguration $nugetFile $fluentValidatorExtConf ($fluentAssertionConfigurations  | Select-Object -first 1) $fluentValidatorConf
+    SaveNewCsProjConfiguration $soultionFile $fluentValidatorExtConf ($fluentAssertionConfigurations  | Select-Object -first 1) $fluentValidatorConf
     $configurations.Add($conf)  
   }
 }
