@@ -139,7 +139,6 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.Composer
         {
             // Arrange
             var composer = BaseVerifiersSetComposer.Build();
-            var fakeValidatorVerifier = new FakeValidatorVerifier();
 
             // Act
             var rules = composer.AddCustomVerifier().Create();
