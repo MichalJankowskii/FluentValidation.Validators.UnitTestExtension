@@ -34,24 +34,38 @@ namespace FluentValidation.Validators.UnitTestExtension.Core
 
     public static class AbstractValidatorExtension
     {
-        public static void ShouldHaveRules<TRequest, TProperty>(
-            this AbstractValidator<TRequest> validator,
-            Expression<Func<TRequest, TProperty>> expression,
-            params IValidatorVerifier[] validatorRuleVerifieres)
+        /// <summary>
+        /// Asserts that a validator has correct definition of validators connected to provided property.
+        /// </summary>
+        /// <typeparam name="T">The type of the object being validated.</typeparam>
+        /// <typeparam name="TProperty">The type of property being validated.</typeparam>
+        /// <param name="validator">The validator that will be examined.</param>
+        /// <param name="expression">The expression representing the property to validate.</param>
+        /// <param name="validatorVerifieres">Array of validator verifieres.</param>
+        public static void ShouldHaveRules<T, TProperty>(
+            this AbstractValidator<T> validator,
+            Expression<Func<T, TProperty>> expression,
+            params IValidatorVerifier[] validatorVerifieres)
         {
             var validators = validator.Select(x => (PropertyRule)x).Where(r => r.Member == expression.GetMember()).SelectMany(x => x.Validators).ToList();
 
-            validators.Should().HaveCount(validatorRuleVerifieres.Length, "(number of rules for property)");
+            validators.Should().HaveCount(validatorVerifieres.Length, "(number of rules for property)");
 
-            for (var i = 0; i < validatorRuleVerifieres.Length; i++)
+            for (var i = 0; i < validatorVerifieres.Length; i++)
             {
-                validatorRuleVerifieres[i].Verify(validators[i]);
+                validatorVerifieres[i].Verify(validators[i]);
             }
         }
 
-        public static void ShouldHaveRulesCount<T>(this AbstractValidator<T> validator, int rulesNumber)
+        /// <summary>
+        /// Asserts that a validator has correct number of rules.
+        /// </summary>
+        /// <typeparam name="T">The type of the object being validated.</typeparam>
+        /// <param name="validator">The validator that will be examined.</param>
+        /// <param name="expectedRulesNumber">The expected number of rules in the collection.</param>
+        public static void ShouldHaveRulesCount<T>(this AbstractValidator<T> validator, int expectedRulesNumber)
         {
-            validator.Count().ShouldBeEquivalentTo(rulesNumber, "(number of rules for object)");
+            validator.Count().ShouldBeEquivalentTo(expectedRulesNumber, "(number of rules for object)");
         }
     }
 }
