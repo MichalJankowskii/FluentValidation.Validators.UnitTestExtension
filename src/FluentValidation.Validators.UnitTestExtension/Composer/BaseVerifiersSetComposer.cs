@@ -24,12 +24,12 @@
 // The latest version of this file can be found at https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension
 #endregion
 
-using System.Collections.Generic;
-using FluentValidation.Validators.UnitTestExtension.Core;
-using FluentValidation.Validators.UnitTestExtension.ValidatorVerifiers;
-
 namespace FluentValidation.Validators.UnitTestExtension.Composer
 {
+    using System.Collections.Generic;
+    using Core;
+    using ValidatorVerifiers;
+
     // TODO: Add class which will build tests from build in rules
     public class BaseVerifiersSetComposer
     {

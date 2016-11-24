@@ -24,10 +24,10 @@
 // The latest version of this file can be found at https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension
 #endregion
 
-using FluentValidation.Validators.UnitTestExtension.Core;
-
 namespace FluentValidation.Validators.UnitTestExtension.ValidatorVerifiers
 {
+    using Core;
+
     public class CustomVerifier : IValidatorVerifier
     {
         public void Verify<T>(T validator)

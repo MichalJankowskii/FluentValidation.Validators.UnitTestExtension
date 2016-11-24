@@ -24,12 +24,12 @@
 // The latest version of this file can be found at https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension
 #endregion
 
-using FluentValidation.Validators.UnitTestExtension.Tests.Helpers;
-using FluentValidation.Validators.UnitTestExtension.ValidatorVerifiers;
-using Xunit;
-
 namespace FluentValidation.Validators.UnitTestExtension.Tests.ValidatorsVerifiers
 {
+    using Helpers;
+    using ValidatorVerifiers;
+    using Xunit;
+
     public class CustomVerifierTest
     {
         [Fact]

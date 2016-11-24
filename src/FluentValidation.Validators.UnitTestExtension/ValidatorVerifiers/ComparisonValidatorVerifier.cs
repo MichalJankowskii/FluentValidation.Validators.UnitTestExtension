@@ -24,10 +24,11 @@
 // The latest version of this file can be found at https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension
 #endregion
 
-using FluentAssertions;
 
 namespace FluentValidation.Validators.UnitTestExtension.ValidatorVerifiers
 {
+    using FluentAssertions;
+
     public class ComparisonValidatorVerifier<T> : TypeValidatorVerifier<T> where T : IComparisonValidator
     {
         private readonly object valueToCompare;

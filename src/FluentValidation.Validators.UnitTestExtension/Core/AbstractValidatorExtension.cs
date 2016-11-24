@@ -24,14 +24,14 @@
 // The latest version of this file can be found at https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension
 #endregion
 
-using System;
-using System.Linq;
-using System.Linq.Expressions;
-using FluentAssertions;
-using FluentValidation.Internal;
-
 namespace FluentValidation.Validators.UnitTestExtension.Core
 {
+    using System;
+    using System.Linq;
+    using System.Linq.Expressions;
+    using FluentAssertions;
+    using Internal;
+
     public static class AbstractValidatorExtension
     {
         public static void ShouldHaveRules<TRequest, TProperty>(

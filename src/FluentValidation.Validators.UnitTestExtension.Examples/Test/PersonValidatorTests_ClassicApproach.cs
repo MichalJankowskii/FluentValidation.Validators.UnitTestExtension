@@ -24,15 +24,15 @@
 // The latest version of this file can be found at https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension
 #endregion
 
-using FluentValidation.TestHelper;
-using FluentValidation.Validators.UnitTestExtension.Examples.Production;
-using Xunit;
-
 namespace FluentValidation.Validators.UnitTestExtension.Examples.Test
 {
+    using Production;
+    using TestHelper;
+    using Xunit;
+
     public class PersonValidatorTests_ClassicApproach
     {
-        PersonValidator validator = new PersonValidator();
+        readonly PersonValidator validator = new PersonValidator();
 
         [Fact]
         public void Given_FirstNameIsNull_When_Validating_Then_Error()

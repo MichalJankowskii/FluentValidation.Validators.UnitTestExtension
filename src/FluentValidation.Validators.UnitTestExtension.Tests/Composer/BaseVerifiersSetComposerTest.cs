@@ -24,14 +24,14 @@
 // The latest version of this file can be found at https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension
 #endregion
 
-using FluentValidation.Validators.UnitTestExtension.Composer;
-using FluentValidation.Validators.UnitTestExtension.Tests.Helpers;
-using FluentValidation.Validators.UnitTestExtension.Tests.Helpers.Fakes;
-using FluentValidation.Validators.UnitTestExtension.ValidatorVerifiers;
-using Xunit;
-
 namespace FluentValidation.Validators.UnitTestExtension.Tests.Composer
 {
+    using Helpers;
+    using Helpers.Fakes;
+    using UnitTestExtension.Composer;
+    using ValidatorVerifiers;
+    using Xunit;
+
     public class BaseVerifiersSetComposerTest
     {
         [Fact]
