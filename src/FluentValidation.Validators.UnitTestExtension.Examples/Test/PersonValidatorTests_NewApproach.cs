@@ -53,8 +53,6 @@ namespace FluentValidation.Validators.UnitTestExtension.Examples.Test
                     .AddPropertyValidatorVerifier<NotEmptyValidator>()
                     .AddPropertyValidatorVerifier<LengthValidator>(0, 20)
                     .Create());
-
-
         }
 
         [Fact]
