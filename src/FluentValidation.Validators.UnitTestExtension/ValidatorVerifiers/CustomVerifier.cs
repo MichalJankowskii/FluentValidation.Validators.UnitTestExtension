@@ -28,6 +28,10 @@ namespace FluentValidation.Validators.UnitTestExtension.ValidatorVerifiers
 {
     using Core;
 
+    /// <summary>
+    /// Custom verifier that is used as place holder
+    /// </summary>
+    /// <seealso cref="FluentValidation.Validators.UnitTestExtension.Core.IValidatorVerifier" />
     public class CustomVerifier : IValidatorVerifier
     {
         public void Verify<T>(T validator)
