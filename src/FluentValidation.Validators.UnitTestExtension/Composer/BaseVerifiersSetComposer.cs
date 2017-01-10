@@ -125,9 +125,9 @@ namespace FluentValidation.Validators.UnitTestExtension.Composer
         /// Adds the placeholder for verifer that will be checked in separte test.
         /// </summary>
         /// <returns></returns>
-        public BaseVerifiersSetComposer AddCustomVerifier()
+        public BaseVerifiersSetComposer AddPlaceholderVerifier()
         {
-            this.verifiers.Add(new CustomVerifier());
+            this.verifiers.Add(new PlaceholderVerifier());
             return this;
         }
 

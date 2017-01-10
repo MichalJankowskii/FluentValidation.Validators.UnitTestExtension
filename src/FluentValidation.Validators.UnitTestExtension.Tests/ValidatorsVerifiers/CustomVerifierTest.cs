@@ -37,7 +37,7 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.ValidatorsVerifier
         {
             // Arrange
             var lengthValidator = new LengthValidator(1, 10);
-            var verifier = new CustomVerifier();
+            var verifier = new PlaceholderVerifier();
 
             // Act & Assert
             AssertExtension.NotThrows(() => verifier.Verify(lengthValidator));

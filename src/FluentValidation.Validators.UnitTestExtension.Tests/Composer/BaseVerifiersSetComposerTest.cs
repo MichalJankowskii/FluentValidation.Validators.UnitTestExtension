@@ -132,17 +132,17 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.Composer
         }
 
         [Fact]
-        public void Given_Composer_When_AddingCustomVerifier_Then_CorrectRuleSet()
+        public void Given_Composer_When_AddingPlaceholderVerifier_Then_CorrectRuleSet()
         {
             // Arrange
             var composer = BaseVerifiersSetComposer.Build();
 
             // Act
-            var rules = composer.AddCustomVerifier().Create();
+            var rules = composer.AddPlaceholderVerifier().Create();
 
             // Assert
 
-            Assert.Equal(new[] { typeof(CustomVerifier) }, rules.Select(x => x.GetType()).ToArray());
+            Assert.Equal(new[] { typeof(PlaceholderVerifier) }, rules.Select(x => x.GetType()).ToArray());
         }
     }
 }
