@@ -76,6 +76,7 @@
     <Compile Include="Composer\BaseVerifiersSetComposer.cs" />
     <Compile Include="Core\AbstractValidatorExtension.cs" />
     <Compile Include="Core\IValidatorVerifier.cs" />
+    <Compile Include="Exceptions\ComparisonNotProvidedException.cs" />
     <Compile Include="Properties\SharedAssemblyInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidatorVerifiers\ChildCollectionValidatorVerifier.cs" />
@@ -89,6 +90,7 @@
     <None Include="FluentValidation.Validators.UnitTestExtension.licenseheader" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
