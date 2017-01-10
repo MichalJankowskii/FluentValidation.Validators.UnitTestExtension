@@ -126,9 +126,10 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.ValidatorsVerifier
         public void Given_CorrectValidatorWithSameValueToCompareAndComparisonAndMemberToCompare_When_Verifying_Then_ValidationPass()
         {
             // Arrange
-            var memberToCompare = typeof(FakeMemeberInfoProvider).GetMember("Member1")[0];
-            var comparisonValidator = new FakeComparisonValidator { ValueToCompare = 10, Comparison = Comparison.Equal, MemberToCompare = memberToCompare };
-            var verifier = new ComparisonValidatorVerifier<FakeComparisonValidator>(10, Comparison.Equal, memberToCompare);
+            var memberToCompare1A = typeof(FakeMemeberInfoProvider).GetMember("Member1")[0];
+            var memberToCompare1B = typeof(FakeMemeberInfoProvider).GetMember("Member1")[0];
+            var comparisonValidator = new FakeComparisonValidator { ValueToCompare = 10, Comparison = Comparison.Equal, MemberToCompare = memberToCompare1A };
+            var verifier = new ComparisonValidatorVerifier<FakeComparisonValidator>(10, Comparison.Equal, memberToCompare1B);
 
             // Act & Assert
             AssertExtension.NotThrows(() => verifier.Verify(comparisonValidator));
