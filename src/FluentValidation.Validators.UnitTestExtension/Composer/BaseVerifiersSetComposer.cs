@@ -27,6 +27,7 @@
 namespace FluentValidation.Validators.UnitTestExtension.Composer
 {
     using System.Collections.Generic;
+    using System.Reflection;
     using Core;
     using ValidatorVerifiers;
 
@@ -65,10 +66,12 @@ namespace FluentValidation.Validators.UnitTestExtension.Composer
         /// </summary>
         /// <typeparam name="T">The type of comparison validator that configuration will be checked.</typeparam>
         /// <param name="valueToCompare">The value to compare.</param>
+        /// <param name="comparison">The comparison type.</param>
+        /// <param name="memberToCompare">The member being compared.</param>
         /// <returns></returns>
-        public BaseVerifiersSetComposer AddPropertyValidatorVerifier<T>(object valueToCompare) where T : IComparisonValidator
+        public BaseVerifiersSetComposer AddPropertyValidatorVerifier<T>(object valueToCompare, Comparison? comparison = null, MemberInfo memberToCompare = null) where T : IComparisonValidator
         {
-            this.verifiers.Add(new ComparisonValidatorVerifier<T>(valueToCompare));
+            this.verifiers.Add(new ComparisonValidatorVerifier<T>(valueToCompare, comparison, memberToCompare));
             return this;
         }
 
