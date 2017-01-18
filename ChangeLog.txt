@@ -1,3 +1,9 @@
+1.0.0.0 - 18 Jan 2017
+* Check for all properties of ComparisonValidatorVerifier
+* New methods in BaseVerifiersSetComposer
+* Code documentation
+* Changed name of CustomValidator to PlaceholderVerifier
+
 0.1.2.0 - 18 Oct 2016
 * Change minimal version of packages
 
