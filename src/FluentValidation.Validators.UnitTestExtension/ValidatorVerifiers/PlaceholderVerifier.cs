@@ -24,11 +24,15 @@
 // The latest version of this file can be found at https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension
 #endregion
 
-using FluentValidation.Validators.UnitTestExtension.Core;
-
 namespace FluentValidation.Validators.UnitTestExtension.ValidatorVerifiers
 {
-    public class CustomVerifier : IValidatorVerifier
+    using Core;
+
+    /// <summary>
+    /// This verifier is uses as a placeholder and it means that separate test should be written
+    /// </summary>
+    /// <seealso cref="FluentValidation.Validators.UnitTestExtension.Core.IValidatorVerifier" />
+    public class PlaceholderVerifier : IValidatorVerifier
     {
         public void Verify<T>(T validator)
         {

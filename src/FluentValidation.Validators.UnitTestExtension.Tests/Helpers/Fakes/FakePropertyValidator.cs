@@ -24,15 +24,15 @@
 // The latest version of this file can be found at https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using FluentValidation.Resources;
-using FluentValidation.Results;
-
 namespace FluentValidation.Validators.UnitTestExtension.Tests.Helpers.Fakes
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Resources;
+    using Results;
+
     public class FakePropertyValidator : IPropertyValidator
     {
         public IEnumerable<ValidationFailure> Validate(PropertyValidatorContext context)

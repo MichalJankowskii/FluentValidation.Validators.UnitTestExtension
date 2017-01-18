@@ -24,14 +24,14 @@
 // The latest version of this file can be found at https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension
 #endregion
 
-using FluentAssertions;
-using FluentValidation.Validators.UnitTestExtension.Core;
-using FluentValidation.Validators.UnitTestExtension.Tests.Helpers;
-using Xunit;
-using Xunit.Sdk;
-
 namespace FluentValidation.Validators.UnitTestExtension.Tests.Core
 {
+    using FluentAssertions;
+    using Helpers;
+    using UnitTestExtension.Core;
+    using Xunit;
+    using Xunit.Sdk;
+
     public class AbstractValidatorExtensionTest
     {
         [Fact]

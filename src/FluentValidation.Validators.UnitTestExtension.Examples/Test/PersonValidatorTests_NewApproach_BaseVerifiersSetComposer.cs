@@ -24,14 +24,14 @@
 // The latest version of this file can be found at https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension
 #endregion
 
-using FluentValidation.Validators.UnitTestExtension.Composer;
-using FluentValidation.Validators.UnitTestExtension.Core;
-using FluentValidation.Validators.UnitTestExtension.Examples.Production;
-using Xunit;
-
 namespace FluentValidation.Validators.UnitTestExtension.Examples.Test
 {
-    public class PersonValidatorTests_NewApproach
+    using Composer;
+    using Core;
+    using Production;
+    using Xunit;
+
+    public class PersonValidatorTests_NewApproach_BaseVerifiersSetComposer
     {
         // Act
         readonly PersonValidator personValidator = new PersonValidator();
@@ -53,8 +53,6 @@ namespace FluentValidation.Validators.UnitTestExtension.Examples.Test
                     .AddPropertyValidatorVerifier<NotEmptyValidator>()
                     .AddPropertyValidatorVerifier<LengthValidator>(0, 20)
                     .Create());
-
-
         }
 
         [Fact]

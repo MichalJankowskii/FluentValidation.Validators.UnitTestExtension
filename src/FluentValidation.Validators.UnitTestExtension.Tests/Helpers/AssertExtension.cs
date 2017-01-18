@@ -24,11 +24,11 @@
 // The latest version of this file can be found at https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension
 #endregion
 
-using System;
-using Xunit;
-
 namespace FluentValidation.Validators.UnitTestExtension.Tests.Helpers
 {
+    using System;
+    using Xunit;
+
     public static class AssertExtension
     {
         public static void NotThrows(Action action)

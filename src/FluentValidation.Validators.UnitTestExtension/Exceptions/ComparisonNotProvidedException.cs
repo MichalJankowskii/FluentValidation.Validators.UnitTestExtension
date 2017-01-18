@@ -24,15 +24,15 @@
 // The latest version of this file can be found at https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension
 #endregion
 
-namespace FluentValidation.Validators.UnitTestExtension.Core
+namespace FluentValidation.Validators.UnitTestExtension.Exceptions
 {
-    public interface IValidatorVerifier
+    using System;
+
+    [Serializable]
+    public class ComparisonNotProvidedException : ArgumentException
     {
-        /// <summary>
-        /// Verifies the specified validator.
-        /// </summary>
-        /// <typeparam name="T">The type of the object being validated.</typeparam>
-        /// <param name="validator">The validator that will be examined.</param>
-        void Verify<T>(T validator);
+        public ComparisonNotProvidedException() : base("Comparison must be provided for not build-in IComparisonValidator.")
+        {            
+        }
     }
 }

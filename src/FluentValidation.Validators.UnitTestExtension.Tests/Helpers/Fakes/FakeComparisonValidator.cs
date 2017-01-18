@@ -24,10 +24,10 @@
 // The latest version of this file can be found at https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension
 #endregion
 
-using System.Reflection;
-
 namespace FluentValidation.Validators.UnitTestExtension.Tests.Helpers.Fakes
 {
+    using System.Reflection;
+
     public class FakeComparisonValidator : FakePropertyValidator, IComparisonValidator
     {
         public Comparison Comparison { get; set; }

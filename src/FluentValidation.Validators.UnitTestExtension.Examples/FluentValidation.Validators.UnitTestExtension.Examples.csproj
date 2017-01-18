@@ -66,7 +66,8 @@
     <Compile Include="Production\Person.cs" />
     <Compile Include="Production\PersonValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Test\PersonValidatorTests_NewApproach.cs" />
+    <Compile Include="Test\PersonValidatorTests_NewApproach_ManualConfiguration.cs" />
+    <Compile Include="Test\PersonValidatorTests_NewApproach_BaseVerifiersSetComposer.cs" />
     <Compile Include="Test\PersonValidatorTests_ClassicApproach.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -24,11 +24,11 @@
 // The latest version of this file can be found at https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension
 #endregion
 
-using FluentAssertions;
-using FluentValidation.Validators.UnitTestExtension.Core;
-
 namespace FluentValidation.Validators.UnitTestExtension.ValidatorVerifiers
 {
+    using Core;
+    using FluentAssertions;
+
     public class TypeValidatorVerifier<T> : IValidatorVerifier where T : IPropertyValidator
     {
         public virtual void Verify<TValidator>(TValidator validator)

@@ -24,14 +24,16 @@
 // The latest version of this file can be found at https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension
 #endregion
 
-using FluentValidation.Validators.UnitTestExtension.Composer;
-using FluentValidation.Validators.UnitTestExtension.Tests.Helpers;
-using FluentValidation.Validators.UnitTestExtension.Tests.Helpers.Fakes;
-using FluentValidation.Validators.UnitTestExtension.ValidatorVerifiers;
-using Xunit;
-
 namespace FluentValidation.Validators.UnitTestExtension.Tests.Composer
 {
+    using System.Linq;
+    using Helpers;
+    using Helpers.Fakes;
+    using UnitTestExtension.Composer;
+    using UnitTestExtension.Core;
+    using ValidatorVerifiers;
+    using Xunit;
+
     public class BaseVerifiersSetComposerTest
     {
         [Fact]
@@ -55,8 +57,7 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.Composer
             var rules = composer.AddPropertyValidatorVerifier<FakePropertyValidator>().Create();
 
             // Assert
-            Assert.Equal(1, rules.Length);
-            Assert.IsType<TypeValidatorVerifier<FakePropertyValidator>>(rules[0]);
+            Assert.Equal(new[] { typeof(TypeValidatorVerifier<FakePropertyValidator>) }, rules.Select(x => x.GetType()).ToArray());
         }
 
         [Fact]
@@ -64,14 +65,13 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.Composer
         {
             // Arrange
             var composer = BaseVerifiersSetComposer.Build();
-            var fakeComparisonValidator = new FakeComparisonValidator {ValueToCompare = 10};
+            var fakeComparisonValidator = new FakeComparisonValidator {ValueToCompare = 10, Comparison = Comparison.Equal};
 
             // Act
-            var rules = composer.AddPropertyValidatorVerifier<FakeComparisonValidator>(10).Create();
+            var rules = composer.AddPropertyValidatorVerifier<FakeComparisonValidator>(10, Comparison.Equal).Create();
 
             // Assert
-            Assert.Equal(1, rules.Length);
-            Assert.IsType<ComparisonValidatorVerifier<FakeComparisonValidator>>(rules[0]);
+            Assert.Equal(new[] {typeof(ComparisonValidatorVerifier<FakeComparisonValidator>) }, rules.Select(x => x.GetType()).ToArray());
             AssertExtension.NotThrows(() => rules[0].Verify(fakeComparisonValidator));
         }
 
@@ -86,8 +86,7 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.Composer
             var rules = composer.AddPropertyValidatorVerifier<FakeLengthValidator>(1, 10).Create();
 
             // Assert
-            Assert.Equal(1, rules.Length);
-            Assert.IsType<LengthValidatorVerifier<FakeLengthValidator>>(rules[0]);
+            Assert.Equal(new[] { typeof(LengthValidatorVerifier<FakeLengthValidator>) }, rules.Select(x => x.GetType()).ToArray());
             AssertExtension.NotThrows(() => rules[0].Verify(fakeLengthValidator));
         }
 
@@ -101,8 +100,7 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.Composer
             var rules = composer.AddChildValidatorVerifier<int>().Create();
 
             // Assert
-            Assert.Equal(1, rules.Length);
-            Assert.IsType<ChildValidatorVerifier<int>>(rules[0]);
+            Assert.Equal(new[] { typeof(ChildValidatorVerifier<int>) }, rules.Select(x => x.GetType()).ToArray());
         }
 
         [Fact]
@@ -115,8 +113,7 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.Composer
             var rules = composer.AddChildCollectionValidatorVerifier<int>().Create();
 
             // Assert
-            Assert.Equal(1, rules.Length);
-            Assert.IsType<ChildCollectionValidatorVerifier<int>>(rules[0]);
+            Assert.Equal(new[] { typeof(ChildCollectionValidatorVerifier<int>) }, rules.Select(x => x.GetType()).ToArray());
         }
 
         [Fact]
@@ -130,22 +127,22 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.Composer
             var rules = composer.AddVerifier(fakeValidatorVerifier).Create();
 
             // Assert
-            Assert.Equal(1, rules.Length);
-            Assert.Equal(fakeValidatorVerifier, rules[0]);
+
+            Assert.Equal(new IValidatorVerifier[] { fakeValidatorVerifier }, rules.ToArray());
         }
 
         [Fact]
-        public void Given_Composer_When_AddingCustomVerifier_Then_CorrectRuleSet()
+        public void Given_Composer_When_AddingPlaceholderVerifier_Then_CorrectRuleSet()
         {
             // Arrange
             var composer = BaseVerifiersSetComposer.Build();
 
             // Act
-            var rules = composer.AddCustomVerifier().Create();
+            var rules = composer.AddPlaceholderVerifier().Create();
 
             // Assert
-            Assert.Equal(1, rules.Length);
-            Assert.IsType<CustomVerifier>(rules[0]);
+
+            Assert.Equal(new[] { typeof(PlaceholderVerifier) }, rules.Select(x => x.GetType()).ToArray());
         }
     }
 }

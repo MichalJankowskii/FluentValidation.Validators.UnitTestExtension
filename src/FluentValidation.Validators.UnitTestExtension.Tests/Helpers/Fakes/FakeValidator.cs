@@ -24,13 +24,13 @@
 // The latest version of this file can be found at https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension
 #endregion
 
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-using FluentValidation.Results;
-
 namespace FluentValidation.Validators.UnitTestExtension.Tests.Helpers.Fakes
 {
+    using System;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Results;
+
     public class FakeValidator : IValidator
     {
         public ValidationResult Validate(object instance)
