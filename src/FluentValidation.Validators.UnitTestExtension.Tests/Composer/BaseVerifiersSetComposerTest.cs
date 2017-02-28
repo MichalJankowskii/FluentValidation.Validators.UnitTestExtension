@@ -37,7 +37,6 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.Composer
     public class BaseVerifiersSetComposerTest
     {
         [Fact]
-
         public void Given_When_BuildNewRuleSet_Then_NoVerifiersInList()
         {
             // Act
@@ -127,7 +126,6 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.Composer
             var rules = composer.AddVerifier(fakeValidatorVerifier).Create();
 
             // Assert
-
             Assert.Equal(new IValidatorVerifier[] { fakeValidatorVerifier }, rules.ToArray());
         }
 
@@ -141,7 +139,6 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.Composer
             var rules = composer.AddPlaceholderVerifier().Create();
 
             // Assert
-
             Assert.Equal(new[] { typeof(PlaceholderVerifier) }, rules.Select(x => x.GetType()).ToArray());
         }
     }
