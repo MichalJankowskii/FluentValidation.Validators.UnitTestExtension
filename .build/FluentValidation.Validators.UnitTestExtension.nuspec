@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>FluentValidation.Validators.UnitTestExtension</id>
-    <version></version>
+    <version>1.0.0.0</version>
     <authors>Michał Jankowski</authors>
     <licenseUrl>https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension</projectUrl>
@@ -19,7 +19,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="..\src\FluentValidation.Validators.UnitTestExtension\bin\Publish\FluentValidation.Validators.UnitTestExtension.dll" target="lib" />
-    <file src="..\src\FluentValidation.Validators.UnitTestExtension\bin\Publish\FluentValidation.Validators.UnitTestExtension.pdb" target="lib" />
+    <file src="..\src\FluentValidation.Validators.UnitTestExtension\bin\Publish\FluentValidation.Validators.UnitTestExtension.dll" target="lib/net452" />
+    <file src="..\src\FluentValidation.Validators.UnitTestExtension\bin\Publish\FluentValidation.Validators.UnitTestExtension.pdb" target="lib/net452" />
   </files>
 </package>
