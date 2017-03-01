@@ -28,7 +28,7 @@ function SaveNewCsProjConfiguration($initialConf, $fluentValidatorExtVersion, $f
     AddReference $proj "..\packages\FluentAssertions.$fluentAssertionVersion\lib\net45\FluentAssertions.dll" "FluentAssertions"
     AddReference $proj "..\packages\FluentAssertions.$fluentAssertionVersion\lib\net45\FluentAssertions.Core.dll" "FluentAssertions.Core"
     AddReference $proj "..\packages\FluentValidation.$fluentValidatorVersion.0\lib\Net45\FluentValidation.dll" "FluentValidation"
-    AddReference $proj "..\packages\FluentValidation.Validators.UnitTestExtension.$fluentValidatorExtVersion\lib\FluentValidation.Validators.UnitTestExtension.dll" "FluentValidation.Validators.UnitTestExtension"
+    AddReference $proj "..\packages\FluentValidation.Validators.UnitTestExtension.$fluentValidatorExtVersion\lib\net452\FluentValidation.Validators.UnitTestExtension.dll" "FluentValidation.Validators.UnitTestExtension"
     $key = GenerateConfigurationName $fluentValidatorExtVersion $fluentAssertionVersion $fluentValidatorVersion
     $proj.Save("$PSScriptRoot/testConfigurations/proj_"+$key+".csproj")
 }
