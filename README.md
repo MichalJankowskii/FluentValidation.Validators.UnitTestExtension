@@ -3,24 +3,24 @@
 [![Downloads](http://nuget-stats-api.jankowskimichal.pl/api/badges/FluentValidation.Validators.UnitTestExtension/totalDownloads)](http://www.jankowskimichal.pl)
 
 [Full documentation](https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension/wiki)
-##Project description
+## Project description
 Main purpose of this small library is to extend and simplify possibilities of testing code that is using [FluentValidation](https://github.com/JeremySkinner/FluentValidation) package.
-##Installation - NuGet Packages
+## Installation - NuGet Packages
 ```
 Install-Package FluentValidation.Validators.UnitTestExtension
 ```
 
-##Overview
+## Overview
 This library allows you to focus on testing your implementation. You will be able to write test that will run faster, will be readable and will test only your implementation.
 
 Please look at the following example of `PersonValidator`:
 ```csharp
 public class PersonValidator : AbstractValidator<Person>
 {
-	public PersonValidator()
-    {
-    	RuleFor(person => person.Name).NotNull();
-   	}
+  public PersonValidator()
+  {
+    RuleFor(person => person.Name).NotNull();
+  }
 }
 ```
 
@@ -28,16 +28,16 @@ By using this library you can write unit test like this:
 ```csharp
 public class PersonValidatorTests
 {
-	[Fact]
-	public void When_PersonValidatorConstructing_Then_RulesAreConfiguredCorrectly()
-	{
-		var personValidator = new PersonValidator();
+  [Fact]
+  public void When_PersonValidatorConstructing_Then_RulesAreConfiguredCorrectly()
+  {
+    var personValidator = new PersonValidator();
 
-		personValidator.ShouldHaveRules(x => x.Name,
-			BaseVerifiersSetComposer.Build()
-				.AddPropertyValidatorVerifier<NotNullValidator>()
-				.Create());
-	}
+    personValidator.ShouldHaveRules(x => x.Name,
+      BaseVerifiersSetComposer.Build()
+        .AddPropertyValidatorVerifier<NotNullValidator>()
+	.Create());
+  }
 }
 ```
 
@@ -45,24 +45,24 @@ According to [FluentValidation wiki](https://github.com/JeremySkinner/FluentVali
 ```csharp
 public class PersonValidatorTests
 {
-	private PersonValidator validator;
+  private PersonValidator validator;
 
-	public void PersonValidatorTester()
-	{
-		validator = new PersonValidator();
-	}
+  public void PersonValidatorTester()
+  {
+    validator = new PersonValidator();
+  }
 
-	[Fact]
-	public void Should_have_error_when_Name_is_null() 
-    {
-		validator.ShouldHaveValidationErrorFor(person => person.Name, null as string); 
-	}
+  [Fact]
+  public void Should_have_error_when_Name_is_null() 
+  {
+    validator.ShouldHaveValidationErrorFor(person => person.Name, null as string); 
+  }
 
-	[Fact]
-    public void Should_not_have_error_when_name_is_specified()
-	{
-		validator.ShouldNotHaveValidationErrorFor(person => person.Name, "Jeremy");
-	}
+  [Fact]
+  public void Should_not_have_error_when_name_is_specified()
+  {
+    validator.ShouldNotHaveValidationErrorFor(person => person.Name, "Jeremy");
+  }
 }
 ```
 
