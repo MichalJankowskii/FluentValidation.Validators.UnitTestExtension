@@ -27,6 +27,7 @@
 namespace FluentValidation.Validators.UnitTestExtension.Tests.Composer
 {
     using System.Linq;
+    using System.Text.RegularExpressions;
     using Helpers;
     using Helpers.Fakes;
     using UnitTestExtension.Composer;
@@ -89,7 +90,37 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.Composer
             AssertExtension.NotThrows(() => rules[0].Verify(fakeLengthValidator));
         }
 
-        [Fact]
+	    [Fact]
+	    public void Given_Composer_When_AddingPropertyValidatorVerifierWithExpression_Then_CorrectRuleSet()
+	    {
+		    // Arrange
+		    var composer = BaseVerifiersSetComposer.Build();
+		    var regularExpressionValidator = new FakeRegularExpressionValidator { Expression = "regex"};
+
+		    // Act
+		    var rules = composer.AddPropertyValidatorVerifier<FakeRegularExpressionValidator>("regex").Create();
+
+		    // Assert
+		    Assert.Equal(new[] { typeof(RegularExpressionValidatorVerifier<FakeRegularExpressionValidator>) }, rules.Select(x => x.GetType()).ToArray());
+		    AssertExtension.NotThrows(() => rules[0].Verify(regularExpressionValidator));
+	    }
+
+	    [Fact]
+	    public void Given_Composer_When_AddingPropertyValidatorVerifierWithRegex_Then_CorrectRuleSet()
+	    {
+		    // Arrange
+		    var composer = BaseVerifiersSetComposer.Build();
+		    var regularExpressionValidator = new FakeRegularExpressionValidator { Expression = "regex" };
+
+		    // Act
+		    var rules = composer.AddPropertyValidatorVerifier<FakeRegularExpressionValidator>(new Regex("regex")).Create();
+
+		    // Assert98
+		    Assert.Equal(new[] { typeof(RegularExpressionValidatorVerifier<FakeRegularExpressionValidator>) }, rules.Select(x => x.GetType()).ToArray());
+		    AssertExtension.NotThrows(() => rules[0].Verify(regularExpressionValidator));
+	    }
+
+		[Fact]
         public void Given_Composer_When_AddingChildValidatorVerifier_Then_CorrectRuleSet()
         {
             // Arrange

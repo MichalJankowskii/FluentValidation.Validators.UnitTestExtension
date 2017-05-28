@@ -84,6 +84,7 @@
     <Compile Include="Helpers\Fakes\FakeComparisonValidator.cs" />
     <Compile Include="Helpers\Fakes\FakeLengthValidator.cs" />
     <Compile Include="Helpers\Fakes\FakePropertyValidator.cs" />
+    <Compile Include="Helpers\Fakes\FakeRegularExpressionValidator.cs" />
     <Compile Include="Helpers\Fakes\FakeValidator.cs" />
     <Compile Include="Helpers\Fakes\FakeValidatorVerifier.cs" />
     <Compile Include="Helpers\Fakes\OtherFakePropertyValidator.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="ValidatorsVerifiers\CustomVerifierTest.cs" />
     <Compile Include="ValidatorsVerifiers\ComparisonValidatorVerifierTest.cs" />
     <Compile Include="ValidatorsVerifiers\LengthValidatorVerifierTest.cs" />
+    <Compile Include="ValidatorsVerifiers\RegularExpressionValidatorVerifierTests.cs" />
     <Compile Include="ValidatorsVerifiers\TypeValidatorVerifierTest.cs" />
   </ItemGroup>
   <ItemGroup>

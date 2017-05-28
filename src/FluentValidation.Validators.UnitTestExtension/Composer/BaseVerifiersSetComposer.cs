@@ -28,6 +28,7 @@ namespace FluentValidation.Validators.UnitTestExtension.Composer
 {
     using System.Collections.Generic;
     using System.Reflection;
+    using System.Text.RegularExpressions;
     using Core;
     using ValidatorVerifiers;
 
@@ -62,7 +63,7 @@ namespace FluentValidation.Validators.UnitTestExtension.Composer
         }
 
         /// <summary>
-        /// Adds the property comparision validator verifier.
+        /// Adds the property comparison validator verifier.
         /// </summary>
         /// <typeparam name="T">The type of comparison validator that configuration will be checked.</typeparam>
         /// <param name="valueToCompare">The value to compare.</param>
@@ -88,12 +89,36 @@ namespace FluentValidation.Validators.UnitTestExtension.Composer
             return this;
         }
 
-        /// <summary>
-        /// Adds the child validator verifier.
-        /// </summary>
-        /// <typeparam name="T">The type of child validator.</typeparam>
-        /// <returns></returns>
-        public BaseVerifiersSetComposer AddChildValidatorVerifier<T>()
+	    /// <summary>
+	    /// Adds the property regular expression validator verifier.
+	    /// </summary>
+	    /// <typeparam name="T">The type of regular expression validator that configuration will be checked.</typeparam>
+	    /// <param name="expression">The expression.</param>
+	    /// <returns></returns>
+		public BaseVerifiersSetComposer AddPropertyValidatorVerifier<T>(string expression) where T : IRegularExpressionValidator
+	    {
+		    this.verifiers.Add(new RegularExpressionValidatorVerifier<T>(expression));
+		    return this;
+	    }
+
+	    /// <summary>
+	    /// Adds the property regular expression validator verifier.
+	    /// </summary>
+	    /// <typeparam name="T">The type of regular expression validator that configuration will be checked.</typeparam>
+	    /// <param name="regex">The regular expression.</param>
+	    /// <returns></returns>
+		public BaseVerifiersSetComposer AddPropertyValidatorVerifier<T>(Regex regex) where T : IRegularExpressionValidator
+	    {
+		    this.verifiers.Add(new RegularExpressionValidatorVerifier<T>(regex));
+		    return this;
+	    }
+
+		/// <summary>
+		/// Adds the child validator verifier.
+		/// </summary>
+		/// <typeparam name="T">The type of child validator.</typeparam>
+		/// <returns></returns>
+		public BaseVerifiersSetComposer AddChildValidatorVerifier<T>()
         {
             this.verifiers.Add(new ChildValidatorVerifier<T>());
             return this;

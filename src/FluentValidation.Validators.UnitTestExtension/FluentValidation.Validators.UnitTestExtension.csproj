@@ -83,6 +83,7 @@
     <Compile Include="ValidatorVerifiers\ComparisonValidatorVerifier.cs" />
     <Compile Include="ValidatorVerifiers\PlaceholderVerifier.cs" />
     <Compile Include="ValidatorVerifiers\LengthValidatorVerifier.cs" />
+    <Compile Include="ValidatorVerifiers\RegularExpressionValidatorVerifier.cs" />
     <Compile Include="ValidatorVerifiers\TypeValidatorVerifier.cs" />
   </ItemGroup>
   <ItemGroup>
