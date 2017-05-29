@@ -1,3 +1,7 @@
+1.1.0.0 - 29 May 2017
+* Support for FluentValidation 7.*
+* New verifiers for ScalePrecisionValidator and RegularExpressionValidator
+
 1.0.0.0 - 18 Jan 2017
 * Check for all properties of ComparisonValidatorVerifier
 * New methods in BaseVerifiersSetComposer
