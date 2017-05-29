@@ -140,7 +140,7 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.Core
         {
             public CustomerValidator()
             {
-                RuleFor(cust => cust.Name).NotEmpty();
+	            this.RuleFor(cust => cust.Name).NotEmpty();
             }
         }
 
@@ -155,7 +155,7 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.Core
 
             public void Verify<T>(T validator)
             {
-                shouldFailValidation.Should().BeFalse();
+	            this.shouldFailValidation.Should().BeFalse();
             }
         }
     }
