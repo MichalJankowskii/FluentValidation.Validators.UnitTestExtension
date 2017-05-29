@@ -1,27 +1,7 @@
 language: csharp
 env:
-  - CONF=1.0.1_FA4.19.0_FV6.2.1
-  - CONF=1.0.1_FA4.18.0_FV6.2.1
-  - CONF=1.0.1_FA4.17.0_FV6.2.1
-  - CONF=1.0.1_FA4.16.0_FV6.2.1
-  - CONF=1.0.1_FA4.15.0_FV6.2.1
-  - CONF=1.0.1_FA4.14.0_FV6.2.1
-  - CONF=1.0.1_FA4.13.0_FV6.2.1
-  - CONF=1.0.1_FA4.12.0_FV6.2.1
-  - CONF=1.0.1_FA4.11.0_FV6.2.1
-  - CONF=1.0.1_FA4.10.0_FV6.2.1
-  - CONF=1.0.1_FA4.9.0_FV6.2.1
-  - CONF=1.0.1_FA4.8.0_FV6.2.1
-  - CONF=1.0.1_FA4.7.0_FV6.2.1
-  - CONF=1.0.1_FA4.6.1_FV6.2.1
-  - CONF=1.0.1_FA4.5.0_FV6.2.1
-  - CONF=1.0.1_FA4.4.0_FV6.2.1
-  - CONF=1.0.1_FA4.3.0_FV6.2.1
-  - CONF=1.0.1_FA4.2.0_FV6.2.1
-  - CONF=1.0.1_FA4.1.0_FV6.2.1
-  - CONF=1.0.1_FA4.0.0_FV6.2.1
-  - CONF=1.0.1_FA4.19.0_FV6.2.1
-  - CONF=1.0.1_FA4.19.0_FV6.2.0
+  - CONF=1.1.0_FA4.19.2_FV7.0.2
+  - CONF=1.1.0_FA4.19.2_FV7.0.2
 script:
   - "cp ./src/testConfigurations/packages_$CONF.config ./src/FluentValidation.Validators.UnitTestExtension.NuGet.Tests/packages.config"
   - "cp ./src/testConfigurations/proj_$CONF.csproj ./src/FluentValidation.Validators.UnitTestExtension.NuGet.Tests/FluentValidation.Validators.UnitTestExtension.NuGet.Tests.csproj"
