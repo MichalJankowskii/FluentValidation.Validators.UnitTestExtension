@@ -53,17 +53,14 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentAssertions, Version=4.18.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentAssertions.4.18.0\lib\net45\FluentAssertions.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="FluentAssertions, Version=4.19.2.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.4.19.2\lib\net45\FluentAssertions.dll</HintPath>
     </Reference>
-    <Reference Include="FluentAssertions.Core, Version=4.18.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentAssertions.4.18.0\lib\net45\FluentAssertions.Core.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="FluentAssertions.Core, Version=4.19.2.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.4.19.2\lib\net45\FluentAssertions.Core.dll</HintPath>
     </Reference>
-    <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="FluentValidation, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.7.0.2\lib\net45\FluentValidation.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -84,8 +81,10 @@
     <Compile Include="ValidatorVerifiers\ChildCollectionValidatorVerifier.cs" />
     <Compile Include="ValidatorVerifiers\ChildValidatorVerifier.cs" />
     <Compile Include="ValidatorVerifiers\ComparisonValidatorVerifier.cs" />
+    <Compile Include="ValidatorVerifiers\ScalePrecisionValidatorVerifier.cs" />
     <Compile Include="ValidatorVerifiers\PlaceholderVerifier.cs" />
     <Compile Include="ValidatorVerifiers\LengthValidatorVerifier.cs" />
+    <Compile Include="ValidatorVerifiers\RegularExpressionValidatorVerifier.cs" />
     <Compile Include="ValidatorVerifiers\TypeValidatorVerifier.cs" />
   </ItemGroup>
   <ItemGroup>

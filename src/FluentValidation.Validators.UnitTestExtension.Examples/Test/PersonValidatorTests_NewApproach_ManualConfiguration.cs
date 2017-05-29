@@ -40,14 +40,14 @@ namespace FluentValidation.Validators.UnitTestExtension.Examples.Test
         public void Given_When_PersonValidatorConstructing_Then_3PropertiesShouldHaveRules()
         {
             // Assert
-            personValidator.ShouldHaveRulesCount(3);
+	        this.personValidator.ShouldHaveRulesCount(5);
         }
 
         [Fact]
         public void Given_When_PersonValidatorConstructing_Then_RulesForFirstNameAreConfiguredCorrectly()
         {
             // Assert
-            personValidator.ShouldHaveRules(x => x.FirstName,
+	        this.personValidator.ShouldHaveRules(x => x.FirstName,
                 new IValidatorVerifier[]
                 {
                     new TypeValidatorVerifier<NotNullValidator>(),
@@ -60,7 +60,7 @@ namespace FluentValidation.Validators.UnitTestExtension.Examples.Test
         public void Given_When_PersonValidatorConstructing_Then_RulesForLastNameAreConfiguredCorrectly()
         {
             // Assert
-            personValidator.ShouldHaveRules(x => x.LastName,
+	        this.personValidator.ShouldHaveRules(x => x.LastName,
                 new IValidatorVerifier[]
                 {
                     new TypeValidatorVerifier<NotNullValidator>(),
@@ -73,11 +73,33 @@ namespace FluentValidation.Validators.UnitTestExtension.Examples.Test
         public void Given_When_PersonValidatorConstructing_Then_RulesForHeightAreConfiguredCorrectly()
         {
             // Assert
-            personValidator.ShouldHaveRules(x => x.HeightInCentimeters,
+	        this.personValidator.ShouldHaveRules(x => x.HeightInCentimeters,
                 new IValidatorVerifier[]
                 {
                     new ComparisonValidatorVerifier<GreaterThanValidator>(0),
                     new ComparisonValidatorVerifier<LessThanOrEqualValidator>(250),
+                });
+        }
+
+	    [Fact]
+	    public void Given_When_PersonValidatorConstructing_Then_RulesForEmailAreConfiguredCorrectly()
+	    {
+		    // Assert
+		    this.personValidator.ShouldHaveRules(x => x.Email,
+			    new IValidatorVerifier[]
+			    {
+				    new RegularExpressionValidatorVerifier<RegularExpressionValidator>("^[_a-z0-9-]+(.[a-z0-9-]+)@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$")
+			    });
+	    }
+
+        [Fact]
+        public void Given_When_PersonValidatorConstructing_Then_RulesForWeightAreConfiguredCorrectly()
+        {
+            // Assert
+            this.personValidator.ShouldHaveRules(x => x.Weight,
+                new IValidatorVerifier[]
+                {
+                    new ScalePrecisionValidatorVerifier<ScalePrecisionValidator>(2, 4)
                 });
         }
     }
