@@ -81,6 +81,7 @@
     <Compile Include="ValidatorVerifiers\ChildCollectionValidatorVerifier.cs" />
     <Compile Include="ValidatorVerifiers\ChildValidatorVerifier.cs" />
     <Compile Include="ValidatorVerifiers\ComparisonValidatorVerifier.cs" />
+    <Compile Include="ValidatorVerifiers\ScalePrecisionValidatorVerifier.cs" />
     <Compile Include="ValidatorVerifiers\PlaceholderVerifier.cs" />
     <Compile Include="ValidatorVerifiers\LengthValidatorVerifier.cs" />
     <Compile Include="ValidatorVerifiers\RegularExpressionValidatorVerifier.cs" />

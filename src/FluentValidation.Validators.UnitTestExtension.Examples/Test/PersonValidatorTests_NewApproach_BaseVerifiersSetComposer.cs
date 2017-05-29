@@ -40,7 +40,7 @@ namespace FluentValidation.Validators.UnitTestExtension.Examples.Test
         public void Given_When_PersonValidatorConstructing_Then_3PropertiesShouldHaveRules()
         {
             // Assert
-	        this.personValidator.ShouldHaveRulesCount(4);
+	        this.personValidator.ShouldHaveRulesCount(5);
         }
 
         [Fact]
@@ -87,5 +87,15 @@ namespace FluentValidation.Validators.UnitTestExtension.Examples.Test
 					.AddPropertyValidatorVerifier<RegularExpressionValidator>("^[_a-z0-9-]+(.[a-z0-9-]+)@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$")
 					.Create());
 	    }
-	}
+
+        [Fact]
+        public void Given_When_PersonValidatorConstructing_Then_RulesForWeightAreConfiguredCorrectly()
+        {
+            // Assert
+            this.personValidator.ShouldHaveRules(x => x.Weight,
+                BaseVerifiersSetComposer.Build()
+                    .AddScalePrecisionValidatorVerifier<ScalePrecisionValidator>(2, 4)
+                    .Create());
+        }
+    }
 }

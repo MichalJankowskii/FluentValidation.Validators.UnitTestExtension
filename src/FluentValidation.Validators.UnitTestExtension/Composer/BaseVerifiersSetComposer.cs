@@ -89,36 +89,49 @@ namespace FluentValidation.Validators.UnitTestExtension.Composer
             return this;
         }
 
-	    /// <summary>
-	    /// Adds the property regular expression validator verifier.
-	    /// </summary>
-	    /// <typeparam name="T">The type of regular expression validator that configuration will be checked.</typeparam>
-	    /// <param name="expression">The expression.</param>
-	    /// <returns></returns>
-		public BaseVerifiersSetComposer AddPropertyValidatorVerifier<T>(string expression) where T : IRegularExpressionValidator
-	    {
-		    this.verifiers.Add(new RegularExpressionValidatorVerifier<T>(expression));
-		    return this;
-	    }
+        /// <summary>
+        /// Adds the property regular expression validator verifier.
+        /// </summary>
+        /// <typeparam name="T">The type of regular expression validator that configuration will be checked.</typeparam>
+        /// <param name="expression">The expression.</param>
+        /// <returns></returns>
+        public BaseVerifiersSetComposer AddPropertyValidatorVerifier<T>(string expression) where T : IRegularExpressionValidator
+        {
+            this.verifiers.Add(new RegularExpressionValidatorVerifier<T>(expression));
+            return this;
+        }
 
-	    /// <summary>
-	    /// Adds the property regular expression validator verifier.
-	    /// </summary>
-	    /// <typeparam name="T">The type of regular expression validator that configuration will be checked.</typeparam>
-	    /// <param name="regex">The regular expression.</param>
-	    /// <returns></returns>
-		public BaseVerifiersSetComposer AddPropertyValidatorVerifier<T>(Regex regex) where T : IRegularExpressionValidator
-	    {
-		    this.verifiers.Add(new RegularExpressionValidatorVerifier<T>(regex));
-		    return this;
-	    }
+        /// <summary>
+        /// Adds the property scale precision validator verifier.
+        /// </summary>
+        /// <typeparam name="T">The type of ScalePrecisionValidator that configuration will be checked.</typeparam>
+        /// <param name="scale">The scale.</param>
+        /// <param name="precision">The precision.</param>
+        /// <returns></returns>
+        public BaseVerifiersSetComposer AddScalePrecisionValidatorVerifier<T>(int scale, int precision) where T : ScalePrecisionValidator
+        {
+            this.verifiers.Add(new ScalePrecisionValidatorVerifier<T>(scale, precision));
+            return this;
+        }
 
-		/// <summary>
-		/// Adds the child validator verifier.
-		/// </summary>
-		/// <typeparam name="T">The type of child validator.</typeparam>
-		/// <returns></returns>
-		public BaseVerifiersSetComposer AddChildValidatorVerifier<T>()
+        /// <summary>
+        /// Adds the property regular expression validator verifier.
+        /// </summary>
+        /// <typeparam name="T">The type of regular expression validator that configuration will be checked.</typeparam>
+        /// <param name="regex">The regular expression.</param>
+        /// <returns></returns>
+        public BaseVerifiersSetComposer AddPropertyValidatorVerifier<T>(Regex regex) where T : IRegularExpressionValidator
+        {
+            this.verifiers.Add(new RegularExpressionValidatorVerifier<T>(regex));
+            return this;
+        }
+
+        /// <summary>
+        /// Adds the child validator verifier.
+        /// </summary>
+        /// <typeparam name="T">The type of child validator.</typeparam>
+        /// <returns></returns>
+        public BaseVerifiersSetComposer AddChildValidatorVerifier<T>()
         {
             this.verifiers.Add(new ChildValidatorVerifier<T>());
             return this;
@@ -147,7 +160,7 @@ namespace FluentValidation.Validators.UnitTestExtension.Composer
         }
 
         /// <summary>
-        /// Adds the placeholder for verifer that will be checked in separte test.
+        /// Adds the placeholder for verifier that will be checked in separate test.
         /// </summary>
         /// <returns></returns>
         public BaseVerifiersSetComposer AddPlaceholderVerifier()

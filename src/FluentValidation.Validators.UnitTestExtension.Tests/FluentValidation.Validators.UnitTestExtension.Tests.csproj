@@ -96,6 +96,7 @@
     <Compile Include="ValidatorsVerifiers\ComparisonValidatorVerifierTest.cs" />
     <Compile Include="ValidatorsVerifiers\LengthValidatorVerifierTest.cs" />
     <Compile Include="ValidatorsVerifiers\RegularExpressionValidatorVerifierTests.cs" />
+    <Compile Include="ValidatorsVerifiers\ScalePrecisionValidatorVerifierTest.cs" />
     <Compile Include="ValidatorsVerifiers\TypeValidatorVerifierTest.cs" />
   </ItemGroup>
   <ItemGroup>

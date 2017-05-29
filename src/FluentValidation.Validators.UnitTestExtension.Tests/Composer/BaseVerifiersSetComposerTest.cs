@@ -120,7 +120,22 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.Composer
 		    AssertExtension.NotThrows(() => rules[0].Verify(regularExpressionValidator));
 	    }
 
-		[Fact]
+        [Fact]
+        public void Given_Composer_When_AddScalePrecisionValidatorVerifier_Then_CorrectRuleSet()
+        {
+            // Arrange
+            var composer = BaseVerifiersSetComposer.Build();
+            var scalePrecisionValidator = new ScalePrecisionValidator(1, 2);
+
+            // Act
+            var rules = composer.AddScalePrecisionValidatorVerifier<ScalePrecisionValidator>(1, 2).Create();
+
+            // Assert98
+            Assert.Equal(new[] { typeof(ScalePrecisionValidatorVerifier<ScalePrecisionValidator>) }, rules.Select(x => x.GetType()).ToArray());
+            AssertExtension.NotThrows(() => rules[0].Verify(scalePrecisionValidator));
+        }
+
+        [Fact]
         public void Given_Composer_When_AddingChildValidatorVerifier_Then_CorrectRuleSet()
         {
             // Arrange
