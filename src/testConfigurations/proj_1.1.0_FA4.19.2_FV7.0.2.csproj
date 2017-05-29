@@ -100,7 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FluentValidation">
-      <HintPath>..\packages\FluentValidation.7.0.2\lib\Net45\FluentValidation.dll</HintPath>
+      <HintPath>..\packages\FluentValidation.7.0.2\lib\net45\FluentValidation.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
