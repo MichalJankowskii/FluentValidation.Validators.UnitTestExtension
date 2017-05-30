@@ -1,7 +1,6 @@
 language: csharp
 env:
   - CONF=1.1.0_FA4.19.2_FV7.0.2
-  - CONF=1.1.0_FA4.19.2_FV7.0.2
 script:
   - "cp ./src/testConfigurations/packages_$CONF.config ./src/FluentValidation.Validators.UnitTestExtension.NuGet.Tests/packages.config"
   - "cp ./src/testConfigurations/proj_$CONF.csproj ./src/FluentValidation.Validators.UnitTestExtension.NuGet.Tests/FluentValidation.Validators.UnitTestExtension.NuGet.Tests.csproj"
