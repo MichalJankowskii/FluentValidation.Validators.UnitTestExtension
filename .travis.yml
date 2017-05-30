@@ -4,7 +4,6 @@ env:
 script:
   - "cp ./src/testConfigurations/packages_$CONF.config ./src/FluentValidation.Validators.UnitTestExtension.NuGet.Tests/packages.config"
   - "cp ./src/testConfigurations/proj_$CONF.csproj ./src/FluentValidation.Validators.UnitTestExtension.NuGet.Tests/FluentValidation.Validators.UnitTestExtension.NuGet.Tests.csproj"
-  - sudo apt-get install -y gtk-sharp2
   - nuget restore ./src/FluentValidation.Validators.UnitTestExtension.NuGet.Tests.sln
   - xbuild /p:Configuration=Release ./src/FluentValidation.Validators.UnitTestExtension.NuGet.Tests.sln
   - mono ./src/packages/xunit.runner.console.*/tools/xunit.console.exe ./src/FluentValidation.Validators.UnitTestExtension.NuGet.Tests/bin/Release/FluentValidation.Validators.UnitTestExtension.NuGet.Tests.dll
