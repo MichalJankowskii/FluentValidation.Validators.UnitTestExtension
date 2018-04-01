@@ -1,3 +1,6 @@
+1.2.0.0 - 01 April 2018
+* Support for FluentAssertion 5.*
+
 1.1.0.0 - 29 May 2017
 * Support for FluentValidation 7.*
 * New verifiers for ScalePrecisionValidator and RegularExpressionValidator
