@@ -47,7 +47,7 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.Helpers.Fakes
 
         public bool IsAsync { get; }
         public ICollection<Func<object, object, object>> CustomMessageFormatArguments { get; }
-        public Func<object, object> CustomStateProvider { get; set; }
+        public Func<PropertyValidatorContext, object> CustomStateProvider { get; set; }
         public IStringSource ErrorMessageSource { get; set; }
         public IStringSource ErrorCodeSource { get; set; }
         public Severity Severity { get; set; }
