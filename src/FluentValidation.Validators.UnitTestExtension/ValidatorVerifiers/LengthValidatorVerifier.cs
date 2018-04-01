@@ -44,8 +44,8 @@ namespace FluentValidation.Validators.UnitTestExtension.ValidatorVerifiers
         {
             base.Verify(validator);
             var lengthValidator = (ILengthValidator)validator;
-            lengthValidator.Min.ShouldBeEquivalentTo(this.min, "(Min property)");
-            lengthValidator.Max.ShouldBeEquivalentTo(this.max, "(Max property)");
+            lengthValidator.Min.Should().Be(this.min, "(Min property)");
+            lengthValidator.Max.Should().Be(this.max, "(Max property)");
         }
     }
 }

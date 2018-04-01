@@ -65,7 +65,7 @@ namespace FluentValidation.Validators.UnitTestExtension.Core
         /// <param name="expectedRulesNumber">The expected number of rules in the collection.</param>
         public static void ShouldHaveRulesCount<T>(this AbstractValidator<T> validator, int expectedRulesNumber)
         {
-            validator.Count().ShouldBeEquivalentTo(expectedRulesNumber, "(number of rules for object)");
+            validator.Count().Should().Be(expectedRulesNumber, "(number of rules for object)");
         }
     }
 }

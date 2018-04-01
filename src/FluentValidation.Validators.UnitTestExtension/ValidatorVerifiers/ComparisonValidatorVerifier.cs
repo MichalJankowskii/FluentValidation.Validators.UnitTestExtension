@@ -72,11 +72,11 @@ namespace FluentValidation.Validators.UnitTestExtension.ValidatorVerifiers
         public override void Verify<TValidator>(TValidator validator)
         {
             base.Verify(validator);
-            ((IComparisonValidator)validator).ValueToCompare.ShouldBeEquivalentTo(this.valueToCompare, "(ValueToCompare property)");
-            ((IComparisonValidator)validator).Comparison.ShouldBeEquivalentTo(this.comparison, "(Comparison property)");
+            ((IComparisonValidator)validator).ValueToCompare.Should().BeEquivalentTo(this.valueToCompare, "(ValueToCompare property)");
+            ((IComparisonValidator)validator).Comparison.Should().BeEquivalentTo(this.comparison, "(Comparison property)");
             if (this.memberToCompare != null)
             {
-                ((IComparisonValidator) validator).MemberToCompare.ShouldBeEquivalentTo(this.memberToCompare, "(MemberToCompare property)");
+                ((IComparisonValidator) validator).MemberToCompare.Should().BeEquivalentTo(this.memberToCompare, "(MemberToCompare property)");
             }
         }
     }
