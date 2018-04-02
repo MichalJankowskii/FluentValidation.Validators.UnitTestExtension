@@ -17,8 +17,6 @@ env:
   - CONF=1.2.0_FA5.2.0_FV7.2.0
   - CONF=1.2.0_FA5.2.0_FV7.1.1
   - CONF=1.2.0_FA5.2.0_FV7.1.0
-  - CONF=1.2.0_FA5.2.0_FV7.0.3
-  - CONF=1.2.0_FA5.2.0_FV7.0.2
 script:
   - "cp ./src/testConfigurations/packages_$CONF.config ./src/FluentValidation.Validators.UnitTestExtension.NuGet.Tests/packages.config"
   - "cp ./src/testConfigurations/proj_$CONF.csproj ./src/FluentValidation.Validators.UnitTestExtension.NuGet.Tests/FluentValidation.Validators.UnitTestExtension.NuGet.Tests.csproj"
