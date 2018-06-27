@@ -27,6 +27,7 @@
 namespace FluentValidation.Validators.UnitTestExtension.Tests.ValidatorsVerifiers
 {
     using System.Collections.Generic;
+    using System.Reflection;
     using Exceptions;
     using Helpers;
     using Helpers.Fakes;
@@ -143,7 +144,7 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.ValidatorsVerifier
             AssertExtension.NotThrows(() => verifier.Verify(validator));
         }
 
-        private static IEnumerable<object[]> ProvideBuildInComparisonValidatorMapping()
+        public static IEnumerable<object[]> ProvideBuildInComparisonValidatorMapping()
         {
             // Arrange
             const int sameValue = 1;
