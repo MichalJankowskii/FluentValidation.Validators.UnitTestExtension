@@ -1,9 +1,0 @@
-language: csharp
-mono:
-  - latest
-dotnet: 2.0.0
-solution: ./src/FluentValidation.Validators.UnitTestExtension.sln
-script:
-  - cd src
-  - dotnet restore
-  - dotnet build
