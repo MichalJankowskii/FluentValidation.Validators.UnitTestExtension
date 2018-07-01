@@ -26,6 +26,7 @@
 
 namespace FluentValidation.Validators.UnitTestExtension.Examples.Test
 {
+    using System;
     using Composer;
     using Core;
     using Production;
@@ -95,6 +96,26 @@ namespace FluentValidation.Validators.UnitTestExtension.Examples.Test
             this.personValidator.ShouldHaveRules(x => x.Weight,
                 BaseVerifiersSetComposer.Build()
                     .AddScalePrecisionValidatorVerifier<ScalePrecisionValidator>(2, 4)
+                    .Create());
+        }
+
+        [Fact]
+        public void Given_When_PersonValidatorConstructing_Then_RulesForFavouriteDayUsingGenericAreConfiguredCorrectly()
+        {
+            // Assert
+            this.personValidator.ShouldHaveRules(x => x.FavouriteDay,
+                BaseVerifiersSetComposer.Build()
+                    .AddEnumValidatorVerifier<EnumValidator>(typeof(DayOfWeek))
+                    .Create());
+        }
+
+        [Fact]
+        public void Given_When_PersonValidatorConstructing_Then_RulesForFavouriteDayAreConfiguredCorrectly()
+        {
+            // Assert
+            this.personValidator.ShouldHaveRules(x => x.FavouriteDay,
+                BaseVerifiersSetComposer.Build()
+                    .AddEnumValidatorVerifier(typeof(DayOfWeek))
                     .Create());
         }
     }

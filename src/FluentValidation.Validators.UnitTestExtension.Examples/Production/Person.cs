@@ -26,6 +26,8 @@
 
 namespace FluentValidation.Validators.UnitTestExtension.Examples.Production
 {
+    using System;
+
     public class Person
     {
         public string FirstName { get; set; }
@@ -37,5 +39,7 @@ namespace FluentValidation.Validators.UnitTestExtension.Examples.Production
         public string Email { get; set; }
 
         public decimal Weight { get; set; }
+
+        public DayOfWeek FavouriteDay { get; set; }
     }
 }
