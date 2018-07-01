@@ -128,5 +128,15 @@ namespace FluentValidation.Validators.UnitTestExtension.Examples.Test
                     .AddEnumValidatorVerifier(typeof(DayOfWeek))
                     .Create());
         }
+
+        [Fact]
+        public void Given_When_PersonValidatorConstructing_Then_RulesForHeightInMetersValidatorAreConfiguredCorrectly()
+        {
+            // Assert
+            this.personValidator.ShouldHaveRules(x => x.HeightInMeters,
+                BaseVerifiersSetComposer.Build()
+                    .AddBetweenValidatorVerifier<InclusiveBetweenValidator>(0.0, 2.5)
+                    .Create());
+        }
     }
 }

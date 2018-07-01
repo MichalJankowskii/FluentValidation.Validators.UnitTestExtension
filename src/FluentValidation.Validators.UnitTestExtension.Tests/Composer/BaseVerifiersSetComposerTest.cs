@@ -121,6 +121,21 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.Composer
 	    }
 
         [Fact]
+        public void Given_Composer_When_AddBetweenValidatorVerifierGeneric_Then_CorrectRuleSet()
+        {
+            // Arrange
+            var composer = BaseVerifiersSetComposer.Build();
+            var betweenValidator = new FakeBetweenValidator {From = 1, To = 2};
+
+            // Act
+            var rules = composer.AddBetweenValidatorVerifier<FakeBetweenValidator>(1, 2).Create();
+
+            // Assert
+            Assert.Equal(new[] {typeof(BetweenValidatorVerifier<FakeBetweenValidator>)}, rules.Select(x => x.GetType()).ToArray());
+            AssertExtension.NotThrows(() => rules[0].Verify(betweenValidator));
+        }
+
+        [Fact]
         public void Given_Composer_When_AddScalePrecisionValidatorVerifierGeneric_Then_CorrectRuleSet()
         {
             // Arrange

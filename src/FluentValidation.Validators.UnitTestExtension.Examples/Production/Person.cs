@@ -41,5 +41,7 @@ namespace FluentValidation.Validators.UnitTestExtension.Examples.Production
         public decimal Weight { get; set; }
 
         public DayOfWeek FavouriteDay { get; set; }
+
+        public double HeightInMeters { get; set; }
     }
 }

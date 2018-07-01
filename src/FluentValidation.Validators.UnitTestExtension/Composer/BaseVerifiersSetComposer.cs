@@ -80,7 +80,7 @@ namespace FluentValidation.Validators.UnitTestExtension.Composer
         /// <summary>
         /// Adds the property length validator verifier.
         /// </summary>
-        /// <typeparam name="T">The type of lenght validator that configuration will be checked.</typeparam>
+        /// <typeparam name="T">The type of length validator that configuration will be checked.</typeparam>
         /// <param name="min">The minimum length.</param>
         /// <param name="max">The maximum length.</param>
         /// <returns></returns>
@@ -99,6 +99,19 @@ namespace FluentValidation.Validators.UnitTestExtension.Composer
         public BaseVerifiersSetComposer AddPropertyValidatorVerifier<T>(string expression) where T : IRegularExpressionValidator
         {
             this.verifiers.Add(new RegularExpressionValidatorVerifier<T>(expression));
+            return this;
+        }
+
+        /// <summary>
+        /// Adds the property between validator verifier.
+        /// </summary>
+        /// <typeparam name="T">The type of between validator that configuration will be checked.</typeparam>
+        /// <param name="from">The from.</param>
+        /// <param name="to">The to.</param>
+        /// <returns></returns>
+        public BaseVerifiersSetComposer AddBetweenValidatorVerifier<T>(IComparable from, IComparable to) where T : IBetweenValidator
+        {
+            this.verifiers.Add(new BetweenValidatorVerifier<T>(from, to));
             return this;
         }
 
