@@ -12,12 +12,15 @@
 			this.expression = expression;
 		}
 
-		public RegularExpressionValidatorVerifier(Regex regex)
+		public RegularExpressionValidatorVerifier(Regex regex) : this(regex.ToString())
 		{
-			this.expression = regex.ToString();
 		}
 
-		public override void Verify<TValidator>(TValidator validator)
+	    public RegularExpressionValidatorVerifier(string expression, RegexOptions options) : this(expression)
+	    {
+	    }
+
+        public override void Verify<TValidator>(TValidator validator)
 		{
 			base.Verify(validator);
 			var regularExpressionValidator = (IRegularExpressionValidator)validator;

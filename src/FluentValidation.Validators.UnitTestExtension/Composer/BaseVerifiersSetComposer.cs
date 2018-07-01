@@ -91,18 +91,6 @@ namespace FluentValidation.Validators.UnitTestExtension.Composer
         }
 
         /// <summary>
-        /// Adds the property regular expression validator verifier.
-        /// </summary>
-        /// <typeparam name="T">The type of regular expression validator that configuration will be checked.</typeparam>
-        /// <param name="expression">The expression.</param>
-        /// <returns></returns>
-        public BaseVerifiersSetComposer AddPropertyValidatorVerifier<T>(string expression) where T : IRegularExpressionValidator
-        {
-            this.verifiers.Add(new RegularExpressionValidatorVerifier<T>(expression));
-            return this;
-        }
-
-        /// <summary>
         /// Adds the property between validator verifier.
         /// </summary>
         /// <typeparam name="T">The type of between validator that configuration will be checked.</typeparam>
@@ -161,6 +149,31 @@ namespace FluentValidation.Validators.UnitTestExtension.Composer
         public BaseVerifiersSetComposer AddEnumValidatorVerifier(Type enumType)
         { 
             this.verifiers.Add(new EnumValidatorVerifier<EnumValidator>(enumType));
+            return this;
+        }
+
+        /// <summary>
+        /// Adds the property regular expression validator verifier.
+        /// </summary>
+        /// <typeparam name="T">The type of regular expression validator that configuration will be checked.</typeparam>
+        /// <param name="expression">The expression.</param>
+        /// <returns></returns>
+        public BaseVerifiersSetComposer AddPropertyValidatorVerifier<T>(string expression) where T : IRegularExpressionValidator
+        {
+            this.verifiers.Add(new RegularExpressionValidatorVerifier<T>(expression));
+            return this;
+        }
+
+        /// <summary>
+        /// Adds the property regular expression validator verifier.
+        /// </summary>
+        /// <typeparam name="T">The type of regular expression validator that configuration will be checked.</typeparam>
+        /// <param name="expression">The expression.</param>
+        /// <param name="options">The options.</param>
+        /// <returns></returns>
+        public BaseVerifiersSetComposer AddPropertyValidatorVerifier<T>(string expression, RegexOptions options) where T : IRegularExpressionValidator
+        {
+            this.verifiers.Add(new RegularExpressionValidatorVerifier<T>(expression, options));
             return this;
         }
 

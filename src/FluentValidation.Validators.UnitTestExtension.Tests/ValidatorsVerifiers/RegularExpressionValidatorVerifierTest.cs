@@ -65,5 +65,16 @@
 			// Act & Assert
 			AssertExtension.NotThrows(() => verifier.Verify(regularExpressionValidator));
 		}
-	}
+
+	    [Fact]
+	    public void Given_CorrectValidatorWithExpressionAndRegexOptions_When_Verifying_Then_ValidationPass()
+	    {
+	        // Arrange
+	        var regularExpressionValidator = new FakeRegularExpressionValidator { Expression = "regex" };
+	        var verifier = new RegularExpressionValidatorVerifier<FakeRegularExpressionValidator>("regex", RegexOptions.None);
+
+	        // Act & Assert
+	        AssertExtension.NotThrows(() => verifier.Verify(regularExpressionValidator));
+	    }
+    }
 }
