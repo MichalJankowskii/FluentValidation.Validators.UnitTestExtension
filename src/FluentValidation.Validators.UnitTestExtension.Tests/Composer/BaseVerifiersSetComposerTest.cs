@@ -115,7 +115,7 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.Composer
 		    // Act
 		    var rules = composer.AddPropertyValidatorVerifier<FakeRegularExpressionValidator>(new Regex("regex")).Create();
 
-		    // Assert98
+		    // Assert
 		    Assert.Equal(new[] { typeof(RegularExpressionValidatorVerifier<FakeRegularExpressionValidator>) }, rules.Select(x => x.GetType()).ToArray());
 		    AssertExtension.NotThrows(() => rules[0].Verify(regularExpressionValidator));
 	    }
@@ -130,9 +130,39 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.Composer
             // Act
             var rules = composer.AddScalePrecisionValidatorVerifier<ScalePrecisionValidator>(1, 2).Create();
 
-            // Assert98
+            // Assert
             Assert.Equal(new[] { typeof(ScalePrecisionValidatorVerifier<ScalePrecisionValidator>) }, rules.Select(x => x.GetType()).ToArray());
             AssertExtension.NotThrows(() => rules[0].Verify(scalePrecisionValidator));
+        }
+
+        [Fact]
+        public void Given_Composer_When_AddEnumValidatorVerifierGeneric_Then_CorrectRuleSet()
+        {
+            // Arrange
+            var composer = BaseVerifiersSetComposer.Build();
+            var enumValidator = new EnumValidator(typeof(FakeEnum));
+
+            // Act
+            var rules = composer.AddEnumValidatorVerifier<EnumValidator>(typeof(FakeEnum)).Create();
+
+            // Assert
+            Assert.Equal(new[] { typeof(EnumValidatorVerifier<EnumValidator>) }, rules.Select(x => x.GetType()).ToArray());
+            AssertExtension.NotThrows(() => rules[0].Verify(enumValidator));
+        }
+
+        [Fact]
+        public void Given_Composer_When_AddEnumValidatorVerifier_Then_CorrectRuleSet()
+        {
+            // Arrange
+            var composer = BaseVerifiersSetComposer.Build();
+            var enumValidator = new EnumValidator(typeof(FakeEnum));
+
+            // Act
+            var rules = composer.AddEnumValidatorVerifier(typeof(FakeEnum)).Create();
+
+            // Assert
+            Assert.Equal(new[] { typeof(EnumValidatorVerifier<EnumValidator>) }, rules.Select(x => x.GetType()).ToArray());
+            AssertExtension.NotThrows(() => rules[0].Verify(enumValidator));
         }
 
         [Fact]

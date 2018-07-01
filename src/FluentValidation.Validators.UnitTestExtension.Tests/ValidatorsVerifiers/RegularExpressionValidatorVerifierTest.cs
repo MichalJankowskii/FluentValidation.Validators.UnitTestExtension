@@ -7,7 +7,7 @@
 	using Xunit;
 	using Xunit.Sdk;
 
-	public class RegularExpressionValidatorVerifierTests
+	public class RegularExpressionValidatorVerifierTest
 	{
 		[Fact]
 		public void Given_DifferentValidatorType_When_Verifying_Then_ValidationMustFail()

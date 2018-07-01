@@ -26,6 +26,7 @@
 
 namespace FluentValidation.Validators.UnitTestExtension.Composer
 {
+    using System;
     using System.Collections.Generic;
     using System.Reflection;
     using System.Text.RegularExpressions;
@@ -111,6 +112,30 @@ namespace FluentValidation.Validators.UnitTestExtension.Composer
         public BaseVerifiersSetComposer AddScalePrecisionValidatorVerifier<T>(int scale, int precision) where T : ScalePrecisionValidator
         {
             this.verifiers.Add(new ScalePrecisionValidatorVerifier<T>(scale, precision));
+            return this;
+        }
+
+        /// <summary>
+        /// Adds the property enum validator verifier.
+        /// </summary>
+        /// <typeparam name="T">The type of EnumValidator that configuration will be checked.</typeparam>
+        /// <param name="enumType">The enumType.</param>
+        /// <returns></returns>
+        public BaseVerifiersSetComposer AddEnumValidatorVerifier<T>(Type enumType) where T : EnumValidator
+        {
+            this.verifiers.Add(new EnumValidatorVerifier<T>(enumType));
+            return this;
+        }
+
+        /// <summary>
+        /// Adds the property enum validator verifier.
+        /// </summary>
+        /// 
+        /// <param name="enumType">The enumType.</param>
+        /// <returns></returns>
+        public BaseVerifiersSetComposer AddEnumValidatorVerifier(Type enumType)
+        { 
+            this.verifiers.Add(new EnumValidatorVerifier<EnumValidator>(enumType));
             return this;
         }
 
