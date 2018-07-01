@@ -116,6 +116,18 @@ namespace FluentValidation.Validators.UnitTestExtension.Composer
         }
 
         /// <summary>
+        /// Adds the property scale precision validator verifier.
+        /// </summary>
+        /// <param name="scale">The scale.</param>
+        /// <param name="precision">The precision.</param>
+        /// <returns></returns>
+        public BaseVerifiersSetComposer AddScalePrecisionValidatorVerifier(int scale, int precision)
+        {
+            this.verifiers.Add(new ScalePrecisionValidatorVerifier<ScalePrecisionValidator>(scale, precision));
+            return this;
+        }
+
+        /// <summary>
         /// Adds the property enum validator verifier.
         /// </summary>
         /// <typeparam name="T">The type of EnumValidator that configuration will be checked.</typeparam>

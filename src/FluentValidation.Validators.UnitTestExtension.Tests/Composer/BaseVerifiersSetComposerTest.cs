@@ -121,7 +121,7 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.Composer
 	    }
 
         [Fact]
-        public void Given_Composer_When_AddScalePrecisionValidatorVerifier_Then_CorrectRuleSet()
+        public void Given_Composer_When_AddScalePrecisionValidatorVerifierGeneric_Then_CorrectRuleSet()
         {
             // Arrange
             var composer = BaseVerifiersSetComposer.Build();
@@ -129,6 +129,21 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.Composer
 
             // Act
             var rules = composer.AddScalePrecisionValidatorVerifier<ScalePrecisionValidator>(1, 2).Create();
+
+            // Assert
+            Assert.Equal(new[] { typeof(ScalePrecisionValidatorVerifier<ScalePrecisionValidator>) }, rules.Select(x => x.GetType()).ToArray());
+            AssertExtension.NotThrows(() => rules[0].Verify(scalePrecisionValidator));
+        }
+
+        [Fact]
+        public void Given_Composer_When_AddScalePrecisionValidatorVerifierNotGeneric_Then_CorrectRuleSet()
+        {
+            // Arrange
+            var composer = BaseVerifiersSetComposer.Build();
+            var scalePrecisionValidator = new ScalePrecisionValidator(1, 2);
+
+            // Act
+            var rules = composer.AddScalePrecisionValidatorVerifier(1, 2).Create();
 
             // Assert
             Assert.Equal(new[] { typeof(ScalePrecisionValidatorVerifier<ScalePrecisionValidator>) }, rules.Select(x => x.GetType()).ToArray());
@@ -151,7 +166,7 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.Composer
         }
 
         [Fact]
-        public void Given_Composer_When_AddEnumValidatorVerifier_Then_CorrectRuleSet()
+        public void Given_Composer_When_AddEnumValidatorVerifierNotGeneric_Then_CorrectRuleSet()
         {
             // Arrange
             var composer = BaseVerifiersSetComposer.Build();

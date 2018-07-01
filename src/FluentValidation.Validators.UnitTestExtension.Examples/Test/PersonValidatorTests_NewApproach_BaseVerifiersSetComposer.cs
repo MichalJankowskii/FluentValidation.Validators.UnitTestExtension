@@ -90,12 +90,22 @@ namespace FluentValidation.Validators.UnitTestExtension.Examples.Test
 	    }
 
         [Fact]
-        public void Given_When_PersonValidatorConstructing_Then_RulesForWeightAreConfiguredCorrectly()
+        public void Given_When_PersonValidatorConstructing_Then_RulesForWeightUsingGenericAreConfiguredCorrectly()
         {
             // Assert
             this.personValidator.ShouldHaveRules(x => x.Weight,
                 BaseVerifiersSetComposer.Build()
                     .AddScalePrecisionValidatorVerifier<ScalePrecisionValidator>(2, 4)
+                    .Create());
+        }
+
+        [Fact]
+        public void Given_When_PersonValidatorConstructing_Then_RulesForWeightAreConfiguredCorrectly()
+        {
+            // Assert
+            this.personValidator.ShouldHaveRules(x => x.Weight,
+                BaseVerifiersSetComposer.Build()
+                    .AddScalePrecisionValidatorVerifier(2, 4)
                     .Create());
         }
 
