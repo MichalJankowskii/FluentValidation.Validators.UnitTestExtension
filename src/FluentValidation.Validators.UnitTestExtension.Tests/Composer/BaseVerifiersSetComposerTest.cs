@@ -247,5 +247,50 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.Composer
             // Assert
             Assert.Equal(new[] { typeof(PlaceholderVerifier) }, rules.Select(x => x.GetType()).ToArray());
         }
+
+        [Fact]
+        public void Given_Composer_When_ExactLengthValidatorVerifierGeneric_Then_CorrectRuleSet()
+        {
+            // Arrange
+            var composer = BaseVerifiersSetComposer.Build();
+            var exactLengthValidator = new ExactLengthValidator(10);
+
+            // Act
+            var rules = composer.AddExactLengthValidatorVerifier(10).Create();
+
+            // Assert
+            Assert.Equal(new[] { typeof(ExactLengthValidatorVerifier) }, rules.Select(x => x.GetType()).ToArray());
+            AssertExtension.NotThrows(() => rules[0].Verify(exactLengthValidator));
+        }
+
+        [Fact]
+        public void Given_Composer_When_AddMaximumLengthVerifierGeneric_Then_CorrectRuleSet()
+        {
+            // Arrange
+            var composer = BaseVerifiersSetComposer.Build();
+            var maximumLengthValidator = new MaximumLengthValidator(10);
+
+            // Act
+            var rules = composer.AddMaximumLengthValidatorVerifier(10).Create();
+
+            // Assert
+            Assert.Equal(new[] { typeof(MaximumLengthValidatorVerifier) }, rules.Select(x => x.GetType()).ToArray());
+            AssertExtension.NotThrows(() => rules[0].Verify(maximumLengthValidator));
+        }
+        [Fact]
+        public void Given_Composer_When_AddMinimumLenghtValidatorVerifierGeneric_Then_CorrectRuleSet()
+        {
+            // Arrange
+            var composer = BaseVerifiersSetComposer.Build();
+            var exactLengthValidator = new MinimumLengthValidator(10);
+
+            // Act
+            var rules = composer.AddMinimumLengthValidatorVerifier(10).Create();
+
+            // Assert
+            Assert.Equal(new[] { typeof(MinimumLengthValidatorVerifier) }, rules.Select(x => x.GetType()).ToArray());
+            AssertExtension.NotThrows(() => rules[0].Verify(exactLengthValidator));
+        }
+
     }
 }

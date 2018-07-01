@@ -199,6 +199,39 @@ namespace FluentValidation.Validators.UnitTestExtension.Composer
         }
 
         /// <summary>
+        /// Adds the exact length validator verifier.
+        /// </summary>
+        /// <param name="length">The exact length.</param>
+        /// <returns></returns>
+        public BaseVerifiersSetComposer AddExactLengthValidatorVerifier(int length)
+        {
+            this.verifiers.Add(new ExactLengthValidatorVerifier(length));
+            return this;
+        }
+
+        /// <summary>
+        /// Adds the minimum length validator verifier.
+        /// </summary>
+        /// <param name="min">The minimum length.</param>
+        /// <returns></returns>
+        public BaseVerifiersSetComposer AddMinimumLengthValidatorVerifier(int min)
+        {
+            this.verifiers.Add(new MinimumLengthValidatorVerifier(min));
+            return this;
+        }
+
+        /// <summary>
+        /// Adds the maximum length validator verifier.
+        /// </summary>
+        /// <param name="max">The maximum length.</param>
+        /// <returns></returns>
+        public BaseVerifiersSetComposer AddMaximumLengthValidatorVerifier(int max)
+        {
+            this.verifiers.Add(new MaximumLengthValidatorVerifier(max));
+            return this;
+        }
+
+        /// <summary>
         /// Adds own implemented verifier.
         /// </summary>
         /// <param name="ruleVerifier">The rule verifier.</param>

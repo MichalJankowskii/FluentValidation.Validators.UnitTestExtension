@@ -28,24 +28,10 @@ namespace FluentValidation.Validators.UnitTestExtension.ValidatorVerifiers
 {
     using FluentAssertions;
 
-    public class LengthValidatorVerifier<T> : TypeValidatorVerifier<T> where T : ILengthValidator
+    public class ExactLengthValidatorVerifier : LengthValidatorVerifier<ExactLengthValidator>
     {
-        protected readonly int min;
-
-        protected readonly int max;
-
-        public LengthValidatorVerifier(int min, int max)
+        public ExactLengthValidatorVerifier(int lenght) : base(lenght, lenght)
         {
-            this.min = min;
-            this.max = max;
-        }
-
-        public override void Verify<TValidator>(TValidator validator)
-        {
-            base.Verify(validator);
-            var lengthValidator = (ILengthValidator)validator;
-            lengthValidator.Min.Should().Be(this.min, "(Min property)");
-            lengthValidator.Max.Should().Be(this.max, "(Max property)");
         }
     }
 }
