@@ -10,12 +10,12 @@
         <Company>Michał Jankowski</Company>
         <Copyright>Copyright 2016 - Michał Jankowski</Copyright>
         <PackageTags>FluentValidation unit test testing fluent framework assert TDD BDD</PackageTags>
-        <AssemblyVersion>1.3.0.0</AssemblyVersion>
-        <FileVersion>1.3.0.0</FileVersion>
+        <AssemblyVersion>1.4.0.0</AssemblyVersion>
+        <FileVersion>1.4.0.0</FileVersion>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-        <Version>1.3.0</Version>
-        <PackageReleaseNotes>1.3.0.0 - 27 June 2018
-* Support for netstandard</PackageReleaseNotes>
+        <Version>1.4.0</Version>
+        <PackageReleaseNotes>1.4.0.0 - 1 July 2018
+* Added support for EnumValidator, MaxLengthValidator, MinLenghtValidator, ExactLengthValidator, ExclusiveBetweenValidator and InclusiveBetweenValidator</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
