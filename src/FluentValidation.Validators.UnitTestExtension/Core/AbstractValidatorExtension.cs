@@ -27,6 +27,7 @@
 namespace FluentValidation.Validators.UnitTestExtension.Core
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
     using FluentAssertions;
@@ -47,7 +48,21 @@ namespace FluentValidation.Validators.UnitTestExtension.Core
             Expression<Func<T, TProperty>> expression,
             params IValidatorVerifier[] validatorVerifieres)
         {
-            var validators = validator.Select(x => (PropertyRule)x).Where(r => r.Member == expression.GetMember()).SelectMany(x => x.Validators).ToList();
+
+            var validators = new List<IPropertyValidator>();
+
+            validator.Select(x => (PropertyRule)x).Where(r => r.Member == expression.GetMember()).SelectMany(x => x.Validators).ToList().ForEach(
+                propertyValidator =>
+                {
+                    if (propertyValidator is IDelegatingValidator delegatingValidator)
+                    {
+                        validators.Add(delegatingValidator.InnerValidator);
+                    }
+                    else
+                    {
+                        validators.Add(propertyValidator);
+                    }
+                });
 
             validators.Should().HaveCount(validatorVerifieres.Length, "(number of rules for property)");
 
