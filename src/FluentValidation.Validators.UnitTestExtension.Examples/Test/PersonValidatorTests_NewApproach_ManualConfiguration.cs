@@ -38,10 +38,10 @@ namespace FluentValidation.Validators.UnitTestExtension.Examples.Test
         readonly PersonValidator personValidator = new PersonValidator();
 
         [Fact]
-        public void Given_When_PersonValidatorConstructing_Then_3PropertiesShouldHaveRules()
+        public void Given_When_PersonValidatorConstructing_Then_7PropertiesShouldHaveRules()
         {
             // Assert
-	        this.personValidator.ShouldHaveRulesCount(5);
+	        this.personValidator.ShouldHaveRulesCount(7);
         }
 
         [Fact]
