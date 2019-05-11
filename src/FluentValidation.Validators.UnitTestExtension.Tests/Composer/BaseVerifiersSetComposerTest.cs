@@ -224,19 +224,6 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.Composer
         }
 
         [Fact]
-        public void Given_Composer_When_AddingCollectionValidatorVerifier_Then_CorrectRuleSet()
-        {
-            // Arrange
-            var composer = BaseVerifiersSetComposer.Build();
-
-            // Act
-            var rules = composer.AddChildCollectionValidatorVerifier<int>().Create();
-
-            // Assert
-            Assert.Equal(new[] { typeof(ChildCollectionValidatorVerifier<int>) }, rules.Select(x => x.GetType()).ToArray());
-        }
-
-        [Fact]
         public void Given_Composer_When_AddingAnyValidatorVerifier_Then_CorrectRuleSet()
         {
             // Arrange

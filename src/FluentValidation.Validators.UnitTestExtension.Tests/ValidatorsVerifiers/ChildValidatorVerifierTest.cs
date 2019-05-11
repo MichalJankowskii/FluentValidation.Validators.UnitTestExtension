@@ -49,7 +49,7 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.ValidatorsVerifier
         public void Given_CorrectValidatorWithDifferentChildValidatorType_When_Verifying_Then_ValidationFail()
         {
             // Arrange
-            var childValidatorAdaptor = new ChildValidatorAdaptor(new OtherFakeValidator());
+            var childValidatorAdaptor = new ChildValidatorAdaptor(new OtherFakeValidator(), typeof(OtherFakeValidator));
             var verifier = new ChildValidatorVerifier<FakeValidator>();
 
             // Act & Assert
@@ -60,7 +60,7 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.ValidatorsVerifier
         public void Given_CorrectValidatorWithSameValidatorType_When_Verifying_Then_ValidationPass()
         {
             // Arrange
-            var childValidatorAdaptor = new ChildValidatorAdaptor(new FakeValidator());
+            var childValidatorAdaptor = new ChildValidatorAdaptor(new FakeValidator(), typeof(FakeValidator));
             var verifier = new ChildValidatorVerifier<FakeValidator>();
 
             // Act & Assert

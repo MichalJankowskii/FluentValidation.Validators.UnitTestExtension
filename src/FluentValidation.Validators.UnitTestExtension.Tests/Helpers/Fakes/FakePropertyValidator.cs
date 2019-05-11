@@ -45,6 +45,13 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.Helpers.Fakes
             throw new NotImplementedException();
         }
 
+        public bool ShouldValidateAsync(ValidationContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PropertyValidatorOptions Options { get; }
+
         public bool IsAsync { get; }
         public ICollection<Func<object, object, object>> CustomMessageFormatArguments { get; }
         public Func<PropertyValidatorContext, object> CustomStateProvider { get; set; }

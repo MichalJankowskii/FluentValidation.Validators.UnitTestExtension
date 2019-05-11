@@ -1,27 +1,38 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
         <TargetFrameworks>netstandard1.6;netstandard2.0;net45</TargetFrameworks>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageLicenseUrl>https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension/blob/master/LICENSE</PackageLicenseUrl>
-        <PackageProjectUrl>https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension</PackageProjectUrl>
         <Description>A unit test library for .NET that allows you to build tests for FluentValidation rules in easy way.</Description>
         <Authors>Michał Jankowski</Authors>
         <Company>Michał Jankowski</Company>
         <Copyright>Copyright 2016 - Michał Jankowski</Copyright>
         <PackageTags>FluentValidation unit test testing fluent framework assert TDD BDD</PackageTags>
-        <AssemblyVersion>1.4.1.0</AssemblyVersion>
-        <FileVersion>1.4.1.0</FileVersion>
+        <AssemblyVersion>1.5.0.0</AssemblyVersion>
+        <FileVersion>1.5.0.0</FileVersion>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-        <Version>1.4.1</Version>
-        <PackageReleaseNotes>1.4.1.0 - 4 September 2018
+        <Version>1.5</Version>
+        <PackageReleaseNotes>1.5 - 12 May 2019
+* Added support FluentValidation &gt; 8.4
+
+1.4.1.0 - 4 September 2018
 * Added support for When(...) in Rules</PackageReleaseNotes>
+        <PackageLicenseExpression></PackageLicenseExpression>
+        <PackageLicenseFile>License.txt</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentAssertions" Version="5.4.1" />
-    <PackageReference Include="FluentValidation" Version="7.6.103" />
+    <PackageReference Include="FluentAssertions" Version="5.6.0" />
+    <PackageReference Include="FluentValidation" Version="8.4.0" />
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="License.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

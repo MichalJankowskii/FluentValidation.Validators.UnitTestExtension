@@ -137,7 +137,7 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.ValidatorsVerifier
         }
 
         [Theory]
-        [MemberData("ProvideBuildInComparisonValidatorMapping")]
+        [MemberData(nameof(ProvideBuildInComparisonValidatorMapping))]
         public void Given_BuildInValidator_When_Verifying_Then_ValidationPass<T>(ComparisonValidatorVerifier<T> verifier, T validator) where T : IComparisonValidator
         {
             // Act & assert

@@ -17,7 +17,7 @@
 		{
 			base.Verify(validator);
 			var enumValidator = validator as EnumValidator;
-		    typeof(EnumValidator).GetField("enumType", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(enumValidator).Should().Be(this.enumType, "(EnumType field)");
+		    typeof(EnumValidator).GetField("_enumType", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(enumValidator).Should().Be(this.enumType, "(EnumType field)");
 		}
 	}
 }

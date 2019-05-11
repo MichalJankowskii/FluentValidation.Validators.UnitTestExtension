@@ -201,17 +201,6 @@ namespace FluentValidation.Validators.UnitTestExtension.Composer
         }
 
         /// <summary>
-        /// Adds the child collection validator verifier.
-        /// </summary>
-        /// <typeparam name="T">The type of child validator.</typeparam>
-        /// <returns></returns>
-        public BaseVerifiersSetComposer AddChildCollectionValidatorVerifier<T>()
-        {
-            this.verifiers.Add(new ChildCollectionValidatorVerifier<T>());
-            return this;
-        }
-
-        /// <summary>
         /// Adds the exact length validator verifier.
         /// </summary>
         /// <param name="length">The exact length.</param>

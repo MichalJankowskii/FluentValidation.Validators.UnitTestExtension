@@ -13,7 +13,7 @@
 	        this.precision = precision;
 	    }
 
-        public bool? IgnoreTrailingZeros { get; set; }
+        public bool IgnoreTrailingZeros { get; set; }
 
         public override void Verify<TValidator>(TValidator validator)
 		{
