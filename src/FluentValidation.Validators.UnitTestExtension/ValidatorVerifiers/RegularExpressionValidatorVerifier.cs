@@ -16,11 +16,11 @@
 		{
 		}
 
-	    public RegularExpressionValidatorVerifier(string expression, RegexOptions options) : this(expression)
-	    {
-	    }
+		public RegularExpressionValidatorVerifier(string expression, RegexOptions options) : this(expression)
+		{
+		}
 
-        public override void Verify<TValidator>(TValidator validator)
+		public override void Verify<TValidator>(TValidator validator)
 		{
 			base.Verify(validator);
 			var regularExpressionValidator = (IRegularExpressionValidator)validator;

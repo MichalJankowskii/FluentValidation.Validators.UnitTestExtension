@@ -1,38 +1,12 @@
-﻿#region License
-// MIT License
-// 
-// Copyright(c) 2016 Michał Jankowski (http://www.jankowskimichal.pl)
-// 
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-// 
-// The above copyright notice and this permission notice shall be included in all
-// copies or substantial portions of the Software.
-// 
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-// SOFTWARE.
-// 
-// The latest version of this file can be found at https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension
-#endregion
-
-namespace FluentValidation.Validators.UnitTestExtension.Tests.Composer.Core
+﻿namespace FluentValidation.Validators.UnitTestExtension.Tests.Composer.Core
 {
-    using FluentAssertions;
-    using Helpers;
-    using UnitTestExtension.Core;
-    using Xunit;
-    using Xunit.Sdk;
+	using FluentAssertions;
+	using Helpers;
+	using UnitTestExtension.Core;
+	using Xunit;
+	using Xunit.Sdk;
 
-    public class AbstractValidatorExtensionTest
+	public class AbstractValidatorExtensionTest
 	{
 		[Fact]
 		public void Given_AbstractValidatorWithoutRules_When_CheckingIfRuleCountIs0_Then_ValidationPass()
@@ -126,18 +100,18 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.Composer.Core
 			AssertExtension.NotThrows(() => customerValidator.ShouldHaveRules(x => x.Name, new FakeValidatorVerifier()));
 		}
 
-	    [Fact]
-	    public void
-	        Given_DelegatingValidatorWhichIsValidatingProperty_When_ValidatingWithNeededPassingValidator_Then_ValidationPass()
-	    {
-	        // Arrange
-	        var customerValidator = new CustomerValidator();
+		[Fact]
+		public void
+			Given_DelegatingValidatorWhichIsValidatingProperty_When_ValidatingWithNeededPassingValidator_Then_ValidationPass()
+		{
+			// Arrange
+			var customerValidator = new CustomerValidator();
 
-	        // Act & assert
-	        AssertExtension.NotThrows(() => customerValidator.ShouldHaveRules(x => x.Email, new FakeValidatorVerifier()));
-        }
+			// Act & assert
+			AssertExtension.NotThrows(() => customerValidator.ShouldHaveRules(x => x.Email, new FakeValidatorVerifier()));
+		}
 
-        private class FakeValidator<T> : AbstractValidator<T>
+		private class FakeValidator<T> : AbstractValidator<T>
 		{
 		}
 
@@ -145,7 +119,7 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.Composer.Core
 		{
 			public string Name { get; set; }
 			public string Surname { get; set; }
-            public string Email { get; set; }
+			public string Email { get; set; }
 		}
 
 		private class CustomerValidator : AbstractValidator<Customer>
@@ -153,7 +127,7 @@ namespace FluentValidation.Validators.UnitTestExtension.Tests.Composer.Core
 			public CustomerValidator()
 			{
 				this.RuleFor(cust => cust.Name).NotEmpty();
-			    this.RuleFor(cust => cust.Email).NotEmpty().When(x => true);
+				this.RuleFor(cust => cust.Email).NotEmpty().When(x => true);
 			}
 		}
 
