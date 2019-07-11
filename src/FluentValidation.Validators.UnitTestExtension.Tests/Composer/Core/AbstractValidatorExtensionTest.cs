@@ -2,7 +2,9 @@
 {
 	using FluentAssertions;
 	using Helpers;
+	using UnitTestExtension.Composer;
 	using UnitTestExtension.Core;
+	using ValidatorVerifiers;
 	using Xunit;
 	using Xunit.Sdk;
 
@@ -111,10 +113,37 @@
 			AssertExtension.NotThrows(() => customerValidator.ShouldHaveRules(x => x.Email, new FakeValidatorVerifier()));
 		}
 
+		[Fact]
+		public void
+			Given_ValidatorWhichIsValidatingProperty_When_ValidatingModelWithSimilarNullableFields_Then_ValidationPass()
+		{
+			// Arrange
+			var modelWithNullableFieldsValidator = new ModelWithNullableFieldsValidator();
+
+			// Act & assert
+			AssertExtension.NotThrows(() => modelWithNullableFieldsValidator.ShouldHaveRules(x => x.NullableInt.Value,
+                new ComparisonValidatorVerifier<GreaterThanValidator>(0)));
+		}
+
 		private class FakeValidator<T> : AbstractValidator<T>
 		{
 		}
 
+		private class ModelWithNullableFields
+		{
+			public int? NullableInt { get; set; }
+			public int? AnotherNullableInt { get; set; }
+		}
+
+		private class ModelWithNullableFieldsValidator : AbstractValidator<ModelWithNullableFields>
+		{
+			public ModelWithNullableFieldsValidator()
+			{
+				this.RuleFor(model => model.NullableInt.Value).GreaterThan(0);
+				this.RuleFor(model => model.AnotherNullableInt.Value).GreaterThan(0);
+			}
+		}
+		
 		private class Customer
 		{
 			public string Name { get; set; }
