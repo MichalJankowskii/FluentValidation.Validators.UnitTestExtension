@@ -5,7 +5,9 @@
     using System.Linq;
     using System.Linq.Expressions;
     using FluentAssertions;
+    using FluentValidation.Internal;
     using Internal;
+    using Internal.Extensions;
 
     public static class AbstractValidatorExtension
     {
@@ -25,7 +27,7 @@
 
             var validators = new List<IPropertyValidator>();
 
-            validator.Select(x => (PropertyRule)x).Where(r => r.Member == expression.GetMember()).SelectMany(x => x.Validators).ToList().ForEach(
+            validator.Select(x => (PropertyRule)x).Where(r => r.Expression.CompareMembersRecursively(expression)).SelectMany(x => x.Validators).ToList().ForEach(
                 propertyValidator =>
                 {
                     if (propertyValidator is IDelegatingValidator delegatingValidator)
