@@ -3,26 +3,14 @@
     using System;
     using System.Threading;
     using System.Threading.Tasks;
-    using Results;
+    using FluentValidation;
+    using FluentValidation.Results;
 
-    public class FakeValidator : IValidator
+    public class FakeValidator<TProperty> : IValidator<TProperty>
     {
-        public ValidationResult Validate(object instance)
-        {
-            throw new NotImplementedException();
-        }
+        public CascadeMode CascadeMode { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        public Task<ValidationResult> ValidateAsync(object instance, CancellationToken cancellation = new CancellationToken())
-        {
-            throw new NotImplementedException();
-        }
-
-        public ValidationResult Validate(ValidationContext context)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<ValidationResult> ValidateAsync(ValidationContext context, CancellationToken cancellation = new CancellationToken())
+        public bool CanValidateInstancesOfType(Type type)
         {
             throw new NotImplementedException();
         }
@@ -32,7 +20,22 @@
             throw new NotImplementedException();
         }
 
-        public bool CanValidateInstancesOfType(Type type)
+        public ValidationResult Validate(TProperty instance)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ValidationResult Validate(IValidationContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ValidationResult> ValidateAsync(TProperty instance, CancellationToken cancellation = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ValidationResult> ValidateAsync(IValidationContext context, CancellationToken cancellation = default)
         {
             throw new NotImplementedException();
         }

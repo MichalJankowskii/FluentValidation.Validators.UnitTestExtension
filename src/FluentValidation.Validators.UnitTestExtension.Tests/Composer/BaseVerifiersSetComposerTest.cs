@@ -191,10 +191,10 @@
             var composer = BaseVerifiersSetComposer.Build();
 
             // Act
-            var rules = composer.AddChildValidatorVerifier<int>().Create();
+            var rules = composer.AddChildValidatorVerifier<int, int>().Create();
 
             // Assert
-            Assert.Equal(new[] { typeof(ChildValidatorVerifier<int>) }, rules.Select(x => x.GetType()).ToArray());
+            Assert.Equal(new[] { typeof(ChildValidatorVerifier<int, int>) }, rules.Select(x => x.GetType()).ToArray());
         }
 
         [Fact]
