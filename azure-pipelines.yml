@@ -1,0 +1,46 @@
+trigger:
+ branches:
+   include:
+     - master
+ paths:
+   include:
+     - src/*
+
+pool:
+  vmImage: 'windows-2019'
+
+variables:
+  buildConfiguration: 'Release'
+  extensionVersion: '1.9.0'
+  versionBuildNumber: $[counter('1.9.0', 1)]
+  packageVersion: $(extensionVersion).$(versionBuildNumber)
+
+steps:
+- bash: echo $(packageVersion)
+  displayName: Print version
+
+- task: DotNetCoreCLI@2
+  displayName: 'Restoring'
+  inputs:
+    command: 'restore'
+    projects: 'src/FluentValidation.Validators.UnitTestExtension.sln'
+    feedsToUse: 'select'
+- task: DotNetCoreCLI@2
+  displayName: 'Building'
+  inputs:
+    command: 'build'
+    projects: 'src/FluentValidation.Validators.UnitTestExtension.sln'
+    arguments: '--configuration $(buildConfiguration)'
+- task: DotNetCoreCLI@2
+  displayName: "Packing"
+  inputs:
+    command: 'pack'
+    packagesToPack: 'src/FluentValidation.Validators.UnitTestExtension/FluentValidation.Validators.UnitTestExtension.csproj'
+    versioningScheme: byEnvVar
+    versionEnvVar: packageVersion
+- task: PublishBuildArtifacts@1
+  displayName: 'Publishing'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'package'
+    publishLocation: 'Container'
