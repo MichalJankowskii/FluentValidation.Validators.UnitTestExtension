@@ -1,5 +1,5 @@
 # FluentValidation.Validators.UnitTestExtension
-[![Downloads](https://img.shields.io/nuget/dt/FluentValidation.Validators.UnitTestExtension.svg)](https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension)
+[![Build Status](https://dev.azure.com/OpenSource-jankowskimichalpl/FluentValidation.Validators.UnitTestExtension/_apis/build/status/MichalJankowskii.FluentValidation.Validators.UnitTestExtension?branchName=master)](https://dev.azure.com/OpenSource-jankowskimichalpl/FluentValidation.Validators.UnitTestExtension/_build/latest?definitionId=2&branchName=master) [![Downloads](https://img.shields.io/nuget/dt/FluentValidation.Validators.UnitTestExtension.svg)](https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension)
 
 [Full documentation](https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension/wiki)
 ## Project description
