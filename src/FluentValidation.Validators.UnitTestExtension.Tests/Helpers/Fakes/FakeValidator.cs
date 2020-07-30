@@ -6,7 +6,7 @@
     using FluentValidation;
     using FluentValidation.Results;
 
-    public class FakeValidator<TProperty> : IValidator<TProperty>
+    public class FakeValidator : IValidator<int>
     {
         public CascadeMode CascadeMode { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
@@ -20,7 +20,7 @@
             throw new NotImplementedException();
         }
 
-        public ValidationResult Validate(TProperty instance)
+        public ValidationResult Validate(int instance)
         {
             throw new NotImplementedException();
         }
@@ -30,7 +30,7 @@
             throw new NotImplementedException();
         }
 
-        public Task<ValidationResult> ValidateAsync(TProperty instance, CancellationToken cancellation = default)
+        public Task<ValidationResult> ValidateAsync(int instance, CancellationToken cancellation = default)
         {
             throw new NotImplementedException();
         }

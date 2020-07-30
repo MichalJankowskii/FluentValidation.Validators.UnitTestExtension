@@ -17,5 +17,7 @@
         public DayOfWeek FavouriteDay { get; set; }
 
         public double HeightInMeters { get; set; }
+
+        public Address Address { get; set; }
     }
 }

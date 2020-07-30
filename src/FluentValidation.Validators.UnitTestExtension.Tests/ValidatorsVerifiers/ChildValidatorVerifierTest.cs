@@ -13,7 +13,7 @@
         {
             // Arrange
             var otherValidator = new FakePropertyValidator();
-            var verifier = new ChildValidatorVerifier<FakePropertyValidator, int>();
+            var verifier = new ChildValidatorVerifier<FakePropertyValidator, int, int>();
 
             // Act & Assert
             AssertExtension.Throws<XunitException>(() => verifier.Verify(otherValidator), "(wrong type)");
@@ -23,8 +23,8 @@
         public void Given_CorrectValidatorWithDifferentChildValidatorType_When_Verifying_Then_ValidationFail()
         {
             // Arrange
-            var childValidatorAdaptor = new ChildValidatorAdaptor<FakeValidator<int>, int>(new OtherFakeValidator<int>(), typeof(OtherFakeValidator<int>));
-            var verifier = new ChildValidatorVerifier<FakeValidator<int>, int>();
+            var childValidatorAdaptor = new ChildValidatorAdaptor<double, int>(new OtherFakeValidator(), typeof(OtherFakeValidator));
+            var verifier = new ChildValidatorVerifier<FakeValidator, double, int>();
 
             // Act & Assert
             AssertExtension.Throws<XunitException>(() => verifier.Verify(childValidatorAdaptor), "(ValidatorType property)");
@@ -34,8 +34,8 @@
         public void Given_CorrectValidatorWithSameValidatorType_When_Verifying_Then_ValidationPass()
         {
             // Arrange
-            var childValidatorAdaptor = new ChildValidatorAdaptor<FakeValidator<int>, int>(new FakeValidator<int>(), typeof(FakeValidator<int>));
-            var verifier = new ChildValidatorVerifier<FakeValidator<int>, int>();
+            var childValidatorAdaptor = new ChildValidatorAdaptor<double, int>(new FakeValidator(), typeof(FakeValidator));
+            var verifier = new ChildValidatorVerifier<FakeValidator, double, int> ();
 
             // Act & Assert
             AssertExtension.NotThrows(() => verifier.Verify(childValidatorAdaptor));

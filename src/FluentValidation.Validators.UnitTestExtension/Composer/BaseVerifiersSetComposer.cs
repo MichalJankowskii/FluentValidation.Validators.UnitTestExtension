@@ -166,12 +166,13 @@
         /// <summary>
         /// Adds the child validator verifier.
         /// </summary>
-        /// <typeparam name="T">The type of child validator.</typeparam>
-        /// <typeparam name="TProperty">The type of child validator.</typeparam>
+        /// <typeparam name="TPropertyValidator">The type of child validator.</typeparam>
+        /// <typeparam name="T">The type of validated object.</typeparam>
+        /// <typeparam name="TProperty">The type of validated property.</typeparam>
         /// <returns></returns>
-        public BaseVerifiersSetComposer AddChildValidatorVerifier<T, TProperty>()
+        public BaseVerifiersSetComposer AddChildValidatorVerifier<TPropertyValidator, T, TProperty>()
         {
-            this.verifiers.Add(new ChildValidatorVerifier<T, TProperty>());
+            this.verifiers.Add(new ChildValidatorVerifier<TPropertyValidator, T, TProperty>());
             return this;
         }
 

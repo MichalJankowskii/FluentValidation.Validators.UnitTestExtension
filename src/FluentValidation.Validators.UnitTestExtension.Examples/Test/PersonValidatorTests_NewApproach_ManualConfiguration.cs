@@ -12,10 +12,10 @@
 		readonly PersonValidator personValidator = new PersonValidator();
 
 		[Fact]
-		public void Given_When_PersonValidatorConstructing_Then_7PropertiesShouldHaveRules()
+		public void Given_When_PersonValidatorConstructing_Then_8PropertiesShouldHaveRules()
 		{
 			// Assert
-			this.personValidator.ShouldHaveRulesCount(7);
+			this.personValidator.ShouldHaveRulesCount(8);
 		}
 
 		[Fact]
@@ -99,5 +99,16 @@
 					new BetweenValidatorVerifier<InclusiveBetweenValidator>(0.0, 2.5)
 				});
 		}
+
+        [Fact]
+        public void Given_When_PersonValidatorConstructing_Then_RulesForAddressValidatorAreConfiguredCorrectly()
+        {
+            // Assert
+            this.personValidator.ShouldHaveRules(x => x.Address,
+                new IValidatorVerifier[]
+                {
+                    new ChildValidatorVerifier<AddressValidator, Person, Address>()
+                });
+        }
 	}
 }
