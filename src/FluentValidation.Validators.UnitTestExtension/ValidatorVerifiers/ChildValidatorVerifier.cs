@@ -4,13 +4,13 @@
     using FluentAssertions;
 
     // TODO: Maybe we should also check inner validator
-    public class ChildValidatorVerifier<T, TProperty> : IValidatorVerifier
+    public class ChildValidatorVerifier<TPropertyValidator, T, TProperty> : IValidatorVerifier
     {
         public void Verify<TChildValidatorAdaptor>(TChildValidatorAdaptor validator)
         {
             validator.Should().BeOfType<ChildValidatorAdaptor<T, TProperty>>("(wrong type)");
 
-            (validator as ChildValidatorAdaptor<T, TProperty>).ValidatorType.Should().Be(typeof(T), "(ValidatorType property)");
+            (validator as ChildValidatorAdaptor<T, TProperty>).ValidatorType.Should().Be(typeof(TPropertyValidator), "(ValidatorType property)");
         }
     }
 }

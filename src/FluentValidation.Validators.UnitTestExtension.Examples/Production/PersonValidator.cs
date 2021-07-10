@@ -15,6 +15,7 @@
             this.RuleFor(person => person.Weight).SetValidator(new ScalePrecisionValidator<Person>(2, 4));
             this.RuleFor(person => person.FavouriteDay).SetValidator(new EnumValidator<Person, DayOfWeek>());
             this.RuleFor(person => person.HeightInMeters).InclusiveBetween(0.0, 2.5);
+            this.RuleFor(person => person.Address).SetValidator(new AddressValidator());
         }
     }
 }

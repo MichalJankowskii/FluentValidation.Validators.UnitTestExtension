@@ -1,3 +1,11 @@
+1.9.0.13
+* Fix ChildValidator verification
+
+1.9.0.10
+* Added support FluentValidation > 9.0
+
+...
+
 1.4.0.0 - 1 July 2018
 * Added support for EnumValidator, MaxLengthValidator, MinLenghtValidator, ExactLengthValidator, ExclusiveBetweenValidator and InclusiveBetweenValidator
 
