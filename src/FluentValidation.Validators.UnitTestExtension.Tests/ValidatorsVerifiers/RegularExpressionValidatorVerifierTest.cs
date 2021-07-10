@@ -14,7 +14,7 @@
 		{
 			// Arrange
 			var otherValidator = new FakePropertyValidator();
-			var verifier = new RegularExpressionValidatorVerifier<RegularExpressionValidator>("regex");
+			var verifier = new RegularExpressionValidatorVerifier<RegularExpressionValidator<object>>("regex");
 
 			// Act & Assert
 			AssertExtension.Throws<XunitException>(() => verifier.Verify(otherValidator), "(wrong type)");

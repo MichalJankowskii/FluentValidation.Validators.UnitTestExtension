@@ -10,7 +10,7 @@
         public void Given_AnyValidator_When_Verifying_Then_ValidationMustPass()
         {
             // Arrange
-            var lengthValidator = new LengthValidator(1, 10);
+            var lengthValidator = new LengthValidator<object>(1, 10);
             var verifier = new PlaceholderVerifier();
 
             // Act & Assert

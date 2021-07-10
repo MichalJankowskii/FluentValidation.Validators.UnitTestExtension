@@ -13,7 +13,7 @@
         {
             // Arrange
             var otherValidator = new FakePropertyValidator();
-            var verifier = new MaximumLengthValidatorVerifier(10);
+            var verifier = new MaximumLengthValidatorVerifier<object>(10);
 
             // Act & Assert
             AssertExtension.Throws<XunitException>(() => verifier.Verify(otherValidator), "(wrong type)");
@@ -23,8 +23,8 @@
         public void Given_CorrectValidatorWithDifferentValue_When_Verifying_Then_ValidationFail()
         {
             // Arrange
-            var exactValidatorVerifier = new MaximumLengthValidator(10);
-            var verifier = new MaximumLengthValidatorVerifier(1);
+            var exactValidatorVerifier = new MaximumLengthValidator<object>(10);
+            var verifier = new MaximumLengthValidatorVerifier<object>(1);
 
             // Act & Assert
             AssertExtension.Throws<XunitException>(() => verifier.Verify(exactValidatorVerifier),
@@ -35,8 +35,8 @@
         public void Given_CorrectValidator_When_Verifying_Then_ValidationPass()
         {
             // Arrange
-            var exactValidatorVerifier = new MaximumLengthValidator(10);
-            var verifier = new MaximumLengthValidatorVerifier(10);
+            var exactValidatorVerifier = new MaximumLengthValidator<object>(10);
+            var verifier = new MaximumLengthValidatorVerifier<object>(10);
 
             // Act & Assert
             AssertExtension.NotThrows(() => verifier.Verify(exactValidatorVerifier));

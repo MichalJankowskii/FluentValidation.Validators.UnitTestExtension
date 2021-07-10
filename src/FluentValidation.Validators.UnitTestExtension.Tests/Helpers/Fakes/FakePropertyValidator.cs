@@ -24,13 +24,17 @@
             throw new NotImplementedException();
         }
 
-        public PropertyValidatorOptions Options { get; }
+        public string GetDefaultMessageTemplate(string errorCode)
+        {
+            throw new NotImplementedException();
+        }
 
         public bool IsAsync { get; }
         public ICollection<Func<object, object, object>> CustomMessageFormatArguments { get; }
         public Func<PropertyValidatorContext, object> CustomStateProvider { get; set; }
-        public IStringSource ErrorMessageSource { get; set; }
-        public IStringSource ErrorCodeSource { get; set; }
+
         public Severity Severity { get; set; }
+
+        public string Name => throw new NotImplementedException();
     }
 }

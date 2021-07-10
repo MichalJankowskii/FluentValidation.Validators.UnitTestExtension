@@ -8,6 +8,7 @@
     using ValidatorVerifiers;
 
     // TODO: Add class which will build tests from build in rules
+    // TODo: Sprawdzic opisy
     public class BaseVerifiersSetComposer
     {
         private readonly List<IValidatorVerifier> verifiers;
@@ -45,9 +46,23 @@
         /// <param name="comparison">The comparison type.</param>
         /// <param name="memberToCompare">The member being compared.</param>
         /// <returns></returns>
-        public BaseVerifiersSetComposer AddPropertyValidatorVerifier<T>(object valueToCompare, Comparison? comparison = null, MemberInfo memberToCompare = null) where T : IComparisonValidator
+        public BaseVerifiersSetComposer AddComparisonValidatorVerifier<TComparisonValidator, T, TProperty>(object valueToCompare, Comparison? comparison = null, MemberInfo memberToCompare = null) where TComparisonValidator : PropertyValidator<T, TProperty> where TProperty : IComparable<TProperty>, IComparable
         {
-            this.verifiers.Add(new ComparisonValidatorVerifier<T>(valueToCompare, comparison, memberToCompare));
+            this.verifiers.Add(new ComparisonValidatorVerifier<TComparisonValidator, T, TProperty>(valueToCompare, comparison, memberToCompare));
+            return this;
+        }
+
+        /// <summary>
+        /// Adds the property comparison validator verifier.
+        /// </summary>
+        /// <typeparam name="T">The type of comparison validator that configuration will be checked.</typeparam>
+        /// <param name="valueToCompare">The value to compare.</param>
+        /// <param name="comparison">The comparison type.</param>
+        /// <param name="memberToCompare">The member being compared.</param>
+        /// <returns></returns>
+        public BaseVerifiersSetComposer AddAbstractComparisonValidatorVerifier<TComparisonValidator, T, TProperty>(object valueToCompare, Comparison? comparison = null, MemberInfo memberToCompare = null) where TComparisonValidator : AbstractComparisonValidator<T, TProperty> where TProperty : IComparable<TProperty>, IComparable
+        {
+            this.verifiers.Add(new AbstractComparisonValidatorVerifier<TComparisonValidator, T, TProperty>(valueToCompare, comparison, memberToCompare));
             return this;
         }
 
@@ -84,21 +99,9 @@
         /// <param name="scale">The scale.</param>
         /// <param name="precision">The precision.</param>
         /// <returns></returns>
-        public BaseVerifiersSetComposer AddScalePrecisionValidatorVerifier<T>(int scale, int precision) where T : ScalePrecisionValidator
+        public BaseVerifiersSetComposer AddScalePrecisionValidatorVerifier<TScalePrecisionValidator, T>(int scale, int precision) where TScalePrecisionValidator : ScalePrecisionValidator<T>
         {
-            this.verifiers.Add(new ScalePrecisionValidatorVerifier<T>(scale, precision));
-            return this;
-        }
-
-        /// <summary>
-        /// Adds the property scale precision validator verifier.
-        /// </summary>
-        /// <param name="scale">The scale.</param>
-        /// <param name="precision">The precision.</param>
-        /// <returns></returns>
-        public BaseVerifiersSetComposer AddScalePrecisionValidatorVerifier(int scale, int precision)
-        {
-            this.verifiers.Add(new ScalePrecisionValidatorVerifier<ScalePrecisionValidator>(scale, precision));
+            this.verifiers.Add(new ScalePrecisionValidatorVerifier<TScalePrecisionValidator, T>(scale, precision));
             return this;
         }
 
@@ -108,9 +111,9 @@
         /// <typeparam name="T">The type of EnumValidator that configuration will be checked.</typeparam>
         /// <param name="enumType">The enumType.</param>
         /// <returns></returns>
-        public BaseVerifiersSetComposer AddEnumValidatorVerifier<T>(Type enumType) where T : EnumValidator
+        public BaseVerifiersSetComposer AddEnumValidatorVerifier<TEnumValidator, T, TProperty>(Type enumType) where TEnumValidator : EnumValidator<T, TProperty>
         {
-            this.verifiers.Add(new EnumValidatorVerifier<T>(enumType));
+            this.verifiers.Add(new EnumValidatorVerifier<TEnumValidator, T, TProperty>(enumType));
             return this;
         }
 
@@ -120,9 +123,9 @@
         /// 
         /// <param name="enumType">The enumType.</param>
         /// <returns></returns>
-        public BaseVerifiersSetComposer AddEnumValidatorVerifier(Type enumType)
+        public BaseVerifiersSetComposer AddEnumValidatorVerifier<T, TProperty>(Type enumType)
         { 
-            this.verifiers.Add(new EnumValidatorVerifier<EnumValidator>(enumType));
+            this.verifiers.Add(new EnumValidatorVerifier<EnumValidator<T, TProperty>, T, TProperty>(enumType));
             return this;
         }
 
@@ -180,9 +183,9 @@
         /// </summary>
         /// <param name="length">The exact length.</param>
         /// <returns></returns>
-        public BaseVerifiersSetComposer AddExactLengthValidatorVerifier(int length)
+        public BaseVerifiersSetComposer AddExactLengthValidatorVerifier<T>(int length)
         {
-            this.verifiers.Add(new ExactLengthValidatorVerifier(length));
+            this.verifiers.Add(new ExactLengthValidatorVerifier<T>(length));
             return this;
         }
 
@@ -191,9 +194,9 @@
         /// </summary>
         /// <param name="min">The minimum length.</param>
         /// <returns></returns>
-        public BaseVerifiersSetComposer AddMinimumLengthValidatorVerifier(int min)
+        public BaseVerifiersSetComposer AddMinimumLengthValidatorVerifier<T>(int min)
         {
-            this.verifiers.Add(new MinimumLengthValidatorVerifier(min));
+            this.verifiers.Add(new MinimumLengthValidatorVerifier<T>(min));
             return this;
         }
 
@@ -202,9 +205,9 @@
         /// </summary>
         /// <param name="max">The maximum length.</param>
         /// <returns></returns>
-        public BaseVerifiersSetComposer AddMaximumLengthValidatorVerifier(int max)
+        public BaseVerifiersSetComposer AddMaximumLengthValidatorVerifier<T>(int max)
         {
-            this.verifiers.Add(new MaximumLengthValidatorVerifier(max));
+            this.verifiers.Add(new MaximumLengthValidatorVerifier<T>(max));
             return this;
         }
 

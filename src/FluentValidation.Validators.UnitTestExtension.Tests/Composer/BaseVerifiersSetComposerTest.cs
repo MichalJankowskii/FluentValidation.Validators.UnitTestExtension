@@ -1,5 +1,6 @@
 ﻿namespace FluentValidation.Validators.UnitTestExtension.Tests.Composer
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Text.RegularExpressions;
     using Helpers;
@@ -39,13 +40,13 @@
         {
             // Arrange
             var composer = BaseVerifiersSetComposer.Build();
-            var fakeComparisonValidator = new FakeComparisonValidator {ValueToCompare = 10, Comparison = Comparison.Equal};
+            var fakeComparisonValidator = new EqualValidator<object, int>(10, new Int32EqualityComparer()) ;
 
             // Act
-            var rules = composer.AddPropertyValidatorVerifier<FakeComparisonValidator>(10, Comparison.Equal).Create();
+            var rules = composer.AddComparisonValidatorVerifier<EqualValidator<object, int>, object, int>(10).Create();
 
             // Assert
-            Assert.Equal(new[] {typeof(ComparisonValidatorVerifier<FakeComparisonValidator>) }, rules.Select(x => x.GetType()).ToArray());
+            Assert.Equal(new[] {typeof(ComparisonValidatorVerifier<EqualValidator<object, int>, object, int>) }, rules.Select(x => x.GetType()).ToArray());
             AssertExtension.NotThrows(() => rules[0].Verify(fakeComparisonValidator));
         }
 
@@ -129,28 +130,13 @@
         {
             // Arrange
             var composer = BaseVerifiersSetComposer.Build();
-            var scalePrecisionValidator = new ScalePrecisionValidator(1, 2);
+            var scalePrecisionValidator = new ScalePrecisionValidator<object>(1, 2);
 
             // Act
-            var rules = composer.AddScalePrecisionValidatorVerifier<ScalePrecisionValidator>(1, 2).Create();
+            var rules = composer.AddScalePrecisionValidatorVerifier<ScalePrecisionValidator<object>, object>(1, 2).Create();
 
             // Assert
-            Assert.Equal(new[] { typeof(ScalePrecisionValidatorVerifier<ScalePrecisionValidator>) }, rules.Select(x => x.GetType()).ToArray());
-            AssertExtension.NotThrows(() => rules[0].Verify(scalePrecisionValidator));
-        }
-
-        [Fact]
-        public void Given_Composer_When_AddScalePrecisionValidatorVerifierNotGeneric_Then_CorrectRuleSet()
-        {
-            // Arrange
-            var composer = BaseVerifiersSetComposer.Build();
-            var scalePrecisionValidator = new ScalePrecisionValidator(1, 2);
-
-            // Act
-            var rules = composer.AddScalePrecisionValidatorVerifier(1, 2).Create();
-
-            // Assert
-            Assert.Equal(new[] { typeof(ScalePrecisionValidatorVerifier<ScalePrecisionValidator>) }, rules.Select(x => x.GetType()).ToArray());
+            Assert.Equal(new[] { typeof(ScalePrecisionValidatorVerifier<ScalePrecisionValidator<object>, object>) }, rules.Select(x => x.GetType()).ToArray());
             AssertExtension.NotThrows(() => rules[0].Verify(scalePrecisionValidator));
         }
 
@@ -159,13 +145,13 @@
         {
             // Arrange
             var composer = BaseVerifiersSetComposer.Build();
-            var enumValidator = new EnumValidator(typeof(FakeEnum));
+            var enumValidator = new EnumValidator<object, FakeEnum>();
 
             // Act
-            var rules = composer.AddEnumValidatorVerifier<EnumValidator>(typeof(FakeEnum)).Create();
+            var rules = composer.AddEnumValidatorVerifier<EnumValidator<object, FakeEnum>, object, FakeEnum>(typeof(FakeEnum)).Create();
 
             // Assert
-            Assert.Equal(new[] { typeof(EnumValidatorVerifier<EnumValidator>) }, rules.Select(x => x.GetType()).ToArray());
+            Assert.Equal(new[] { typeof(EnumValidatorVerifier<EnumValidator<object, FakeEnum>, object, FakeEnum>) }, rules.Select(x => x.GetType()).ToArray());
             AssertExtension.NotThrows(() => rules[0].Verify(enumValidator));
         }
 
@@ -174,13 +160,13 @@
         {
             // Arrange
             var composer = BaseVerifiersSetComposer.Build();
-            var enumValidator = new EnumValidator(typeof(FakeEnum));
+            var enumValidator = new EnumValidator<object, FakeEnum>();
 
             // Act
-            var rules = composer.AddEnumValidatorVerifier(typeof(FakeEnum)).Create();
+            var rules = composer.AddEnumValidatorVerifier<object, FakeEnum>(typeof(FakeEnum)).Create();
 
             // Assert
-            Assert.Equal(new[] { typeof(EnumValidatorVerifier<EnumValidator>) }, rules.Select(x => x.GetType()).ToArray());
+            Assert.Equal(new[] { typeof(EnumValidatorVerifier<EnumValidator<object, FakeEnum>, object, FakeEnum>) }, rules.Select(x => x.GetType()).ToArray());
             AssertExtension.NotThrows(() => rules[0].Verify(enumValidator));
         }
 
@@ -229,13 +215,13 @@
         {
             // Arrange
             var composer = BaseVerifiersSetComposer.Build();
-            var exactLengthValidator = new ExactLengthValidator(10);
+            var exactLengthValidator = new ExactLengthValidator<object>(10);
 
             // Act
-            var rules = composer.AddExactLengthValidatorVerifier(10).Create();
+            var rules = composer.AddExactLengthValidatorVerifier<object>(10).Create();
 
             // Assert
-            Assert.Equal(new[] { typeof(ExactLengthValidatorVerifier) }, rules.Select(x => x.GetType()).ToArray());
+            Assert.Equal(new[] { typeof(ExactLengthValidatorVerifier<object>) }, rules.Select(x => x.GetType()).ToArray());
             AssertExtension.NotThrows(() => rules[0].Verify(exactLengthValidator));
         }
 
@@ -244,13 +230,13 @@
         {
             // Arrange
             var composer = BaseVerifiersSetComposer.Build();
-            var maximumLengthValidator = new MaximumLengthValidator(10);
+            var maximumLengthValidator = new MaximumLengthValidator<object>(10);
 
             // Act
-            var rules = composer.AddMaximumLengthValidatorVerifier(10).Create();
+            var rules = composer.AddMaximumLengthValidatorVerifier<object>(10).Create();
 
             // Assert
-            Assert.Equal(new[] { typeof(MaximumLengthValidatorVerifier) }, rules.Select(x => x.GetType()).ToArray());
+            Assert.Equal(new[] { typeof(MaximumLengthValidatorVerifier<object>) }, rules.Select(x => x.GetType()).ToArray());
             AssertExtension.NotThrows(() => rules[0].Verify(maximumLengthValidator));
         }
         [Fact]
@@ -258,15 +244,14 @@
         {
             // Arrange
             var composer = BaseVerifiersSetComposer.Build();
-            var exactLengthValidator = new MinimumLengthValidator(10);
+            var exactLengthValidator = new MinimumLengthValidator<object>(10);
 
             // Act
-            var rules = composer.AddMinimumLengthValidatorVerifier(10).Create();
+            var rules = composer.AddMinimumLengthValidatorVerifier<object>(10).Create();
 
             // Assert
-            Assert.Equal(new[] { typeof(MinimumLengthValidatorVerifier) }, rules.Select(x => x.GetType()).ToArray());
+            Assert.Equal(new[] { typeof(MinimumLengthValidatorVerifier<object>) }, rules.Select(x => x.GetType()).ToArray());
             AssertExtension.NotThrows(() => rules[0].Verify(exactLengthValidator));
         }
-
     }
 }

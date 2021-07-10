@@ -2,7 +2,7 @@
 {
     using FluentAssertions;
 
-    public class MinimumLengthValidatorVerifier : LengthValidatorVerifier<MinimumLengthValidator>
+    public class MinimumLengthValidatorVerifier<T> : LengthValidatorVerifier<MinimumLengthValidator<T>>
     {
         public MinimumLengthValidatorVerifier(int min) : base(min, -1)
         {

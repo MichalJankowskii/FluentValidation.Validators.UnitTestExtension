@@ -1,9 +1,9 @@
 ﻿namespace FluentValidation.Validators.UnitTestExtension.Examples.Test
 {
-	using System;
 	using Composer;
 	using Core;
 	using Production;
+	using System;
 	using Xunit;
 
 	public class PersonValidatorTests_NewApproach_BaseVerifiersSetComposer
@@ -24,9 +24,9 @@
 			// Assert
 			this.personValidator.ShouldHaveRules(x => x.FirstName,
 				BaseVerifiersSetComposer.Build()
-					.AddPropertyValidatorVerifier<NotNullValidator>()
-					.AddPropertyValidatorVerifier<NotEmptyValidator>()
-					.AddPropertyValidatorVerifier<LengthValidator>(0, 20)
+					.AddPropertyValidatorVerifier<NotNullValidator<Person, string>>()
+					.AddPropertyValidatorVerifier<NotEmptyValidator<Person, string>>()
+					.AddPropertyValidatorVerifier<LengthValidator<Person>>(0, 20)
 					.Create());
 		}
 
@@ -36,9 +36,9 @@
 			// Assert
 			this.personValidator.ShouldHaveRules(x => x.LastName,
 				BaseVerifiersSetComposer.Build()
-					.AddPropertyValidatorVerifier<NotNullValidator>()
-					.AddPropertyValidatorVerifier<NotEmptyValidator>()
-					.AddPropertyValidatorVerifier<LengthValidator>(0, 20)
+					.AddPropertyValidatorVerifier<NotNullValidator<Person, string>>()
+					.AddPropertyValidatorVerifier<NotEmptyValidator<Person, string>>()
+					.AddPropertyValidatorVerifier<LengthValidator<Person>>(0, 20)
 					.Create());
 		}
 
@@ -48,8 +48,8 @@
 			// Assert
 			this.personValidator.ShouldHaveRules(x => x.HeightInCentimeters,
 				BaseVerifiersSetComposer.Build()
-					.AddPropertyValidatorVerifier<GreaterThanValidator>(0)
-					.AddPropertyValidatorVerifier<LessThanOrEqualValidator>(250)
+					.AddAbstractComparisonValidatorVerifier<GreaterThanValidator<Person, int>, Person, int>(0)
+					.AddAbstractComparisonValidatorVerifier<LessThanOrEqualValidator<Person, int>, Person, int>(250)
 					.Create());
 		}
 
@@ -59,7 +59,7 @@
 			// Assert
 			this.personValidator.ShouldHaveRules(x => x.Email,
 				BaseVerifiersSetComposer.Build()
-					.AddPropertyValidatorVerifier<RegularExpressionValidator>("^[_a-z0-9-]+(.[a-z0-9-]+)@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$")
+					.AddPropertyValidatorVerifier<RegularExpressionValidator<Person>>("^[_a-z0-9-]+(.[a-z0-9-]+)@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$")
 					.Create());
 		}
 
@@ -69,27 +69,17 @@
 			// Assert
 			this.personValidator.ShouldHaveRules(x => x.Weight,
 				BaseVerifiersSetComposer.Build()
-					.AddScalePrecisionValidatorVerifier<ScalePrecisionValidator>(2, 4)
+					.AddScalePrecisionValidatorVerifier<ScalePrecisionValidator<Person>, Person>(2, 4)
 					.Create());
 		}
 
-		[Fact]
-		public void Given_When_PersonValidatorConstructing_Then_RulesForWeightAreConfiguredCorrectly()
-		{
-			// Assert
-			this.personValidator.ShouldHaveRules(x => x.Weight,
-				BaseVerifiersSetComposer.Build()
-					.AddScalePrecisionValidatorVerifier(2, 4)
-					.Create());
-		}
-
-		[Fact]
+        [Fact]
 		public void Given_When_PersonValidatorConstructing_Then_RulesForFavouriteDayUsingGenericAreConfiguredCorrectly()
 		{
 			// Assert
 			this.personValidator.ShouldHaveRules(x => x.FavouriteDay,
 				BaseVerifiersSetComposer.Build()
-					.AddEnumValidatorVerifier<EnumValidator>(typeof(DayOfWeek))
+					.AddEnumValidatorVerifier<EnumValidator<Person, DayOfWeek>, Person, DayOfWeek> (typeof(DayOfWeek))
 					.Create());
 		}
 
@@ -99,7 +89,7 @@
 			// Assert
 			this.personValidator.ShouldHaveRules(x => x.FavouriteDay,
 				BaseVerifiersSetComposer.Build()
-					.AddEnumValidatorVerifier(typeof(DayOfWeek))
+					.AddEnumValidatorVerifier<Person, DayOfWeek>(typeof(DayOfWeek))
 					.Create());
 		}
 
@@ -109,7 +99,7 @@
 			// Assert
 			this.personValidator.ShouldHaveRules(x => x.HeightInMeters,
 				BaseVerifiersSetComposer.Build()
-					.AddBetweenValidatorVerifier<InclusiveBetweenValidator>(0.0, 2.5)
+					.AddBetweenValidatorVerifier<InclusiveBetweenValidator<Person, double>>(0.0, 2.5)
 					.Create());
 		}
 	}

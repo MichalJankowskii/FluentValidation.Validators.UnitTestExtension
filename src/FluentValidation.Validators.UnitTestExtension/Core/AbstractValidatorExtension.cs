@@ -25,11 +25,16 @@
 
             var validators = new List<IPropertyValidator>();
 
-            validator.Select(x => (PropertyRule)x).Where(r => r.Member == expression.GetMember()).SelectMany(x => x.Validators).ToList().ForEach(
-                propertyValidator =>
+            foreach (IValidationRule validationRule in validator)
+            {
+                if (validationRule.Member == expression.GetMember())
                 {
-                    validators.Add(propertyValidator);
-                });
+                    foreach (IRuleComponent validationRuleComponent in validationRule.Components)
+                    {
+                        validators.Add(validationRuleComponent.Validator);
+                    }
+                }
+            }
 
             validators.Should().HaveCount(validatorVerifieres.Length, "(number of rules for property)");
 

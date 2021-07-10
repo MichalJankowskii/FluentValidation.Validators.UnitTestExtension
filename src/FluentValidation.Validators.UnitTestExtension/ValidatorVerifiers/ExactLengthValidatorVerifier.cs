@@ -2,9 +2,9 @@
 {
     using FluentAssertions;
 
-    public class ExactLengthValidatorVerifier : LengthValidatorVerifier<ExactLengthValidator>
+    public class ExactLengthValidatorVerifier<T> : LengthValidatorVerifier<ExactLengthValidator<T>>
     {
-        public ExactLengthValidatorVerifier(int lenght) : base(lenght, lenght)
+        public ExactLengthValidatorVerifier(int length) : base(length, length)
         {
         }
     }

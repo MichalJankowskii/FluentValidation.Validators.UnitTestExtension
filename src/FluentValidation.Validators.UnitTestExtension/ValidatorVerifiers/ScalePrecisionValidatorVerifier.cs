@@ -2,7 +2,7 @@
 {
 	using FluentAssertions;
 
-	public class ScalePrecisionValidatorVerifier<T> : TypeValidatorVerifier<T> where T : ScalePrecisionValidator
+	public class ScalePrecisionValidatorVerifier<T, K> : TypeValidatorVerifier<T> where T : ScalePrecisionValidator<K>
 	{
 		private readonly int scale;
 		private readonly int precision;
@@ -18,7 +18,7 @@
 		public override void Verify<TValidator>(TValidator validator)
 		{
 			base.Verify(validator);
-			var scalePrecisionValidator = validator as ScalePrecisionValidator;
+			var scalePrecisionValidator = validator as ScalePrecisionValidator<K>;
 			scalePrecisionValidator.Precision.Should().Be(this.precision, "(Precision property)");
 			scalePrecisionValidator.Scale.Should().Be(this.scale, "(Scale property)");
 			scalePrecisionValidator.IgnoreTrailingZeros.Should().Be(this.IgnoreTrailingZeros, "(IgnoreTrailingZeros property)");

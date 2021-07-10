@@ -2,7 +2,7 @@
 {
     using FluentAssertions;
 
-    public class MaximumLengthValidatorVerifier : LengthValidatorVerifier<MaximumLengthValidator>
+    public class MaximumLengthValidatorVerifier<T> : LengthValidatorVerifier<MaximumLengthValidator<T>>
     {
         public MaximumLengthValidatorVerifier(int max) : base(0, max)
         {

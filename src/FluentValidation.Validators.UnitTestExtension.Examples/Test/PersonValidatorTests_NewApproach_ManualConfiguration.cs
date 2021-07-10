@@ -25,9 +25,9 @@
 			this.personValidator.ShouldHaveRules(x => x.FirstName,
 				new IValidatorVerifier[]
 				{
-					new TypeValidatorVerifier<NotNullValidator>(),
-					new TypeValidatorVerifier<NotEmptyValidator>(),
-					new LengthValidatorVerifier<LengthValidator>(0, 20)
+					new TypeValidatorVerifier<NotNullValidator<Person, string>>(),
+					new TypeValidatorVerifier<NotEmptyValidator<Person, string>>(),
+					new LengthValidatorVerifier<LengthValidator<Person>>(0, 20)
 				});
 		}
 
@@ -38,9 +38,9 @@
 			this.personValidator.ShouldHaveRules(x => x.LastName,
 				new IValidatorVerifier[]
 				{
-					new TypeValidatorVerifier<NotNullValidator>(),
-					new TypeValidatorVerifier<NotEmptyValidator>(),
-					new LengthValidatorVerifier<LengthValidator>(0, 20)
+					new TypeValidatorVerifier<NotNullValidator<Person, string>>(),
+					new TypeValidatorVerifier<NotEmptyValidator<Person, string>>(),
+					new LengthValidatorVerifier<LengthValidator<Person>>(0, 20)
 				});
 		}
 
@@ -51,8 +51,8 @@
 			this.personValidator.ShouldHaveRules(x => x.HeightInCentimeters,
 				new IValidatorVerifier[]
 				{
-					new ComparisonValidatorVerifier<GreaterThanValidator>(0),
-					new ComparisonValidatorVerifier<LessThanOrEqualValidator>(250),
+					new AbstractComparisonValidatorVerifier<GreaterThanValidator<Person, int>, Person, int>(0),
+					new AbstractComparisonValidatorVerifier<LessThanOrEqualValidator<Person, int>, Person, int>(250),
 				});
 		}
 
@@ -63,7 +63,7 @@
 			this.personValidator.ShouldHaveRules(x => x.Email,
 				new IValidatorVerifier[]
 				{
-					new RegularExpressionValidatorVerifier<RegularExpressionValidator>("^[_a-z0-9-]+(.[a-z0-9-]+)@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$")
+					new RegularExpressionValidatorVerifier<RegularExpressionValidator<Person>>("^[_a-z0-9-]+(.[a-z0-9-]+)@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$")
 				});
 		}
 
@@ -74,7 +74,7 @@
 			this.personValidator.ShouldHaveRules(x => x.Weight,
 				new IValidatorVerifier[]
 				{
-					new ScalePrecisionValidatorVerifier<ScalePrecisionValidator>(2, 4)
+					new ScalePrecisionValidatorVerifier<ScalePrecisionValidator<Person>, Person>(2, 4)
 				});
 		}
 
@@ -85,7 +85,7 @@
 			this.personValidator.ShouldHaveRules(x => x.FavouriteDay,
 				new IValidatorVerifier[]
 				{
-					new EnumValidatorVerifier<EnumValidator>(typeof(DayOfWeek))
+					new EnumValidatorVerifier<EnumValidator<Person, DayOfWeek>, Person, DayOfWeek>(typeof(DayOfWeek))
 				});
 		}
 
@@ -96,7 +96,7 @@
 			this.personValidator.ShouldHaveRules(x => x.HeightInMeters,
 				new IValidatorVerifier[]
 				{
-					new BetweenValidatorVerifier<InclusiveBetweenValidator>(0.0, 2.5)
+					new BetweenValidatorVerifier<InclusiveBetweenValidator<Person, double>>(0.0, 2.5)
 				});
 		}
 	}

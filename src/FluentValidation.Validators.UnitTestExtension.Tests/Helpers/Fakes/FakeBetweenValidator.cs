@@ -4,7 +4,7 @@
 
     public class FakeBetweenValidator : FakePropertyValidator, IBetweenValidator
     {
-        public IComparable From { get; set; }
-        public IComparable To { get; set; }
+        public object From { get; set; }
+        public object To { get; set; }
     }
 }
