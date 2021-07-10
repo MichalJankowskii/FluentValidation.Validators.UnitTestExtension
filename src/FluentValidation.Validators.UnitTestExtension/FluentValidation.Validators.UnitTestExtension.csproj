@@ -21,21 +21,14 @@
 
 1.9.0.10
 * Added support FluentValidation &gt; 9.0</PackageReleaseNotes>
-        <PackageLicenseExpression></PackageLicenseExpression>
-        <PackageLicenseFile>License.txt</PackageLicenseFile>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageLicenseFile />
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="5.10.0" />
     <PackageReference Include="FluentValidation" Version="10.1.0" />
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="License.txt">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
   </ItemGroup>
 
 </Project>
