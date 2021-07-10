@@ -85,7 +85,7 @@
 			this.personValidator.ShouldHaveRules(x => x.FavouriteDay,
 				new IValidatorVerifier[]
 				{
-					new EnumValidatorVerifier<EnumValidator<Person, DayOfWeek>, Person, DayOfWeek>(typeof(DayOfWeek))
+					new EnumValidatorVerifier<EnumValidator<Person, DayOfWeek>, Person, DayOfWeek>()
 				});
 		}
 

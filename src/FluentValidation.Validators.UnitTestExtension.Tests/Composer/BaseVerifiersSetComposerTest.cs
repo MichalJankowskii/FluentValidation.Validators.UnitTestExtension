@@ -147,7 +147,7 @@
             var enumValidator = new EnumValidator<object, FakeEnum>();
 
             // Act
-            var rules = composer.AddEnumValidatorVerifier<EnumValidator<object, FakeEnum>, object, FakeEnum>(typeof(FakeEnum)).Create();
+            var rules = composer.AddEnumValidatorVerifier<EnumValidator<object, FakeEnum>, object, FakeEnum>().Create();
 
             // Assert
             Assert.Equal(new[] { typeof(EnumValidatorVerifier<EnumValidator<object, FakeEnum>, object, FakeEnum>) }, rules.Select(x => x.GetType()).ToArray());
@@ -162,7 +162,7 @@
             var enumValidator = new EnumValidator<object, FakeEnum>();
 
             // Act
-            var rules = composer.AddEnumValidatorVerifier<object, FakeEnum>(typeof(FakeEnum)).Create();
+            var rules = composer.AddEnumValidatorVerifier<object, FakeEnum>().Create();
 
             // Assert
             Assert.Equal(new[] { typeof(EnumValidatorVerifier<EnumValidator<object, FakeEnum>, object, FakeEnum>) }, rules.Select(x => x.GetType()).ToArray());

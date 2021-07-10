@@ -79,7 +79,7 @@
 			// Assert
 			this.personValidator.ShouldHaveRules(x => x.FavouriteDay,
 				BaseVerifiersSetComposer.Build()
-					.AddEnumValidatorVerifier<EnumValidator<Person, DayOfWeek>, Person, DayOfWeek> (typeof(DayOfWeek))
+					.AddEnumValidatorVerifier<EnumValidator<Person, DayOfWeek>, Person, DayOfWeek>()
 					.Create());
 		}
 
@@ -89,7 +89,7 @@
 			// Assert
 			this.personValidator.ShouldHaveRules(x => x.FavouriteDay,
 				BaseVerifiersSetComposer.Build()
-					.AddEnumValidatorVerifier<Person, DayOfWeek>(typeof(DayOfWeek))
+					.AddEnumValidatorVerifier<Person, DayOfWeek>()
 					.Create());
 		}
 

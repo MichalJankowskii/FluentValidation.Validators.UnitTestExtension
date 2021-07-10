@@ -8,9 +8,9 @@
     {
 	    private readonly Type enumType;
 
-	    public EnumValidatorVerifier(Type enumType)
+	    public EnumValidatorVerifier()
 	    {
-	        this.enumType = enumType;
+	        this.enumType = typeof(TProperty);
 	    }
 
         public override void Verify<TValidator>(TValidator validator)

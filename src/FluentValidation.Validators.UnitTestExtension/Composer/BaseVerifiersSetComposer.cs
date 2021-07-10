@@ -109,19 +109,16 @@
             return this;
         }
 
-        // ToDO: Czy da sie uproscic
-
         /// <summary>
         /// Adds the property enum validator verifier.
         /// </summary>
         /// <typeparam name="TEnumValidator">The type of EnumValidator that configuration will be checked.</typeparam>
         /// <typeparam name="T">The type of the object that property will be validated</typeparam>
         /// <typeparam name="TProperty">Tye type of the property that will be validated</typeparam>
-        /// <param name="enumType">The enumType.</param>
         /// <returns></returns>
-        public BaseVerifiersSetComposer AddEnumValidatorVerifier<TEnumValidator, T, TProperty>(Type enumType) where TEnumValidator : EnumValidator<T, TProperty>
+        public BaseVerifiersSetComposer AddEnumValidatorVerifier<TEnumValidator, T, TProperty>() where TEnumValidator : EnumValidator<T, TProperty>
         {
-            this.verifiers.Add(new EnumValidatorVerifier<TEnumValidator, T, TProperty>(enumType));
+            this.verifiers.Add(new EnumValidatorVerifier<TEnumValidator, T, TProperty>());
             return this;
         }
 
@@ -130,12 +127,10 @@
         /// </summary>
         /// <typeparam name="T">The type of the object that property will be validated</typeparam>
         /// <typeparam name="TProperty">Tye type of the property that will be validated</typeparam>
-        /// <param name="enumType">The enumType.</param>
         /// <returns></returns>
-        public BaseVerifiersSetComposer AddEnumValidatorVerifier<T, TProperty>(Type enumType)
-        { 
-            this.verifiers.Add(new EnumValidatorVerifier<EnumValidator<T, TProperty>, T, TProperty>(enumType));
-            return this;
+        public BaseVerifiersSetComposer AddEnumValidatorVerifier<T, TProperty>()
+        {
+            return this.AddEnumValidatorVerifier<EnumValidator<T, TProperty>, T, TProperty>();
         }
 
         /// <summary>

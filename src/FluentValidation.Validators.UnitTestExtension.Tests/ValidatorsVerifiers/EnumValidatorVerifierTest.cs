@@ -13,21 +13,10 @@
         {
             // Arrange
             var otherValidator = new FakePropertyValidator();
-            var verifier = new EnumValidatorVerifier<EnumValidator<object, FakeEnum>, object, FakeEnum>(typeof(FakeEnum));
+            var verifier = new EnumValidatorVerifier<EnumValidator<object, FakeEnum>, object, FakeEnum>();
 
             // Act & Assert
             AssertExtension.Throws<XunitException>(() => verifier.Verify(otherValidator), "(wrong type)");
-        }
-
-        [Fact]
-        public void Given_CorrectValidatorWithDifferentEnumType_When_Verifying_Then_ValidationFail()
-        {
-            // Arrange
-            var enumValidator = new EnumValidator<object, MyEnum>();
-            var verifier = new EnumValidatorVerifier<EnumValidator<object, MyEnum>, object, MyEnum>(typeof(FakeEnum));
-
-            // Act & Assert
-            AssertExtension.Throws<XunitException>(() => verifier.Verify(enumValidator), "(EnumType field)");
         }
 
         [Fact]
@@ -35,7 +24,7 @@
         {
             // Arrange
             var enumValidator = new EnumValidator<object, MyEnum>();
-            var verifier = new EnumValidatorVerifier<EnumValidator<object, MyEnum>, object, MyEnum>(typeof(MyEnum));
+            var verifier = new EnumValidatorVerifier<EnumValidator<object, MyEnum>, object, MyEnum>();
 
             // Act & Assert
             AssertExtension.NotThrows(() => verifier.Verify(enumValidator));
