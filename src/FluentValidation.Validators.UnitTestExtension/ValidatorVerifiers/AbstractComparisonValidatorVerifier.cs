@@ -7,7 +7,6 @@
     using FluentAssertions;
 
     // TODO: Czy to jest dobra nazwa
-    // TODO: Czy sa testy jednostkowe
     public class AbstractComparisonValidatorVerifier<TComparisonValidator, T, TProperty> : TypeValidatorVerifier<TComparisonValidator> where TComparisonValidator : IComparisonValidator where TProperty : IComparable<TProperty>, IComparable
     {
         private static readonly Dictionary<Type, Comparison> ComparisonValidatorSetUp = new Dictionary<Type, Comparison>()
