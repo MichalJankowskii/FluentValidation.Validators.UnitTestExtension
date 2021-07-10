@@ -11,8 +11,8 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  extensionVersion: '10.1.0'
-  versionBuildNumber: $[counter('10.1.0', 1)]
+  extensionVersion: '1.10.0'
+  versionBuildNumber: $[counter('1.10.0', 1)]
   packageVersion: $(extensionVersion).$(versionBuildNumber)
 
 steps:
