@@ -42,10 +42,10 @@
             var fakeComparisonValidator = new EqualValidator<object, int>(10, new Int32EqualityComparer()) ;
 
             // Act
-            var rules = composer.AddComparisonValidatorVerifier<EqualValidator<object, int>, object, int>(10).Create();
+            var rules = composer.AddEqualValidatorVerifier<EqualValidator<object, int>, object, int>(10).Create();
 
             // Assert
-            Assert.Equal(new[] {typeof(ComparisonValidatorVerifier<EqualValidator<object, int>, object, int>) }, rules.Select(x => x.GetType()).ToArray());
+            Assert.Equal(new[] {typeof(EqualValidatorVerifier<EqualValidator<object, int>, object, int>) }, rules.Select(x => x.GetType()).ToArray());
             AssertExtension.NotThrows(() => rules[0].Verify(fakeComparisonValidator));
         }
 

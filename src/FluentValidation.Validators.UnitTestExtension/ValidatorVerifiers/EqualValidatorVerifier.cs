@@ -6,15 +6,12 @@
     using Exceptions;
     using FluentAssertions;
 
-    // TODO: Czy to jest dobra nazwa
-    public class AbstractComparisonValidatorVerifier<TComparisonValidator, T, TProperty> : TypeValidatorVerifier<TComparisonValidator> where TComparisonValidator : IComparisonValidator where TProperty : IComparable<TProperty>, IComparable
+    public class EqualValidatorVerifier<TEqualValidator, T, TProperty> : TypeValidatorVerifier<TEqualValidator> where TEqualValidator : PropertyValidator<T, TProperty>
     {
         private static readonly Dictionary<Type, Comparison> ComparisonValidatorSetUp = new Dictionary<Type, Comparison>()
         {
-            {typeof(LessThanValidator<T, TProperty>), Comparison.LessThan},
-            {typeof(LessThanOrEqualValidator<T, TProperty>), Comparison.LessThanOrEqual},
-            {typeof(GreaterThanValidator<T, TProperty>), Comparison.GreaterThan},
-            {typeof(GreaterThanOrEqualValidator<T, TProperty>), Comparison.GreaterThanOrEqual}
+            {typeof(EqualValidator<T, TProperty>), Comparison.Equal},
+            {typeof(NotEqualValidator<T, TProperty>), Comparison.NotEqual},
         };
 
         private readonly object valueToCompare;
@@ -23,7 +20,7 @@
 
         private readonly MemberInfo memberToCompare;
 
-        public AbstractComparisonValidatorVerifier(object valueToCompare, Comparison? comparison = null, MemberInfo memberToCompare = null)
+        public EqualValidatorVerifier(object valueToCompare, Comparison? comparison = null, MemberInfo memberToCompare = null)
         {
             this.valueToCompare = valueToCompare;
             this.comparison = comparison;
@@ -31,9 +28,9 @@
 
             if (this.comparison == null)
             {
-                if (ComparisonValidatorSetUp.ContainsKey(typeof(TComparisonValidator)))
+                if (ComparisonValidatorSetUp.ContainsKey(typeof(TEqualValidator)))
                 {
-                    this.comparison = ComparisonValidatorSetUp[typeof(TComparisonValidator)];
+                    this.comparison = ComparisonValidatorSetUp[typeof(TEqualValidator)];
                 }
                 else
                 {

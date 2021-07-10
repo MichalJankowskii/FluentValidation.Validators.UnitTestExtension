@@ -48,8 +48,8 @@
 			// Assert
 			this.personValidator.ShouldHaveRules(x => x.HeightInCentimeters,
 				BaseVerifiersSetComposer.Build()
-					.AddAbstractComparisonValidatorVerifier<GreaterThanValidator<Person, int>, Person, int>(0)
-					.AddAbstractComparisonValidatorVerifier<LessThanOrEqualValidator<Person, int>, Person, int>(250)
+					.AddComparisonValidatorVerifier<GreaterThanValidator<Person, int>, Person, int>(0)
+					.AddComparisonValidatorVerifier<LessThanOrEqualValidator<Person, int>, Person, int>(250)
 					.Create());
 		}
 

@@ -51,8 +51,8 @@
 			this.personValidator.ShouldHaveRules(x => x.HeightInCentimeters,
 				new IValidatorVerifier[]
 				{
-					new AbstractComparisonValidatorVerifier<GreaterThanValidator<Person, int>, Person, int>(0),
-					new AbstractComparisonValidatorVerifier<LessThanOrEqualValidator<Person, int>, Person, int>(250),
+					new ComparisonValidatorVerifier<GreaterThanValidator<Person, int>, Person, int>(0),
+					new ComparisonValidatorVerifier<LessThanOrEqualValidator<Person, int>, Person, int>(250),
 				});
 		}
 

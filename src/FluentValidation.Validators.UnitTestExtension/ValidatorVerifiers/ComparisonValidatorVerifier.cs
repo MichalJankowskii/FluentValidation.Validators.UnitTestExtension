@@ -6,14 +6,14 @@
     using Exceptions;
     using FluentAssertions;
 
-
-    // TODO: Czy sa testy jednostkowe
-    public class ComparisonValidatorVerifier<TComparisonValidator, T, TProperty> : TypeValidatorVerifier<TComparisonValidator> where TComparisonValidator : PropertyValidator<T, TProperty>
+    public class ComparisonValidatorVerifier<TComparisonValidator, T, TProperty> : TypeValidatorVerifier<TComparisonValidator> where TComparisonValidator : IComparisonValidator where TProperty : IComparable<TProperty>, IComparable
     {
         private static readonly Dictionary<Type, Comparison> ComparisonValidatorSetUp = new Dictionary<Type, Comparison>()
         {
-            {typeof(EqualValidator<T, TProperty>), Comparison.Equal},
-            {typeof(NotEqualValidator<T, TProperty>), Comparison.NotEqual},
+            {typeof(LessThanValidator<T, TProperty>), Comparison.LessThan},
+            {typeof(LessThanOrEqualValidator<T, TProperty>), Comparison.LessThanOrEqual},
+            {typeof(GreaterThanValidator<T, TProperty>), Comparison.GreaterThan},
+            {typeof(GreaterThanOrEqualValidator<T, TProperty>), Comparison.GreaterThanOrEqual}
         };
 
         private readonly object valueToCompare;

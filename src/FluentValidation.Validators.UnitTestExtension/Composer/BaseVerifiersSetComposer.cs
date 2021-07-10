@@ -38,6 +38,22 @@
         }
 
         /// <summary>
+        /// Adds the property equal/not-equal validator verifier.
+        /// </summary>
+        /// <typeparam name="TEqualValidator">The type of comparison validator that configuration will be checked.</typeparam>
+        /// <typeparam name="T">The type of the object that property will be validated</typeparam>
+        /// <typeparam name="TProperty">Tye type of the property that will be validated</typeparam>
+        /// <param name="valueToCompare">The value to compare.</param>
+        /// <param name="comparison">The comparison type.</param>
+        /// <param name="memberToCompare">The member being compared.</param>
+        /// <returns></returns>
+        public BaseVerifiersSetComposer AddEqualValidatorVerifier<TEqualValidator, T, TProperty>(object valueToCompare, Comparison? comparison = null, MemberInfo memberToCompare = null) where TEqualValidator : PropertyValidator<T, TProperty> where TProperty : IComparable<TProperty>, IComparable
+        {
+            this.verifiers.Add(new EqualValidatorVerifier<TEqualValidator, T, TProperty>(valueToCompare, comparison, memberToCompare));
+            return this;
+        }
+
+        /// <summary>
         /// Adds the property comparison validator verifier.
         /// </summary>
         /// <typeparam name="TComparisonValidator">The type of comparison validator that configuration will be checked.</typeparam>
@@ -47,25 +63,9 @@
         /// <param name="comparison">The comparison type.</param>
         /// <param name="memberToCompare">The member being compared.</param>
         /// <returns></returns>
-        public BaseVerifiersSetComposer AddComparisonValidatorVerifier<TComparisonValidator, T, TProperty>(object valueToCompare, Comparison? comparison = null, MemberInfo memberToCompare = null) where TComparisonValidator : PropertyValidator<T, TProperty> where TProperty : IComparable<TProperty>, IComparable
+        public BaseVerifiersSetComposer AddComparisonValidatorVerifier<TComparisonValidator, T, TProperty>(object valueToCompare, Comparison? comparison = null, MemberInfo memberToCompare = null) where TComparisonValidator : AbstractComparisonValidator<T, TProperty> where TProperty : IComparable<TProperty>, IComparable
         {
             this.verifiers.Add(new ComparisonValidatorVerifier<TComparisonValidator, T, TProperty>(valueToCompare, comparison, memberToCompare));
-            return this;
-        }
-
-        /// <summary>
-        /// Adds the property comparison validator verifier.
-        /// </summary>
-        /// <typeparam name="TAbstractComparisonValidator">The type of comparison validator that configuration will be checked.</typeparam>
-        /// <typeparam name="T">The type of the object that property will be validated</typeparam>
-        /// <typeparam name="TProperty">Tye type of the property that will be validated</typeparam>
-        /// <param name="valueToCompare">The value to compare.</param>
-        /// <param name="comparison">The comparison type.</param>
-        /// <param name="memberToCompare">The member being compared.</param>
-        /// <returns></returns>
-        public BaseVerifiersSetComposer AddAbstractComparisonValidatorVerifier<TAbstractComparisonValidator, T, TProperty>(object valueToCompare, Comparison? comparison = null, MemberInfo memberToCompare = null) where TAbstractComparisonValidator : AbstractComparisonValidator<T, TProperty> where TProperty : IComparable<TProperty>, IComparable
-        {
-            this.verifiers.Add(new AbstractComparisonValidatorVerifier<TAbstractComparisonValidator, T, TProperty>(valueToCompare, comparison, memberToCompare));
             return this;
         }
 
