@@ -1,3 +1,6 @@
+1.10.0.1
+* Added support FluentValidation > 10.0
+
 1.9.0.13
 * Fix ChildValidator verification
 

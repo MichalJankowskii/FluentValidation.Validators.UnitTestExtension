@@ -34,13 +34,13 @@ public class PersonValidatorTests
 
     personValidator.ShouldHaveRules(x => x.Name,
       BaseVerifiersSetComposer.Build()
-        .AddPropertyValidatorVerifier<NotNullValidator>()
+        .AddPropertyValidatorVerifier<NotNullValidator<Person, string>>()
 	.Create());
   }
 }
 ```
 
-According to [FluentValidation wiki](https://github.com/JeremySkinner/FluentValidation/wiki/g.-Testing) same code should be tested in the following way:
+According to [FluentValidation wiki](https://docs.fluentvalidation.net/en/latest/testing.html) same code should be tested in the following way:
 ```csharp
 public class PersonValidatorTests
 {
@@ -54,13 +54,17 @@ public class PersonValidatorTests
   [Fact]
   public void Should_have_error_when_Name_is_null() 
   {
-    validator.ShouldHaveValidationErrorFor(person => person.Name, null as string); 
+    var model = new Person { Name = null };
+    var result = validator.TestValidate(model);
+    result.ShouldHaveValidationErrorFor(person => person.Name); 
   }
 
   [Fact]
   public void Should_not_have_error_when_name_is_specified()
   {
-    validator.ShouldNotHaveValidationErrorFor(person => person.Name, "Jeremy");
+    var model = new Person { Name = "Jeremy" };
+    var result = validator.TestValidate(model);
+    result.ShouldNotHaveValidationErrorFor(person => person.Name);
   }
 }
 ```
