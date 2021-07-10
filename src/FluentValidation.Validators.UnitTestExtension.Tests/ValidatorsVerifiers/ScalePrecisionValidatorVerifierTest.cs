@@ -27,8 +27,7 @@
             var verifier = new ScalePrecisionValidatorVerifier<ScalePrecisionValidator<object>, object>(2, 3);
 
             // Act & Assert
-            AssertExtension.Throws<XunitException>(() => verifier.Verify(scalePrecisionValidator),
-                "(Scale property)");
+            AssertExtension.Throws<XunitException>(() => verifier.Verify(scalePrecisionValidator), "(Scale property)");
         }
 
         [Fact]
@@ -52,8 +51,7 @@
                 new ScalePrecisionValidatorVerifier<ScalePrecisionValidator<object>, object>(1, 2) {IgnoreTrailingZeros = false};
 
             // Act & Assert
-            AssertExtension.Throws<XunitException>(() => verifier.Verify(scalePrecisionValidator),
-                "(IgnoreTrailingZeros property)");
+            AssertExtension.Throws<XunitException>(() => verifier.Verify(scalePrecisionValidator), "(IgnoreTrailingZeros property)");
         }
 
         [Fact]

@@ -39,8 +39,7 @@
             var verifier = new LengthValidatorVerifier<FakeLengthValidator>(1, 10);
 
             // Act & Assert
-            AssertExtension.Throws<XunitException>(() => verifier.Verify(lengthValidator),
-                "(Max property)");
+            AssertExtension.Throws<XunitException>(() => verifier.Verify(lengthValidator), "(Max property)");
         }
 
         [Fact]

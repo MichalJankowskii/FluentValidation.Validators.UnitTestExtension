@@ -1,6 +1,5 @@
 ﻿namespace FluentValidation.Validators.UnitTestExtension.Tests.Composer
 {
-    using System.Collections.Generic;
     using System.Linq;
     using System.Text.RegularExpressions;
     using Helpers;

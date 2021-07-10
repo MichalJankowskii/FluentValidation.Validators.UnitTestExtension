@@ -27,8 +27,7 @@
             var verifier = new ExactLengthValidatorVerifier<object>(1);
 
             // Act & Assert
-            AssertExtension.Throws<XunitException>(() => verifier.Verify(exactValidatorVerifier),
-                "(Min property)");
+            AssertExtension.Throws<XunitException>(() => verifier.Verify(exactValidatorVerifier), "(Min property)");
         }
 
         [Fact]

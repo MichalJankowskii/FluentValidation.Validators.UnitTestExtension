@@ -6,7 +6,7 @@
 
     public class PersonValidatorTests_ClassicApproach
     {
-        readonly PersonValidator validator = new PersonValidator();
+        private readonly PersonValidator validator = new PersonValidator();
 
         [Fact]
         public void Given_FirstNameIsNull_When_Validating_Then_Error()

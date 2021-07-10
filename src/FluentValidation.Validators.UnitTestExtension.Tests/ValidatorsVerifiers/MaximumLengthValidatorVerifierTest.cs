@@ -27,8 +27,7 @@
             var verifier = new MaximumLengthValidatorVerifier<object>(1);
 
             // Act & Assert
-            AssertExtension.Throws<XunitException>(() => verifier.Verify(exactValidatorVerifier),
-                "(Max property)");
+            AssertExtension.Throws<XunitException>(() => verifier.Verify(exactValidatorVerifier), "(Max property)");
         }
 
         [Fact]

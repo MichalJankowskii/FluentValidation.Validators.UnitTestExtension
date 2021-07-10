@@ -28,8 +28,7 @@
 			var verifier = new RegularExpressionValidatorVerifier<FakeRegularExpressionValidator>(new Regex("otherRegex"));
 
 			// Act & Assert
-			AssertExtension.Throws<XunitException>(() => verifier.Verify(regularExpressionValidator),
-				"(Expression property)");
+			AssertExtension.Throws<XunitException>(() => verifier.Verify(regularExpressionValidator), "(Expression property)");
 		}
 
 		[Fact]
@@ -40,8 +39,7 @@
 			var verifier = new RegularExpressionValidatorVerifier<FakeRegularExpressionValidator>("otherRegex");
 
 			// Act & Assert
-			AssertExtension.Throws<XunitException>(() => verifier.Verify(regularExpressionValidator),
-				"(Expression property)");
+			AssertExtension.Throws<XunitException>(() => verifier.Verify(regularExpressionValidator), "(Expression property)");
 		}
 
 		[Fact]
