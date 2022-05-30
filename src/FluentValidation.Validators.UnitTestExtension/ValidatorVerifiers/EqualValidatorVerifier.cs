@@ -43,7 +43,7 @@
         {
             base.Verify(validator);
             ((IComparisonValidator)validator).ValueToCompare.Should().BeEquivalentTo(this.valueToCompare, "(ValueToCompare property)");
-            ((IComparisonValidator)validator).Comparison.Should().BeEquivalentTo(this.comparison, "(Comparison property)");
+            ((IComparisonValidator)validator).Comparison.Should().Be(this.comparison, "(Comparison property)");
             if (this.memberToCompare != null)
             {
                 ((IComparisonValidator) validator).MemberToCompare.Should().BeEquivalentTo(this.memberToCompare, "(MemberToCompare property)");
