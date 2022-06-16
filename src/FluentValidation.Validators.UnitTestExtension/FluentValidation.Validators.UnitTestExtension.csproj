@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-        <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
+        <TargetFrameworks>netstandard2.0;netstandard2.1;net5.0;net6.0</TargetFrameworks>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageProjectUrl>https://github.com/MichalJankowskii/FluentValidation.Validators.UnitTestExtension</PackageProjectUrl>
         <Description>A unit test library for .NET that allows you to build tests for FluentValidation rules in easy way.</Description>
         <Authors>Michał Jankowski</Authors>
         <Company>Michał Jankowski</Company>
-        <Copyright>Copyright 2016 - Michał Jankowski</Copyright>
+        <Copyright>Copyright 2022 - Michał Jankowski</Copyright>
         <PackageTags>FluentValidation unit test testing fluent framework assert TDD BDD</PackageTags>
         <AssemblyVersion>1.5.0.0</AssemblyVersion>
         <FileVersion>1.5.0.0</FileVersion>
@@ -26,8 +26,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentAssertions" Version="5.10.0" />
-    <PackageReference Include="FluentValidation" Version="10.1.0" />
+    <None Include="https:\github.com\MichalJankowskii\FluentValidation.Validators.UnitTestExtension\blob\master\README.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="6.0.0" />
+    <PackageReference Include="FluentValidation" Version="11.0.0" />
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
   </ItemGroup>
 

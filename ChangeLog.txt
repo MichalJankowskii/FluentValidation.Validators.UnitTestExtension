@@ -1,3 +1,7 @@
+1.11.0.1 - 16 July 2022
+* Added support FluentValidation > 11.0
+
+
 1.10.0.1 - 10 July 2021
 * Added support FluentValidation > 10.0
 
