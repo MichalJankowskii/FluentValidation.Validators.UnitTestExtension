@@ -18,8 +18,8 @@
         {
             base.Verify(validator);
             var lengthValidator = (ILengthValidator)validator;
-            lengthValidator.Min.Should().Be(this.min, "(Min property)");
-            lengthValidator.Max.Should().Be(this.max, "(Max property)");
+            lengthValidator.Min.Should().Be(min, "(Min property)");
+            lengthValidator.Max.Should().Be(max, "(Max property)");
         }
     }
 }

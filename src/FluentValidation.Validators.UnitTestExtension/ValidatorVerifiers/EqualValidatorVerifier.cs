@@ -42,11 +42,11 @@
         public override void Verify<TValidator>(TValidator validator)
         {
             base.Verify(validator);
-            ((IComparisonValidator)validator).ValueToCompare.Should().BeEquivalentTo(this.valueToCompare, "(ValueToCompare property)");
-            ((IComparisonValidator)validator).Comparison.Should().Be(this.comparison, "(Comparison property)");
-            if (this.memberToCompare != null)
+            ((IComparisonValidator)validator).ValueToCompare.Should().BeEquivalentTo(valueToCompare, "(ValueToCompare property)");
+            ((IComparisonValidator)validator).Comparison.Should().Be(comparison, "(Comparison property)");
+            if (memberToCompare != null)
             {
-                ((IComparisonValidator) validator).MemberToCompare.Should().BeEquivalentTo(this.memberToCompare, "(MemberToCompare property)");
+                ((IComparisonValidator) validator).MemberToCompare.Should().BeEquivalentTo(memberToCompare, "(MemberToCompare property)");
             }
         }
     }

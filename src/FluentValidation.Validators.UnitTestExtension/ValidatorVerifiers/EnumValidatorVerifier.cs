@@ -10,14 +10,14 @@
 
 	    public EnumValidatorVerifier()
 	    {
-	        this.enumType = typeof(TProperty);
+	        enumType = typeof(TProperty);
 	    }
 
         public override void Verify<TValidator>(TValidator validator)
 		{
 			base.Verify(validator);
 			var enumValidator = validator as EnumValidator<T, TProperty>;
-		    typeof(EnumValidator<T, TProperty>).GetField("_enumType", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(enumValidator).Should().Be(this.enumType, "(EnumType field)");
+		    typeof(EnumValidator<T, TProperty>).GetField("_enumType", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(enumValidator).Should().Be(enumType, "(EnumType field)");
 		}
 	}
 }

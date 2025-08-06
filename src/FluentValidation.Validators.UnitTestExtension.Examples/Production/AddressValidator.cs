@@ -4,8 +4,8 @@
     {
         public AddressValidator()
         {
-            this.RuleFor(address => address.City).NotNull().NotEmpty().Length(0, 40);
-            this.RuleFor(address => address.Country).NotNull().NotEmpty().Length(0, 40);
+            RuleFor(address => address.City).NotNull().NotEmpty().Length(0, 40);
+            RuleFor(address => address.Country).NotNull().NotEmpty().Length(0, 40);
         }
     }
 }

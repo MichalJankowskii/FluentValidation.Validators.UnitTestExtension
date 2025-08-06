@@ -16,7 +16,7 @@
                 FirstName = null
             };
 
-            var result = this.validator.TestValidate(person);
+            var result = validator.TestValidate(person);
 
             result.ShouldHaveValidationErrorFor(x => x.FirstName);
         }
@@ -29,7 +29,7 @@
                 FirstName = string.Empty
             };
 
-            var result = this.validator.TestValidate(person);
+            var result = validator.TestValidate(person);
 
             result.ShouldHaveValidationErrorFor(x => x.FirstName);
         }
@@ -42,7 +42,7 @@
                 FirstName = "Long_Test_More_Than_20_Characters"
             };
 
-            var result = this.validator.TestValidate(person);
+            var result = validator.TestValidate(person);
 
             result.ShouldHaveValidationErrorFor(x => x.FirstName);
         }
@@ -55,7 +55,7 @@
                 FirstName = "John"
             };
 
-            var result = this.validator.TestValidate(person);
+            var result = validator.TestValidate(person);
 
             result.ShouldNotHaveValidationErrorFor(x => x.FirstName);
         }
@@ -71,7 +71,7 @@
                 LastName = notAcceptedText
             };
 
-            var result = this.validator.TestValidate(person);
+            var result = validator.TestValidate(person);
 
             result.ShouldHaveValidationErrorFor(x => x.LastName);
         }
@@ -84,7 +84,7 @@
                 LastName = "John"
             };
 
-            var result = this.validator.TestValidate(person);
+            var result = validator.TestValidate(person);
 
             result.ShouldNotHaveValidationErrorFor(x => x.LastName);
         }
@@ -100,7 +100,7 @@
                 HeightInCentimeters= height
             };
 
-            var result = this.validator.TestValidate(person);
+            var result = validator.TestValidate(person);
 
             result.ShouldHaveValidationErrorFor(x => x.HeightInCentimeters);
         }
@@ -113,7 +113,7 @@
                 HeightInCentimeters = 150
             };
 
-            var result = this.validator.TestValidate(person);
+            var result = validator.TestValidate(person);
 
             result.ShouldNotHaveValidationErrorFor(x => x.HeightInCentimeters);
         }
@@ -129,7 +129,7 @@
                 Email = email
             };
 
-            var result = this.validator.TestValidate(person);
+            var result = validator.TestValidate(person);
 
             result.ShouldHaveValidationErrorFor(x => x.Email);
 	    }
@@ -142,7 +142,7 @@
                 Email = "test@test.pl"
             };
 
-            var result = this.validator.TestValidate(person);
+            var result = validator.TestValidate(person);
 
             result.ShouldNotHaveValidationErrorFor(x => x.Email);
 	    }

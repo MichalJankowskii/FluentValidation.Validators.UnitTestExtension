@@ -14,7 +14,7 @@
 
         private BaseVerifiersSetComposer()
         {
-            this.verifiers = new List<IValidatorVerifier>();
+            verifiers = new List<IValidatorVerifier>();
         }
 
         /// <summary>
@@ -33,7 +33,7 @@
         /// <returns></returns>
         public BaseVerifiersSetComposer AddPropertyValidatorVerifier<TPropertyValidator>() where TPropertyValidator : IPropertyValidator
         {
-            this.verifiers.Add(new TypeValidatorVerifier<TPropertyValidator>());
+            verifiers.Add(new TypeValidatorVerifier<TPropertyValidator>());
             return this;
         }
 
@@ -49,7 +49,7 @@
         /// <returns></returns>
         public BaseVerifiersSetComposer AddEqualValidatorVerifier<TEqualValidator, T, TProperty>(object valueToCompare, Comparison? comparison = null, MemberInfo memberToCompare = null) where TEqualValidator : PropertyValidator<T, TProperty> where TProperty : IComparable<TProperty>, IComparable
         {
-            this.verifiers.Add(new EqualValidatorVerifier<TEqualValidator, T, TProperty>(valueToCompare, comparison, memberToCompare));
+            verifiers.Add(new EqualValidatorVerifier<TEqualValidator, T, TProperty>(valueToCompare, comparison, memberToCompare));
             return this;
         }
 
@@ -65,7 +65,7 @@
         /// <returns></returns>
         public BaseVerifiersSetComposer AddComparisonValidatorVerifier<TComparisonValidator, T, TProperty>(object valueToCompare, Comparison? comparison = null, MemberInfo memberToCompare = null) where TComparisonValidator : AbstractComparisonValidator<T, TProperty> where TProperty : IComparable<TProperty>, IComparable
         {
-            this.verifiers.Add(new ComparisonValidatorVerifier<TComparisonValidator, T, TProperty>(valueToCompare, comparison, memberToCompare));
+            verifiers.Add(new ComparisonValidatorVerifier<TComparisonValidator, T, TProperty>(valueToCompare, comparison, memberToCompare));
             return this;
         }
 
@@ -78,7 +78,7 @@
         /// <returns></returns>
         public BaseVerifiersSetComposer AddPropertyValidatorVerifier<TLengthValidator>(int min, int max) where TLengthValidator : ILengthValidator
         {
-            this.verifiers.Add(new LengthValidatorVerifier<TLengthValidator>(min, max));
+            verifiers.Add(new LengthValidatorVerifier<TLengthValidator>(min, max));
             return this;
         }
 
@@ -91,21 +91,21 @@
         /// <returns></returns>
         public BaseVerifiersSetComposer AddBetweenValidatorVerifier<TBetweenValidator>(IComparable from, IComparable to) where TBetweenValidator : IBetweenValidator
         {
-            this.verifiers.Add(new BetweenValidatorVerifier<TBetweenValidator>(from, to));
+            verifiers.Add(new BetweenValidatorVerifier<TBetweenValidator>(from, to));
             return this;
         }
 
         /// <summary>
         /// Adds the property scale precision validator verifier.
         /// </summary>
-        /// <typeparam name="TScalePrecisionValidator">The type of ScalePrecisionValidator that configuration will be checked.</typeparam>
+        /// <typeparam name="TPrecisionScaleValidator">The type of PrecisionScaleValidator that configuration will be checked.</typeparam>
         /// <typeparam name="T">The type of the object that property will be validated</typeparam>
         /// <param name="scale">The scale.</param>
         /// <param name="precision">The precision.</param>
         /// <returns></returns>
-        public BaseVerifiersSetComposer AddScalePrecisionValidatorVerifier<TScalePrecisionValidator, T>(int scale, int precision) where TScalePrecisionValidator : ScalePrecisionValidator<T>
+        public BaseVerifiersSetComposer AddPrecisionScaleValidatorVerifier<TPrecisionScaleValidator, T>(int scale, int precision, bool ignoreTrailingZeros) where TPrecisionScaleValidator : PrecisionScaleValidator<T>
         {
-            this.verifiers.Add(new ScalePrecisionValidatorVerifier<TScalePrecisionValidator, T>(scale, precision));
+            verifiers.Add(new PrecisionScaleValidatorVerifier<TPrecisionScaleValidator, T>(scale, precision, ignoreTrailingZeros));
             return this;
         }
 
@@ -118,7 +118,7 @@
         /// <returns></returns>
         public BaseVerifiersSetComposer AddEnumValidatorVerifier<TEnumValidator, T, TProperty>() where TEnumValidator : EnumValidator<T, TProperty>
         {
-            this.verifiers.Add(new EnumValidatorVerifier<TEnumValidator, T, TProperty>());
+            verifiers.Add(new EnumValidatorVerifier<TEnumValidator, T, TProperty>());
             return this;
         }
 
@@ -130,7 +130,7 @@
         /// <returns></returns>
         public BaseVerifiersSetComposer AddEnumValidatorVerifier<T, TProperty>()
         {
-            return this.AddEnumValidatorVerifier<EnumValidator<T, TProperty>, T, TProperty>();
+            return AddEnumValidatorVerifier<EnumValidator<T, TProperty>, T, TProperty>();
         }
 
         /// <summary>
@@ -141,7 +141,7 @@
         /// <returns></returns>
         public BaseVerifiersSetComposer AddPropertyValidatorVerifier<TRegularExpressionValidator>(string expression) where TRegularExpressionValidator : IRegularExpressionValidator
         {
-            this.verifiers.Add(new RegularExpressionValidatorVerifier<TRegularExpressionValidator>(expression));
+            verifiers.Add(new RegularExpressionValidatorVerifier<TRegularExpressionValidator>(expression));
             return this;
         }
 
@@ -154,7 +154,7 @@
         /// <returns></returns>
         public BaseVerifiersSetComposer AddPropertyValidatorVerifier<TRegularExpressionValidator>(string expression, RegexOptions options) where TRegularExpressionValidator : IRegularExpressionValidator
         {
-            this.verifiers.Add(new RegularExpressionValidatorVerifier<TRegularExpressionValidator>(expression, options));
+            verifiers.Add(new RegularExpressionValidatorVerifier<TRegularExpressionValidator>(expression, options));
             return this;
         }
 
@@ -166,7 +166,7 @@
         /// <returns></returns>
         public BaseVerifiersSetComposer AddPropertyValidatorVerifier<TRegularExpressionValidator>(Regex regex) where TRegularExpressionValidator : IRegularExpressionValidator
         {
-            this.verifiers.Add(new RegularExpressionValidatorVerifier<TRegularExpressionValidator>(regex));
+            verifiers.Add(new RegularExpressionValidatorVerifier<TRegularExpressionValidator>(regex));
             return this;
         }
 
@@ -179,7 +179,7 @@
         /// <returns></returns>
         public BaseVerifiersSetComposer AddChildValidatorVerifier<TPropertyValidator, T, TProperty>()
         {
-            this.verifiers.Add(new ChildValidatorVerifier<TPropertyValidator, T, TProperty>());
+            verifiers.Add(new ChildValidatorVerifier<TPropertyValidator, T, TProperty>());
             return this;
         }
 
@@ -191,7 +191,7 @@
         /// <returns></returns>
         public BaseVerifiersSetComposer AddExactLengthValidatorVerifier<T>(int length)
         {
-            this.verifiers.Add(new ExactLengthValidatorVerifier<T>(length));
+            verifiers.Add(new ExactLengthValidatorVerifier<T>(length));
             return this;
         }
 
@@ -203,7 +203,7 @@
         /// <returns></returns>
         public BaseVerifiersSetComposer AddMinimumLengthValidatorVerifier<T>(int min)
         {
-            this.verifiers.Add(new MinimumLengthValidatorVerifier<T>(min));
+            verifiers.Add(new MinimumLengthValidatorVerifier<T>(min));
             return this;
         }
 
@@ -215,7 +215,7 @@
         /// <returns></returns>
         public BaseVerifiersSetComposer AddMaximumLengthValidatorVerifier<T>(int max)
         {
-            this.verifiers.Add(new MaximumLengthValidatorVerifier<T>(max));
+            verifiers.Add(new MaximumLengthValidatorVerifier<T>(max));
             return this;
         }
 
@@ -226,7 +226,7 @@
         /// <returns></returns>
         public BaseVerifiersSetComposer AddVerifier(IValidatorVerifier ruleVerifier)
         {
-            this.verifiers.Add(ruleVerifier);
+            verifiers.Add(ruleVerifier);
             return this;
         }
 
@@ -236,7 +236,7 @@
         /// <returns></returns>
         public BaseVerifiersSetComposer AddPlaceholderVerifier()
         {
-            this.verifiers.Add(new PlaceholderVerifier());
+            verifiers.Add(new PlaceholderVerifier());
             return this;
         }
 
@@ -246,7 +246,7 @@
         /// <returns></returns>
         public IValidatorVerifier[] Create()
         {
-            return this.verifiers.ToArray();
+            return verifiers.ToArray();
         }
     }
 }
