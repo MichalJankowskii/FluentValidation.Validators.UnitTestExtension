@@ -6,16 +6,13 @@ on:
     paths:
       - 'src/**'
 
+env:
+  buildConfiguration: Release
+  extensionVersion: '1.12.0'   # static part of the version
+
 jobs:
   build:
     runs-on: windows-latest
-
-    env:
-      buildConfiguration: Release
-      extensionVersion: '1.12.0'
-      # GitHub doesn't have Azure DevOps' counter(). Use the run number as the build counter.
-      versionBuildNumber: ${{ github.run_number }}
-      packageVersion: ${{ env.extensionVersion }}.${{ github.run_number }}
 
     steps:
       - name: Checkout
@@ -24,24 +21,32 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x' # adjust if your solution targets a different SDK
+          dotnet-version: '8.0.x'   # adjust if needed
+
+      # Compute dynamic version bits at runtime and export to later steps
+      - name: Compute package version
+        shell: bash
+        run: |
+          echo "versionBuildNumber=${GITHUB_RUN_NUMBER}" >> "$GITHUB_ENV"
+          echo "packageVersion=${extensionVersion}.${GITHUB_RUN_NUMBER}" >> "$GITHUB_ENV"
 
       - name: Print version
         shell: bash
-        run: echo "${{ env.packageVersion }}"
+        run: echo "$packageVersion"
 
       - name: Restore
         run: dotnet restore "src/FluentValidation.Validators.UnitTestExtension.sln"
 
       - name: Build
-        run: dotnet build "src/FluentValidation.Validators.UnitTestExtension.sln" --configuration "${{ env.buildConfiguration }}" --no-restore
+        run: dotnet build "src/FluentValidation.Validators.UnitTestExtension.sln" --configuration "$buildConfiguration" --no-restore
 
       - name: Pack
+        shell: bash
         run: >
           dotnet pack
           src/FluentValidation.Validators.UnitTestExtension/FluentValidation.Validators.UnitTestExtension.csproj
-          --configuration "${{ env.buildConfiguration }}"
-          -p:PackageVersion=${{ env.packageVersion }}
+          --configuration "$buildConfiguration"
+          -p:PackageVersion="$packageVersion"
           --no-build
           --output artifacts
 
