@@ -1,0 +1,52 @@
+name: Build & Pack
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - 'src/**'
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    env:
+      buildConfiguration: Release
+      extensionVersion: '1.12.0'
+      # GitHub doesn't have Azure DevOps' counter(). Use the run number as the build counter.
+      versionBuildNumber: ${{ github.run_number }}
+      packageVersion: ${{ env.extensionVersion }}.${{ github.run_number }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x' # adjust if your solution targets a different SDK
+
+      - name: Print version
+        shell: bash
+        run: echo "${{ env.packageVersion }}"
+
+      - name: Restore
+        run: dotnet restore "src/FluentValidation.Validators.UnitTestExtension.sln"
+
+      - name: Build
+        run: dotnet build "src/FluentValidation.Validators.UnitTestExtension.sln" --configuration "${{ env.buildConfiguration }}" --no-restore
+
+      - name: Pack
+        run: >
+          dotnet pack
+          src/FluentValidation.Validators.UnitTestExtension/FluentValidation.Validators.UnitTestExtension.csproj
+          --configuration "${{ env.buildConfiguration }}"
+          -p:PackageVersion=${{ env.packageVersion }}
+          --no-build
+          --output artifacts
+
+      - name: Publish artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: package
+          path: artifacts/**
