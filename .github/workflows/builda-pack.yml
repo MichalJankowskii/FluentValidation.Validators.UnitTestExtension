@@ -2,7 +2,6 @@ name: Build & Pack
 
 on:
   push:
-    branches: [ master ]
     paths:
       - 'src/**'
 
@@ -55,4 +54,3 @@ jobs:
         with:
           name: package
           path: artifacts/**
- 
