@@ -19,8 +19,8 @@
         {
             base.Verify(validator);
             var betweenValidator = (IBetweenValidator)validator;
-            betweenValidator.From.Should().Be(from, "(From property)");
-            betweenValidator.To.Should().Be(to, "(To property)");
+            betweenValidator.From.Should().Be(this.from, "(From property)");
+            betweenValidator.To.Should().Be(this.to, "(To property)");
         }
     }
 }

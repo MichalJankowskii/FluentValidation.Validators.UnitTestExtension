@@ -19,9 +19,9 @@
         {
             base.Verify(validator);
             var scalePrecisionValidator = validator as PrecisionScaleValidator<K>;
-            scalePrecisionValidator.Precision.Should().Be(precision, "(Precision property)");
-            scalePrecisionValidator.Scale.Should().Be(scale, "(Scale property)");
-            scalePrecisionValidator.IgnoreTrailingZeros.Should().Be(ignoreTrailingZeros, "(IgnoreTrailingZeros property)");
+            scalePrecisionValidator.Precision.Should().Be(this.precision, "(Precision property)");
+            scalePrecisionValidator.Scale.Should().Be(this.scale, "(Scale property)");
+            scalePrecisionValidator.IgnoreTrailingZeros.Should().Be(this.ignoreTrailingZeros, "(IgnoreTrailingZeros property)");
         }
     }
 }

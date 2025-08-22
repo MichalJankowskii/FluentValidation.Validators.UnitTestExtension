@@ -24,7 +24,7 @@
 		{
 			base.Verify(validator);
 			var regularExpressionValidator = (IRegularExpressionValidator)validator;
-			regularExpressionValidator.Expression.Should().BeEquivalentTo(expression, "(Expression property)");
+			regularExpressionValidator.Expression.Should().BeEquivalentTo(this.expression, "(Expression property)");
 		}
 	}
 }

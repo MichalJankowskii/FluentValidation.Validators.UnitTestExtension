@@ -126,8 +126,8 @@
 		{
 			public CustomerValidator()
 			{
-				RuleFor(cust => cust.Name).NotEmpty();
-				RuleFor(cust => cust.Email).NotEmpty().When(x => true);
+                this.RuleFor(cust => cust.Name).NotEmpty();
+                this.RuleFor(cust => cust.Email).NotEmpty().When(x => true);
 			}
 		}
 
@@ -142,7 +142,7 @@
 
 			public void Verify<T>(T validator)
 			{
-				shouldFailValidation.Should().BeFalse();
+                this.shouldFailValidation.Should().BeFalse();
 			}
 		}
 	}
