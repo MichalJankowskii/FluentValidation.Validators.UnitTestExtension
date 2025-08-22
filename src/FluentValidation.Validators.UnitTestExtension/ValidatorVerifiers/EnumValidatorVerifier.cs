@@ -10,7 +10,7 @@
 
 	    public EnumValidatorVerifier()
 	    {
-	        this.enumType = typeof(TProperty);
+            this.enumType = typeof(TProperty);
 	    }
 
         public override void Verify<TValidator>(TValidator validator)

@@ -6,14 +6,14 @@
     using Xunit;
     using Xunit.Sdk;
 
-    public class ScalePrecisionValidatorVerifierTest
+    public class PrecisionScaleValidatorVerifierTest
     {
         [Fact]
         public void Given_DifferentValidatorType_When_Verifying_Then_ValidationMustFail()
         {
             // Arrange
             var otherValidator = new FakePropertyValidator();
-            var verifier = new ScalePrecisionValidatorVerifier<ScalePrecisionValidator<object>, object>(1, 1);
+            var verifier = new PrecisionScaleValidatorVerifier<PrecisionScaleValidator<object>, object>(1, 1, false);
 
             // Act & Assert
             AssertExtension.Throws<XunitException>(() => verifier.Verify(otherValidator), "(wrong type)");
@@ -23,8 +23,8 @@
         public void Given_CorrectValidatorWithDifferentScaleValue_When_Verifying_Then_ValidationFail()
         {
             // Arrange
-            var scalePrecisionValidator = new ScalePrecisionValidator<object>(1, 3);
-            var verifier = new ScalePrecisionValidatorVerifier<ScalePrecisionValidator<object>, object>(2, 3);
+            var scalePrecisionValidator = new PrecisionScaleValidator<object>(3, 1, false);
+            var verifier = new PrecisionScaleValidatorVerifier<PrecisionScaleValidator<object>, object>(3, 2, false);
 
             // Act & Assert
             AssertExtension.Throws<XunitException>(() => verifier.Verify(scalePrecisionValidator), "(Scale property)");
@@ -34,8 +34,8 @@
         public void Given_CorrectValidatorWithDifferentPrecisionValue_When_Verifying_Then_ValidationFail()
         {
             // Arrange
-            var scalePrecisionValidator = new ScalePrecisionValidator<object>(1, 3);
-            var verifier = new ScalePrecisionValidatorVerifier<ScalePrecisionValidator<object>, object>(1, 2);
+            var scalePrecisionValidator = new PrecisionScaleValidator<object>(3, 1, false);
+            var verifier = new PrecisionScaleValidatorVerifier<PrecisionScaleValidator<object>, object>(2, 1, false);
 
             // Act & Assert
             AssertExtension.Throws<XunitException>(() => verifier.Verify(scalePrecisionValidator),
@@ -46,9 +46,9 @@
         public void Given_CorrectValidatorWithDifferentIgnoreTrailingZerosValue_When_Verifying_Then_ValidationFail()
         {
             // Arrange
-            var scalePrecisionValidator = new ScalePrecisionValidator<object>(1, 2) {IgnoreTrailingZeros = true};
+            var scalePrecisionValidator = new PrecisionScaleValidator<object>(2, 1, true);
             var verifier =
-                new ScalePrecisionValidatorVerifier<ScalePrecisionValidator<object>, object>(1, 2) {IgnoreTrailingZeros = false};
+                new PrecisionScaleValidatorVerifier<PrecisionScaleValidator<object>, object>(2, 1, false);
 
             // Act & Assert
             AssertExtension.Throws<XunitException>(() => verifier.Verify(scalePrecisionValidator), "(IgnoreTrailingZeros property)");
@@ -58,8 +58,8 @@
         public void Given_CorrectValidator_When_Verifying_Then_ValidationPass()
         {
             // Arrange
-            var scalePrecisionValidator = new ScalePrecisionValidator<object>(1, 2);
-            var verifier = new ScalePrecisionValidatorVerifier<ScalePrecisionValidator<object>, object>(1, 2);
+            var scalePrecisionValidator = new PrecisionScaleValidator<object>(2, 1, false);
+            var verifier = new PrecisionScaleValidatorVerifier<PrecisionScaleValidator<object>, object>(2, 1, false);
 
             // Act & Assert
             AssertExtension.NotThrows(() => verifier.Verify(scalePrecisionValidator));
@@ -69,9 +69,9 @@
         public void Given_CorrectValidatorWithIgnoreTrailingZeros_When_Verifying_Then_ValidationPass()
         {
             // Arrange
-            var scalePrecisionValidator = new ScalePrecisionValidator<object>(1, 2) {IgnoreTrailingZeros = true};
+            var scalePrecisionValidator = new PrecisionScaleValidator<object>(2, 1, true);
             var verifier =
-                new ScalePrecisionValidatorVerifier<ScalePrecisionValidator<object>, object>(1, 2) {IgnoreTrailingZeros = true};
+                new PrecisionScaleValidatorVerifier<PrecisionScaleValidator<object>, object>(2, 1, true);
 
             // Act & Assert
             AssertExtension.NotThrows(() => verifier.Verify(scalePrecisionValidator));

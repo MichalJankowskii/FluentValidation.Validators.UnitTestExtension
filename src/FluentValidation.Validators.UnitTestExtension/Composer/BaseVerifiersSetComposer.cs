@@ -98,14 +98,14 @@
         /// <summary>
         /// Adds the property scale precision validator verifier.
         /// </summary>
-        /// <typeparam name="TScalePrecisionValidator">The type of ScalePrecisionValidator that configuration will be checked.</typeparam>
+        /// <typeparam name="TPrecisionScaleValidator">The type of PrecisionScaleValidator that configuration will be checked.</typeparam>
         /// <typeparam name="T">The type of the object that property will be validated</typeparam>
         /// <param name="scale">The scale.</param>
         /// <param name="precision">The precision.</param>
         /// <returns></returns>
-        public BaseVerifiersSetComposer AddScalePrecisionValidatorVerifier<TScalePrecisionValidator, T>(int scale, int precision) where TScalePrecisionValidator : ScalePrecisionValidator<T>
+        public BaseVerifiersSetComposer AddPrecisionScaleValidatorVerifier<TPrecisionScaleValidator, T>(int scale, int precision, bool ignoreTrailingZeros) where TPrecisionScaleValidator : PrecisionScaleValidator<T>
         {
-            this.verifiers.Add(new ScalePrecisionValidatorVerifier<TScalePrecisionValidator, T>(scale, precision));
+            this.verifiers.Add(new PrecisionScaleValidatorVerifier<TPrecisionScaleValidator, T>(scale, precision, ignoreTrailingZeros));
             return this;
         }
 
